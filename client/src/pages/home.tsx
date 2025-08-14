@@ -10,6 +10,8 @@ import { useLocation } from "wouter";
 export default function Home() {
   const [comment, setComment] = useState("");
   const [keySequence, setKeySequence] = useState("");
+  const [showContextMenu, setShowContextMenu] = useState(false);
+  const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
@@ -33,6 +35,32 @@ export default function Home() {
     window.addEventListener("keypress", handleKeyPress);
     return () => window.removeEventListener("keypress", handleKeyPress);
   }, [keySequence, setLocation]);
+
+  // Right-click context menu
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      setContextMenuPosition({ x: e.clientX, y: e.clientY });
+      setShowContextMenu(true);
+    };
+
+    const handleClick = () => {
+      setShowContextMenu(false);
+    };
+
+    document.addEventListener("contextmenu", handleContextMenu);
+    document.addEventListener("click", handleClick);
+    
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
+
+  const handleAdminAccess = () => {
+    setLocation("/admin/login");
+    setShowContextMenu(false);
+  };
 
   // Submit comment mutation
   const submitComment = useMutation({
@@ -77,7 +105,25 @@ export default function Home() {
     <div className="min-h-screen animated-bg relative">
       <div className="floating-particles"></div>
       
-
+      {/* Context Menu */}
+      {showContextMenu && (
+        <div
+          className="fixed z-50 bg-black/90 border border-white/30 rounded-lg shadow-lg backdrop-blur-sm"
+          style={{
+            left: contextMenuPosition.x,
+            top: contextMenuPosition.y,
+          }}
+          data-testid="context-menu"
+        >
+          <button
+            onClick={handleAdminAccess}
+            className="w-full px-4 py-2 text-left text-white hover:bg-white/10 rounded-lg transition-colors text-sm"
+            data-testid="context-menu-admin"
+          >
+            Admin Login
+          </button>
+        </div>
+      )}
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
