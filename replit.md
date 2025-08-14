@@ -9,6 +9,7 @@ Website language: English (fully converted from Arabic)
 Design preference: Minimalist, black animated background, clean design without unnecessary elements
 Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
 Admin credentials: username "admin", password "secret123" (hidden from UI)
+Background music: Hidden audio system with 20% volume, auto-plays on user interaction
 
 # System Architecture
 
