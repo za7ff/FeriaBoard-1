@@ -27,6 +27,7 @@ export default function AdminLogin() {
       return data;
     },
     onSuccess: (data) => {
+      console.log("Login success response:", data);
       if (data.success) {
         localStorage.setItem('adminLoggedIn', 'true');
         toast({
@@ -40,6 +41,7 @@ export default function AdminLogin() {
       }
     },
     onError: (error: any) => {
+      console.log("Login error:", error);
       try {
         const errorData = JSON.parse(error.message);
         
