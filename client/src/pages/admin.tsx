@@ -61,7 +61,7 @@ export default function Admin() {
 
   // If not logged in, redirect to login
   if (!isLoggedIn) {
-    setLocation('/admin/login');
+    setTimeout(() => setLocation('/admin/login'), 100);
     return null;
   }
 
