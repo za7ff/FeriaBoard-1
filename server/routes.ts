@@ -85,6 +85,17 @@ class SecurityManager {
 const security = new SecurityManager();
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Initialize admin user on startup
+  try {
+    const adminExists = await storage.getUserByUsername("admin");
+    if (!adminExists) {
+      await storage.createUser({ username: "admin", password: "secret123" });
+      console.log("✅ Admin user created successfully");
+    }
+  } catch (error) {
+    console.error("❌ Failed to initialize admin user:", error);
+  }
+
   // Create new comment
   app.post("/api/comments", async (req, res) => {
     try {
