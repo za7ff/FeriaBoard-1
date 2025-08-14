@@ -92,7 +92,7 @@ export default function Home() {
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Welcome Animation */}
       {showWelcome && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md welcome-overlay">
           <div className="welcome-notification modern-card px-10 py-8 mx-4 max-w-md text-center">
             <div className="welcome-content">
               <div className="mb-4">
@@ -117,25 +117,14 @@ export default function Home() {
       {/* Animated background shapes */}
       <div className="animated-shapes"></div>
 
-      {/* Admin and test buttons */}
-      <div className="fixed top-6 right-6 z-20 flex flex-col space-y-3">
+      {/* Admin button */}
+      <div className="fixed top-6 right-6 z-20">
         <Button
           onClick={() => setLocation("/admin/login")}
           className="bg-white/10 border border-white/20 text-white hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg"
           data-testid="button-admin"
         >
           Admin
-        </Button>
-        <Button
-          onClick={() => {
-            localStorage.removeItem('hasSeenWelcome');
-            setShowWelcome(true);
-            setTimeout(() => setShowWelcome(false), 4000);
-          }}
-          className="bg-purple-500/20 border border-purple-500/30 text-white hover:bg-purple-500/30 backdrop-blur-sm px-4 py-2 rounded-lg text-sm"
-          data-testid="button-test-welcome"
-        >
-          Test Welcome
         </Button>
       </div>
       
