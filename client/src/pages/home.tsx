@@ -15,13 +15,24 @@ export default function Home() {
 
   // Show welcome animation on page load
   useEffect(() => {
+    // Clear localStorage for testing - remove this line when done testing
+    // localStorage.removeItem('hasSeenWelcome');
+    
     const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
     if (!hasSeenWelcome) {
-      setTimeout(() => setShowWelcome(true), 800);
-      setTimeout(() => {
+      const showTimer = setTimeout(() => {
+        setShowWelcome(true);
+      }, 500);
+      
+      const hideTimer = setTimeout(() => {
         setShowWelcome(false);
         localStorage.setItem('hasSeenWelcome', 'true');
-      }, 4500);
+      }, 4000);
+
+      return () => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+      };
     }
   }, []);
 
@@ -78,7 +89,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen modern-bg relative">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
       {/* Welcome Animation */}
       {showWelcome && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md">
@@ -106,8 +117,8 @@ export default function Home() {
       {/* Animated background shapes */}
       <div className="animated-shapes"></div>
 
-      {/* Admin button */}
-      <div className="fixed top-6 right-6 z-20">
+      {/* Admin and test buttons */}
+      <div className="fixed top-6 right-6 z-20 flex flex-col space-y-3">
         <Button
           onClick={() => setLocation("/admin/login")}
           className="bg-white/10 border border-white/20 text-white hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg"
@@ -115,12 +126,23 @@ export default function Home() {
         >
           Admin
         </Button>
+        <Button
+          onClick={() => {
+            localStorage.removeItem('hasSeenWelcome');
+            setShowWelcome(true);
+            setTimeout(() => setShowWelcome(false), 4000);
+          }}
+          className="bg-purple-500/20 border border-purple-500/30 text-white hover:bg-purple-500/30 backdrop-blur-sm px-4 py-2 rounded-lg text-sm"
+          data-testid="button-test-welcome"
+        >
+          Test Welcome
+        </Button>
       </div>
       
       {/* Main content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6">
         {/* Name */}
-        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider modern-title">
+        <h1 className="text-8xl md:text-9xl font-bold mb-12 tracking-wider feria-title">
           Feria
         </h1>
 
