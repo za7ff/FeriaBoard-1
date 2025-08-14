@@ -57,7 +57,7 @@ export default function Admin() {
   };
 
   const handleDeleteComment = (commentId: string) => {
-    if (confirm('Are you sure you want to delete this comment?')) {
+    if (confirm('هل أنت متأكد من حذف هذا التعليق؟')) {
       deleteComment.mutate(commentId);
     }
   };
@@ -81,32 +81,31 @@ export default function Admin() {
       <div className="floating-particles"></div>
       
       <div className="relative z-10 min-h-screen px-6 py-8">
-        {/* Header */}
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="text-white hover:text-gray-300 transition-colors">
-                <Home size={24} />
-              </Link>
-              <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
-            </div>
-            
+          {/* Top bar with logout - positioned at top right */}
+          <div className="flex justify-end mb-6">
             <Button
               onClick={handleLogout}
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10"
+              className="bg-red-600/80 hover:bg-red-600 text-white border-0 px-6 py-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200"
             >
-              <LogOut size={16} className="mr-2" />
-              Logout
+              <LogOut size={18} className="mr-2" />
+              تسجيل خروج
             </Button>
-
+          </div>
+          
+          {/* Header */}
+          <div className="flex items-center space-x-4 mb-8">
+            <Link href="/" className="text-white hover:text-gray-300 transition-colors">
+              <Home size={24} />
+            </Link>
+            <h1 className="text-3xl font-bold text-white">لوحة التحكم</h1>
           </div>
 
           {/* Comments section */}
           <div className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/20 p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-semibold text-white">
-                All Comments ({adminComments.length})
+                جميع التعليقات ({adminComments.length})
               </h2>
             </div>
 
@@ -124,9 +123,9 @@ export default function Admin() {
               </div>
             ) : adminComments.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-white/60 text-lg">No comments yet.</p>
+                <p className="text-white/60 text-lg">لا توجد تعليقات حتى الآن</p>
                 <p className="text-white/40 text-sm mt-2">
-                  Comments will appear here when visitors submit them.
+                  ستظهر التعليقات هنا عندما يقوم الزوار بإرسالها
                 </p>
               </div>
             ) : (
