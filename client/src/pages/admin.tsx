@@ -4,7 +4,7 @@ import { type Comment } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Trash2, LogOut, Home } from "lucide-react";
+import { Trash2, Home } from "lucide-react";
 import { format } from "date-fns";
 import { Link, useLocation } from "wouter";
 
@@ -15,15 +15,9 @@ export default function Admin() {
   const [, setLocation] = useLocation();
 
   useEffect(() => {
-    // Check if already logged in from localStorage
-    const adminLoggedIn = localStorage.getItem('adminLoggedIn');
-    if (adminLoggedIn === 'true') {
-      setIsLoggedIn(true);
-    } else {
-      // If not logged in, redirect to login page
-      setLocation('/admin/login');
-    }
-  }, [setLocation]);
+    // Admin page is now public - no authentication required
+    setIsLoggedIn(true);
+  }, []);
 
   // Admin comments query
   const { data: adminComments = [], isLoading } = useQuery<Comment[]>({
@@ -53,14 +47,7 @@ export default function Admin() {
     },
   });
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('adminLoggedIn');
-    toast({
-      title: "Logged out",
-      description: "You have been logged out successfully.",
-    });
-  };
+
 
   // Show loading while checking authentication
   if (!isLoggedIn) {
@@ -84,17 +71,9 @@ export default function Admin() {
               <Link href="/" className="text-white hover:text-gray-300 transition-colors">
                 <Home size={24} />
               </Link>
-              <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
+              <h1 className="text-3xl font-bold text-white">Comments Dashboard</h1>
             </div>
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10"
-              data-testid="button-logout"
-            >
-              <LogOut size={16} className="mr-2" />
-              Logout
-            </Button>
+
           </div>
 
           {/* Comments section */}

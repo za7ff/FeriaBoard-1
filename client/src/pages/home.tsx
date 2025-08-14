@@ -131,6 +131,17 @@ export default function Home() {
               {submitComment.isPending ? "Submitting..." : "Submit Comment"}
             </Button>
           </form>
+          
+          {/* Admin link - now visible to everyone */}
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => setLocation("/admin")}
+              className="text-white/70 hover:text-white transition-colors text-sm underline"
+              data-testid="link-admin"
+            >
+              View Comments
+            </button>
+          </div>
         </div>
       </div>
     </div>
