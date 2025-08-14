@@ -86,14 +86,14 @@ export default function Home() {
             </Button>
           </form>
           
-          {/* Admin link - now visible to everyone */}
-          <div className="mt-6 text-center">
+          {/* Comments button - clearly visible */}
+          <div className="mt-8 text-center">
             <button
               onClick={() => setLocation("/admin")}
-              className="bg-white/20 hover:bg-white/30 text-white px-6 py-2 rounded-lg transition-colors text-base border border-white/30"
+              className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-lg transition-colors text-lg font-semibold shadow-lg"
               data-testid="link-admin"
             >
-              View All Comments
+              📝 View All Comments
             </button>
           </div>
         </div>
