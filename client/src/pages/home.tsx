@@ -78,7 +78,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen modern-bg relative overflow-hidden">
+    <div className="min-h-screen modern-bg relative">
       {/* Welcome Animation */}
       {showWelcome && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
@@ -93,31 +93,22 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      {/* Geometric decorations */}
-      <div className="geometric-shapes"></div>
       
       {/* Main content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6">
-        {/* Header section */}
-        <div className="text-center mb-16 max-w-4xl">
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wide modern-title">
-            Feria
-          </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Transforming Ideas into Engaging Digital Experiences through Innovation and Precision.
-          </p>
-        </div>
+        {/* Name */}
+        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider modern-title">
+          Feria
+        </h1>
 
-        {/* Comment form section */}
-        <div className="w-full max-w-xl">
-          <div className="modern-card p-8">
-            <h2 className="text-white text-2xl font-semibold mb-6 text-center">Share Your Thoughts</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Comment form */}
+        <div className="w-full max-w-lg">
+          <div className="modern-card p-6">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <Textarea
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
-                placeholder="Write your message here..."
+                placeholder="Leave a comment..."
                 className="modern-input"
                 rows={4}
                 data-testid="input-comment"
@@ -128,29 +119,9 @@ export default function Home() {
                 className="modern-button w-full"
                 data-testid="button-submit-comment"
               >
-                {submitComment.isPending ? "Submitting..." : "Let's Work Together"}
+                {submitComment.isPending ? "Submitting..." : "Submit Comment"}
               </Button>
             </form>
-          </div>
-        </div>
-
-        {/* Stats section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl w-full">
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">300+</div>
-            <div className="text-gray-400 text-sm">Projects</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
-            <div className="text-gray-400 text-sm">Happy Clients</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">12+</div>
-            <div className="text-gray-400 text-sm">Years Experience</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">250+</div>
-            <div className="text-gray-400 text-sm">Reviews</div>
           </div>
         </div>
       </div>

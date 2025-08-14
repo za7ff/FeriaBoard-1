@@ -6,7 +6,7 @@ This is a minimalist personal website for "Feria" with an enhanced animated back
 
 Preferred communication style: Simple, everyday language.
 Website language: English (fully converted from Arabic)
-Design preference: Modern dark theme with elegant typography, subtle geometric shapes, glowing gradients, and sophisticated glassmorphism effects
+Design preference: Clean modern dark design with just the Feria text and comment form, minimal and functional
 Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database
@@ -66,12 +66,9 @@ Data persistence: Comments are permanently saved to PostgreSQL database
 - **Lucide React**: Icon library for consistent iconography
 
 ## Recent Enhancements (January 2025)
-- **Modern Design Overhaul**: Redesigned with sophisticated dark theme inspired by modern web aesthetics
-- **Glassmorphism Effects**: Implemented modern card designs with backdrop blur and elegant borders
-- **Geometric Animations**: Added floating geometric shapes with subtle animations
-- **Enhanced Typography**: Modern title with gradient shimmer effects and improved text hierarchy
-- **Professional Layout**: Added descriptive content and statistics section for more engaging experience
-- **Improved Color Palette**: Subtle gradient backgrounds with purple, pink, and blue accent colors
+- **Simplified Modern Design**: Clean dark background with modern glassmorphism card for comment form
+- **Minimalist Layout**: Just "Feria" title and comment submission form as requested
+- **Modern Styling**: Elegant card design with backdrop blur effects but no extra animations or content
 
 ## Styling & Design
 - **Tailwind CSS**: Utility-first CSS framework with custom configuration
