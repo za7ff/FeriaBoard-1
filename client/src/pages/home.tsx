@@ -86,14 +86,14 @@ export default function Home() {
             </Button>
           </form>
           
-          {/* Comments button - clearly visible */}
+          {/* Admin Login button - clearly visible */}
           <div className="mt-8 text-center">
             <button
-              onClick={() => setLocation("/admin")}
+              onClick={() => setLocation("/admin/login")}
               className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-lg transition-colors text-lg font-semibold shadow-lg"
               data-testid="link-admin"
             >
-              📝 View All Comments
+              🔐 Admin Login
             </button>
           </div>
         </div>

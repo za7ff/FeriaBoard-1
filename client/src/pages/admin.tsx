@@ -1,23 +1,66 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { type Comment } from "@shared/schema";
-import { Home } from "lucide-react";
+import { Home, Trash2, LogOut } from "lucide-react";
 import { format } from "date-fns";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
+import { apiRequest, queryClient } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
+import { Button } from "@/components/ui/button";
 
 export default function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [, setLocation] = useLocation();
+  const { toast } = useToast();
 
   useEffect(() => {
-    // Admin page is now public - no authentication required
-    setIsLoggedIn(true);
-  }, []);
+    // Check if admin is logged in
+    const adminLoggedIn = localStorage.getItem('adminLoggedIn');
+    if (adminLoggedIn === 'true') {
+      setIsLoggedIn(true);
+    } else {
+      setLocation('/admin/login');
+    }
+  }, [setLocation]);
 
   // Admin comments query
   const { data: adminComments = [], isLoading } = useQuery<Comment[]>({
     queryKey: ["/api/admin/comments"],
     enabled: isLoggedIn,
   });
+
+  // Delete comment mutation
+  const deleteComment = useMutation({
+    mutationFn: async (commentId: string) => {
+      const response = await apiRequest("DELETE", `/api/admin/comments/${commentId}`);
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Comment deleted",
+        description: "The comment has been successfully removed.",
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/comments"] });
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to delete comment.",
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminLoggedIn');
+    setLocation('/');
+  };
+
+  const handleDeleteComment = (commentId: string) => {
+    if (confirm('Are you sure you want to delete this comment?')) {
+      deleteComment.mutate(commentId);
+    }
+  };
 
 
 
@@ -45,8 +88,17 @@ export default function Admin() {
               <Link href="/" className="text-white hover:text-gray-300 transition-colors">
                 <Home size={24} />
               </Link>
-              <h1 className="text-3xl font-bold text-white">Comments Dashboard</h1>
+              <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
             </div>
+            
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              className="border-white/30 text-white hover:bg-white/10"
+            >
+              <LogOut size={16} className="mr-2" />
+              Logout
+            </Button>
 
           </div>
 
@@ -85,13 +137,25 @@ export default function Admin() {
                     className="bg-white/5 border border-white/20 rounded-lg p-4 hover:bg-white/10 transition-colors"
                     data-testid={`comment-${comment.id}`}
                   >
-                    <div>
-                      <p className="text-white text-lg mb-3 leading-relaxed" data-testid={`text-content-${comment.id}`}>
-                        "{comment.content}"
-                      </p>
-                      <p className="text-white/50 text-sm" data-testid={`text-date-${comment.id}`}>
-                        {format(new Date(comment.createdAt), "PPpp")}
-                      </p>
+                    <div className="flex justify-between items-start">
+                      <div className="flex-1">
+                        <p className="text-white text-lg mb-3 leading-relaxed" data-testid={`text-content-${comment.id}`}>
+                          "{comment.content}"
+                        </p>
+                        <p className="text-white/50 text-sm" data-testid={`text-date-${comment.id}`}>
+                          {format(new Date(comment.createdAt), "PPpp")}
+                        </p>
+                      </div>
+                      <Button
+                        onClick={() => handleDeleteComment(comment.id)}
+                        variant="outline"
+                        size="sm"
+                        className="border-red-500/50 text-red-400 hover:bg-red-500/20 hover:border-red-500"
+                        disabled={deleteComment.isPending}
+                        data-testid={`button-delete-${comment.id}`}
+                      >
+                        <Trash2 size={16} />
+                      </Button>
                     </div>
                   </div>
                 ))}
