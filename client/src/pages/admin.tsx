@@ -19,8 +19,11 @@ export default function Admin() {
     const adminLoggedIn = localStorage.getItem('adminLoggedIn');
     if (adminLoggedIn === 'true') {
       setIsLoggedIn(true);
+    } else {
+      // If not logged in, redirect to login page
+      setLocation('/admin/login');
     }
-  }, []);
+  }, [setLocation]);
 
   // Admin comments query
   const { data: adminComments = [], isLoading } = useQuery<Comment[]>({
@@ -59,10 +62,14 @@ export default function Admin() {
     });
   };
 
-  // If not logged in, redirect to login
+  // Show loading while checking authentication
   if (!isLoggedIn) {
-    setTimeout(() => setLocation('/admin/login'), 100);
-    return null;
+    return (
+      <div className="min-h-screen animated-bg relative flex items-center justify-center">
+        <div className="floating-particles"></div>
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    );
   }
 
   return (

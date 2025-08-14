@@ -27,7 +27,10 @@ export default function AdminLogin() {
           title: "Login successful",
           description: "Welcome to the admin dashboard!",
         });
-        setLocation('/admin');
+        // Small delay to ensure localStorage is set
+        setTimeout(() => {
+          setLocation('/admin');
+        }, 100);
       }
     },
     onError: () => {
