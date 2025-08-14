@@ -14,18 +14,24 @@ export default function AdminLogin() {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
-  // Login mutation
+  // Login mutation with enhanced security feedback
   const login = useMutation({
     mutationFn: async (credentials: { username: string; password: string }) => {
       const response = await apiRequest("POST", "/api/admin/login", credentials);
-      return response.json();
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(JSON.stringify(data));
+      }
+      
+      return data;
     },
     onSuccess: (data) => {
       if (data.success) {
         localStorage.setItem('adminLoggedIn', 'true');
         toast({
-          title: "Login successful",
-          description: "Welcome to the admin dashboard!",
+          title: "تم تسجيل الدخول بنجاح",
+          description: "مرحباً بك في لوحة التحكم!",
         });
         // Small delay to ensure localStorage is set
         setTimeout(() => {
@@ -33,12 +39,37 @@ export default function AdminLogin() {
         }, 100);
       }
     },
-    onError: () => {
-      toast({
-        title: "Login failed",
-        description: "Invalid username or password.",
-        variant: "destructive",
-      });
+    onError: (error: any) => {
+      try {
+        const errorData = JSON.parse(error.message);
+        
+        if (errorData.blocked) {
+          const minutes = errorData.timeRemaining ? Math.ceil(errorData.timeRemaining / 1000 / 60) : 'عدة';
+          toast({
+            title: "🔒 تم حظر IP الخاص بك",
+            description: `تم حظرك لمدة ${minutes} دقيقة بسبب المحاولات الفاشلة المتكررة`,
+            variant: "destructive",
+          });
+        } else if (errorData.remainingAttempts !== undefined) {
+          toast({
+            title: "فشل تسجيل الدخول",
+            description: `بيانات خاطئة. المحاولات المتبقية: ${errorData.remainingAttempts}`,
+            variant: "destructive",
+          });
+        } else {
+          toast({
+            title: "خطأ في تسجيل الدخول",
+            description: errorData.message || "حدث خطأ غير متوقع",
+            variant: "destructive",
+          });
+        }
+      } catch {
+        toast({
+          title: "خطأ في تسجيل الدخول",
+          description: "اسم المستخدم أو كلمة المرور غير صحيحة",
+          variant: "destructive",
+        });
+      }
     },
   });
 
@@ -75,34 +106,41 @@ export default function AdminLogin() {
                 <Lock className="w-6 h-6 text-white" />
               </div>
             </div>
-            <CardTitle className="text-2xl font-bold text-white">Admin Login</CardTitle>
+            <CardTitle className="text-2xl font-bold text-white">تسجيل دخول الإدارة</CardTitle>
             <p className="text-white/70 text-sm">
-              Enter your credentials to access the admin dashboard
+              أدخل بيانات الدخول للوصول إلى لوحة التحكم
             </p>
+            <div className="bg-yellow-500/20 border border-yellow-500/50 rounded-lg p-3 mt-4">
+              <p className="text-yellow-200 text-xs text-center">
+                🔒 محمي ضد الهجمات | 5 محاولات فقط كل 15 دقيقة
+              </p>
+            </div>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-white/90">Username</label>
+                <label className="text-sm font-medium text-white/90">اسم المستخدم</label>
                 <Input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="Enter username"
+                  placeholder="أدخل اسم المستخدم"
                   className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-white/50"
                   data-testid="input-username"
+                  disabled={login.isPending}
                 />
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-white/90">Password</label>
+                <label className="text-sm font-medium text-white/90">كلمة المرور</label>
                 <Input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter password"
+                  placeholder="أدخل كلمة المرور"
                   className="bg-white/10 border-white/30 text-white placeholder-white/50 focus:border-white/50"
                   data-testid="input-password"
+                  disabled={login.isPending}
                 />
               </div>
 
@@ -112,7 +150,7 @@ export default function AdminLogin() {
                 className="w-full bg-white text-black hover:bg-gray-200 font-semibold py-2"
                 data-testid="button-login"
               >
-                {login.isPending ? "Signing in..." : "Sign In"}
+                {login.isPending ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
               </Button>
             </form>
 
