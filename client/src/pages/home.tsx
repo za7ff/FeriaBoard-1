@@ -9,39 +9,19 @@ import { useLocation } from "wouter";
 
 export default function Home() {
   const [comment, setComment] = useState("");
-  const [keySequence, setKeySequence] = useState("");
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
-  // Secret admin access via keyboard shortcut
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      const newSequence = keySequence + e.key.toLowerCase();
-      setKeySequence(newSequence);
-      
-      if (newSequence.includes("admin")) {
-        setLocation("/admin/login");
-        setKeySequence("");
-      }
-      
-      // Reset sequence if it gets too long
-      if (newSequence.length > 10) {
-        setKeySequence("");
-      }
-    };
-
-    window.addEventListener("keypress", handleKeyPress);
-    return () => window.removeEventListener("keypress", handleKeyPress);
-  }, [keySequence, setLocation]);
-
-  // Right-click context menu
+  // Right-click context menu (only with Shift key for security)
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
-      e.preventDefault();
-      setContextMenuPosition({ x: e.clientX, y: e.clientY });
-      setShowContextMenu(true);
+      if (e.shiftKey) {
+        e.preventDefault();
+        setContextMenuPosition({ x: e.clientX, y: e.clientY });
+        setShowContextMenu(true);
+      }
     };
 
     const handleClick = () => {

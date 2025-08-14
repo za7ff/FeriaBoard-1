@@ -116,11 +116,7 @@ export default function AdminLogin() {
               </Button>
             </form>
 
-            <div className="mt-6 pt-6 border-t border-white/20">
-              <p className="text-xs text-white/50 text-center">
-                Demo credentials: admin / secret123
-              </p>
-            </div>
+
           </CardContent>
         </Card>
       </div>
