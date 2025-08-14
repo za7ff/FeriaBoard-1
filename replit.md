@@ -1,10 +1,12 @@
 # Overview
 
-This is a full-stack web application for a personal testimonial/comment system built with React, Express, and PostgreSQL. The application allows visitors to submit comments about their experience with "Feria" (the site owner), with a moderation system where comments must be approved before being displayed publicly. The frontend features a luxury-themed personal page with sections for hero content, comment submission, and testimonials display.
+This is a minimalist personal website for "Feria" with a black animated background and simple comment system. The website features just the name "Feria" in large white text and a comment submission area below. Comments are only visible to admin via hidden login. The design is clean and minimal with animated gradient background and floating particles.
 
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
+Website language: English
+Design preference: Minimalist, black animated background, clean design without unnecessary elements
 
 # System Architecture
 

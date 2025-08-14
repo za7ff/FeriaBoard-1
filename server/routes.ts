@@ -1,27 +1,17 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertCommentSchema } from "@shared/schema";
+import { insertCommentSchema, insertUserSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Get approved comments
-  app.get("/api/comments", async (req, res) => {
-    try {
-      const comments = await storage.getApprovedComments();
-      res.json(comments);
-    } catch (error) {
-      res.status(500).json({ message: "Failed to fetch comments" });
-    }
-  });
-
   // Create new comment
   app.post("/api/comments", async (req, res) => {
     try {
       const validatedData = insertCommentSchema.parse(req.body);
       const comment = await storage.createComment(validatedData);
       res.status(201).json({ 
-        message: "Comment submitted successfully. It will be reviewed before being published.",
+        message: "Comment submitted successfully.",
         comment 
       });
     } catch (error) {
@@ -36,7 +26,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Get all comments (for moderation)
+  // Admin login
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const user = await storage.getUserByUsername(username);
+      
+      if (user && user.password === password) {
+        res.json({ success: true, message: "Login successful" });
+      } else {
+        res.status(401).json({ success: false, message: "Invalid credentials" });
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Login failed" });
+    }
+  });
+
+  // Get all comments (for admin)
   app.get("/api/admin/comments", async (req, res) => {
     try {
       const comments = await storage.getAllComments();
@@ -46,22 +52,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Approve comment
-  app.patch("/api/admin/comments/:id/approve", async (req, res) => {
-    try {
-      const { id } = req.params;
-      const success = await storage.approveComment(id);
-      if (success) {
-        res.json({ message: "Comment approved successfully" });
-      } else {
-        res.status(404).json({ message: "Comment not found" });
-      }
-    } catch (error) {
-      res.status(500).json({ message: "Failed to approve comment" });
-    }
-  });
-
-  // Delete comment
+  // Delete comment (admin only)
   app.delete("/api/admin/comments/:id", async (req, res) => {
     try {
       const { id } = req.params;

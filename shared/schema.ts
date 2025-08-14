@@ -11,10 +11,7 @@ export const users = pgTable("users", {
 
 export const comments = pgTable("comments", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
   content: text("content").notNull(),
-  approved: boolean("approved").default(false).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -24,13 +21,9 @@ export const insertUserSchema = createInsertSchema(users).pick({
 });
 
 export const insertCommentSchema = createInsertSchema(comments).pick({
-  name: true,
-  email: true,
   content: true,
 }).extend({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  content: z.string().min(10, "Comment must be at least 10 characters"),
+  content: z.string().min(1, "Comment cannot be empty"),
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;
