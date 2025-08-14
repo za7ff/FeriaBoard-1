@@ -89,7 +89,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   try {
     const adminExists = await storage.getUserByUsername("admin");
     if (!adminExists) {
-      await storage.createUser({ username: "admin", password: "secret123" });
+      await storage.createUser({ username: "admin", password: "newpass123" });
       console.log("✅ Admin user created successfully");
     }
   } catch (error) {
