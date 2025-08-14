@@ -93,6 +93,20 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* Animated background shapes */}
+      <div className="animated-shapes"></div>
+
+      {/* Admin button */}
+      <div className="fixed top-6 right-6 z-20">
+        <Button
+          onClick={() => setLocation("/admin/login")}
+          className="bg-white/10 border border-white/20 text-white hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg"
+          data-testid="button-admin"
+        >
+          Admin
+        </Button>
+      </div>
       
       {/* Main content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6">

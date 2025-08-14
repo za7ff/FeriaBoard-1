@@ -7,7 +7,7 @@ This is a minimalist personal website for "Feria" with an enhanced animated back
 Preferred communication style: Simple, everyday language.
 Website language: English (fully converted from Arabic)
 Design preference: Clean modern dark design with just the Feria text and comment form, minimal and functional
-Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
+Admin access: Admin button positioned on the right side for easy access
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database
 
@@ -68,7 +68,8 @@ Data persistence: Comments are permanently saved to PostgreSQL database
 ## Recent Enhancements (January 2025)
 - **Simplified Modern Design**: Clean dark background with modern glassmorphism card for comment form
 - **Minimalist Layout**: Just "Feria" title and comment submission form as requested
-- **Modern Styling**: Elegant card design with backdrop blur effects but no extra animations or content
+- **Animated Background**: Added floating geometric shapes with smooth animations
+- **Admin Button**: Positioned Admin button on the right side for easy access
 
 ## Styling & Design
 - **Tailwind CSS**: Utility-first CSS framework with custom configuration
