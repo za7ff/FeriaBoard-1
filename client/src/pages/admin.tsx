@@ -1,18 +1,12 @@
 import { useState, useEffect } from "react";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { type Comment } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
-import { Button } from "@/components/ui/button";
-import { Trash2, Home } from "lucide-react";
+import { Home } from "lucide-react";
 import { format } from "date-fns";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 export default function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { toast } = useToast();
-  const queryClient = useQueryClient();
-  const [, setLocation] = useLocation();
 
   useEffect(() => {
     // Admin page is now public - no authentication required
@@ -25,27 +19,7 @@ export default function Admin() {
     enabled: isLoggedIn,
   });
 
-  // Delete comment mutation
-  const deleteComment = useMutation({
-    mutationFn: async (id: string) => {
-      const response = await apiRequest("DELETE", `/api/admin/comments/${id}`);
-      return response.json();
-    },
-    onSuccess: () => {
-      toast({
-        title: "Comment deleted",
-        description: "Comment has been removed successfully.",
-      });
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/comments"] });
-    },
-    onError: () => {
-      toast({
-        title: "Error",
-        description: "Failed to delete comment.",
-        variant: "destructive",
-      });
-    },
-  });
+
 
 
 
@@ -111,25 +85,13 @@ export default function Admin() {
                     className="bg-white/5 border border-white/20 rounded-lg p-4 hover:bg-white/10 transition-colors"
                     data-testid={`comment-${comment.id}`}
                   >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <p className="text-white text-lg mb-3 leading-relaxed" data-testid={`text-content-${comment.id}`}>
-                          "{comment.content}"
-                        </p>
-                        <p className="text-white/50 text-sm" data-testid={`text-date-${comment.id}`}>
-                          {format(new Date(comment.createdAt), "PPpp")}
-                        </p>
-                      </div>
-                      <Button
-                        onClick={() => deleteComment.mutate(comment.id)}
-                        variant="ghost"
-                        size="sm"
-                        className="text-red-400 hover:text-red-300 hover:bg-red-500/10 ml-4"
-                        disabled={deleteComment.isPending}
-                        data-testid={`button-delete-${comment.id}`}
-                      >
-                        <Trash2 size={16} />
-                      </Button>
+                    <div>
+                      <p className="text-white text-lg mb-3 leading-relaxed" data-testid={`text-content-${comment.id}`}>
+                        "{comment.content}"
+                      </p>
+                      <p className="text-white/50 text-sm" data-testid={`text-date-${comment.id}`}>
+                        {format(new Date(comment.createdAt), "PPpp")}
+                      </p>
                     </div>
                   </div>
                 ))}
