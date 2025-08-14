@@ -78,13 +78,13 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen animated-bg relative">
+    <div className="min-h-screen modern-bg relative overflow-hidden">
       {/* Welcome Animation */}
       {showWelcome && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-          <div className="welcome-notification bg-black/80 border border-white/30 rounded-lg px-8 py-6 mx-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="welcome-notification modern-card px-8 py-6 mx-4">
             <div className="flex items-center justify-center space-x-3">
-              <span className="text-3xl">🎉</span>
+              <span className="text-3xl">👋</span>
               <p className="text-white text-xl font-medium">
                 Welcome to Website Feria
               </p>
@@ -94,35 +94,64 @@ export default function Home() {
         </div>
       )}
 
-      <div className="floating-particles"></div>
+      {/* Geometric decorations */}
+      <div className="geometric-shapes"></div>
       
       {/* Main content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
-        {/* Name */}
-        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider glow-text">
-          Feria
-        </h1>
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6">
+        {/* Header section */}
+        <div className="text-center mb-16 max-w-4xl">
+          <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-wide modern-title">
+            Feria
+          </h1>
+          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Transforming Ideas into Engaging Digital Experiences through Innovation and Precision.
+          </p>
+        </div>
 
-        {/* Comment form */}
-        <div className="w-full max-w-lg">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="Leave a comment..."
-              className="bg-black/50 border-white/20 text-white placeholder:text-white/50 resize-none"
-              rows={4}
-              data-testid="input-comment"
-            />
-            <Button 
-              type="submit" 
-              disabled={submitComment.isPending || !comment.trim()}
-              className="w-full bg-white text-black hover:bg-white/90 disabled:opacity-50"
-              data-testid="button-submit-comment"
-            >
-              {submitComment.isPending ? "Submitting..." : "Submit Comment"}
-            </Button>
-          </form>
+        {/* Comment form section */}
+        <div className="w-full max-w-xl">
+          <div className="modern-card p-8">
+            <h2 className="text-white text-2xl font-semibold mb-6 text-center">Share Your Thoughts</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <Textarea
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Write your message here..."
+                className="modern-input"
+                rows={4}
+                data-testid="input-comment"
+              />
+              <Button 
+                type="submit" 
+                disabled={submitComment.isPending || !comment.trim()}
+                className="modern-button w-full"
+                data-testid="button-submit-comment"
+              >
+                {submitComment.isPending ? "Submitting..." : "Let's Work Together"}
+              </Button>
+            </form>
+          </div>
+        </div>
+
+        {/* Stats section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl w-full">
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-2">300+</div>
+            <div className="text-gray-400 text-sm">Projects</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
+            <div className="text-gray-400 text-sm">Happy Clients</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-2">12+</div>
+            <div className="text-gray-400 text-sm">Years Experience</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-2">250+</div>
+            <div className="text-gray-400 text-sm">Reviews</div>
+          </div>
         </div>
       </div>
     </div>

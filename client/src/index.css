@@ -38,15 +38,27 @@
 }
 
 @layer utilities {
-  .animated-bg {
-    background: #000000;
+  .modern-bg {
+    background: radial-gradient(ellipse at center, #0f0f23 0%, #000000 100%);
+    position: relative;
   }
   
-  .glow-text {
-    animation: glow 3s ease-in-out infinite alternate;
+  .modern-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(119, 198, 255, 0.3) 0%, transparent 50%);
+    opacity: 0.4;
+    animation: modernGlow 8s ease-in-out infinite alternate;
   }
-  
-  .floating-particles {
+
+  .geometric-shapes {
     position: fixed;
     top: 0;
     left: 0;
@@ -56,41 +68,102 @@
     z-index: 1;
     overflow: hidden;
   }
-  
-  .floating-particles::before {
+
+  .geometric-shapes::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(3px 3px at 20px 30px, rgba(255,255,255,0.2), transparent),
-      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.15), transparent),
-      radial-gradient(4px 4px at 90px 40px, rgba(255,255,255,0.18), transparent),
-      radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.12), transparent),
-      radial-gradient(3px 3px at 160px 30px, rgba(255,255,255,0.16), transparent),
-      radial-gradient(2px 2px at 200px 60px, rgba(255,255,255,0.14), transparent);
-    background-repeat: repeat;
-    background-size: 250px 180px;
-    animation: particles 15s linear infinite;
+    top: 10%;
+    left: 5%;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transform: rotate(45deg);
+    animation: floatShape1 20s linear infinite;
   }
-  
-  .floating-particles::after {
+
+  .geometric-shapes::after {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: 
-      radial-gradient(2px 2px at 50px 100px, rgba(255,255,255,0.1), transparent),
-      radial-gradient(3px 3px at 150px 50px, rgba(255,255,255,0.12), transparent),
-      radial-gradient(2px 2px at 250px 150px, rgba(255,255,255,0.08), transparent),
-      radial-gradient(4px 4px at 80px 200px, rgba(255,255,255,0.15), transparent);
-    background-repeat: repeat;
-    background-size: 350px 250px;
-    animation: particles2 18s linear infinite reverse;
+    top: 60%;
+    right: 10%;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    animation: floatShape2 25s linear infinite reverse;
+  }
+
+  .modern-title {
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShimmer 3s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  }
+
+  .modern-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .modern-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  .modern-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: white !important;
+    font-size: 16px !important;
+    padding: 16px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .modern-input:focus {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .modern-input::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  .modern-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    padding: 16px 32px !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
+  }
+
+  .modern-button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4) !important;
+    background: linear-gradient(135deg, #ff5252, #e53e3e) !important;
+  }
+
+  .modern-button:disabled {
+    opacity: 0.6 !important;
+    transform: none !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2) !important;
   }
 }
 
@@ -134,5 +207,58 @@
   100% {
     transform: translateY(0) scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes modernGlow {
+  0% {
+    opacity: 0.4;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.1) rotate(1deg);
+  }
+}
+
+@keyframes floatShape1 {
+  0% {
+    transform: rotate(45deg) translateY(0px);
+    opacity: 0.1;
+  }
+  50% {
+    transform: rotate(135deg) translateY(-30px);
+    opacity: 0.15;
+  }
+  100% {
+    transform: rotate(225deg) translateY(0px);
+    opacity: 0.1;
+  }
+}
+
+@keyframes floatShape2 {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.08;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.08;
+  }
+}
+
+@keyframes titleShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
