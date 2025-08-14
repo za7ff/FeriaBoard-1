@@ -57,7 +57,7 @@ export default function Admin() {
   };
 
   const handleDeleteComment = (commentId: string) => {
-    if (confirm('هل أنت متأكد من حذف هذا التعليق؟')) {
+    if (confirm('Are you sure you want to delete this comment?')) {
       deleteComment.mutate(commentId);
     }
   };
@@ -89,7 +89,7 @@ export default function Admin() {
               className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white border-0 px-8 py-3 rounded-xl shadow-2xl backdrop-blur-sm transition-all duration-300 text-lg font-bold transform hover:scale-105"
             >
               <LogOut size={20} className="mr-3" />
-              🚪 خروج
+              🚪 Logout
             </Button>
           </div>
           
@@ -98,14 +98,14 @@ export default function Admin() {
             <Link href="/" className="text-white hover:text-gray-300 transition-colors">
               <Home size={24} />
             </Link>
-            <h1 className="text-3xl font-bold text-white">لوحة التحكم</h1>
+            <h1 className="text-3xl font-bold text-white">Admin Dashboard</h1>
           </div>
 
           {/* Comments section */}
           <div className="bg-white/5 backdrop-blur-sm rounded-lg border border-white/20 p-6">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-semibold text-white">
-                جميع التعليقات ({adminComments.length})
+                All Comments ({adminComments.length})
               </h2>
             </div>
 
@@ -123,9 +123,9 @@ export default function Admin() {
               </div>
             ) : adminComments.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-white/60 text-lg">لا توجد تعليقات حتى الآن</p>
+                <p className="text-white/60 text-lg">No comments yet.</p>
                 <p className="text-white/40 text-sm mt-2">
-                  ستظهر التعليقات هنا عندما يقوم الزوار بإرسالها
+                  Comments will appear here when visitors submit them.
                 </p>
               </div>
             ) : (

@@ -5,7 +5,7 @@ This is a minimalist personal website for "Feria" with a black animated backgrou
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
-Website language: English
+Website language: English (fully converted from Arabic)
 Design preference: Minimalist, black animated background, clean design without unnecessary elements
 Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
 Admin credentials: username "admin", password "secret123" (hidden from UI)
