@@ -9,11 +9,34 @@ import { useLocation } from "wouter";
 
 export default function Home() {
   const [comment, setComment] = useState("");
+  const [showWelcome, setShowWelcome] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
+  // Show welcome animation on page load
+  useEffect(() => {
+    const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
+    if (!hasSeenWelcome) {
+      setTimeout(() => setShowWelcome(true), 1000);
+      setTimeout(() => {
+        setShowWelcome(false);
+        localStorage.setItem('hasSeenWelcome', 'true');
+      }, 4000);
+    }
+  }, []);
 
+  // Handle admin access via context menu
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      if (e.shiftKey) {
+        e.preventDefault();
+        setLocation("/admin/login");
+      }
+    };
 
+    document.addEventListener("contextmenu", handleContextMenu);
+    return () => document.removeEventListener("contextmenu", handleContextMenu);
+  }, [setLocation]);
 
   // Submit comment mutation
   const submitComment = useMutation({
@@ -56,47 +79,55 @@ export default function Home() {
 
   return (
     <div className="min-h-screen animated-bg relative">
+      {/* Welcome Animation */}
+      {showWelcome && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="welcome-notification bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-md border border-white/20 rounded-3xl px-8 py-6 mx-4 shadow-2xl">
+            <div className="flex items-center justify-center space-x-3">
+              <span className="text-4xl animate-bounce">🎉</span>
+              <p className="text-white text-xl md:text-2xl font-semibold tracking-wide welcome-text">
+                Welcome to Website Feria
+              </p>
+              <span className="text-4xl animate-bounce delay-300">✨</span>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="floating-particles"></div>
       
-
-
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
-        {/* Name */}
-        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider glow-text">
-          Feria
-        </h1>
+        {/* Name with enhanced styling */}
+        <div className="text-center mb-12">
+          <h1 className="text-8xl md:text-9xl font-bold text-white tracking-wider glow-text luxury-title">
+            Feria
+          </h1>
+          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto mt-4"></div>
+        </div>
 
-        {/* Comment form */}
+        {/* Comment form with enhanced styling */}
         <div className="w-full max-w-lg">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Textarea
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
-              placeholder="Write your comment..."
-              className="w-full h-20 bg-black/50 border-white/30 text-white placeholder-white/50 text-base resize-none"
-              data-testid="textarea-comment"
-            />
-            <Button
-              type="submit"
-              disabled={submitComment.isPending || !comment.trim()}
-              className="w-full bg-white text-black hover:bg-gray-200 text-base py-2"
-              data-testid="button-submit-comment"
-            >
-              {submitComment.isPending ? "Submitting..." : "Submit Comment"}
-            </Button>
-          </form>
-          
-          {/* Admin button in top right corner */}
-          <div className="fixed top-6 right-6 z-50">
-            <button
-              onClick={() => setLocation("/admin/login")}
-              className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-full transition-all duration-300 text-base font-bold shadow-2xl backdrop-blur-sm transform hover:scale-105"
-              data-testid="link-admin"
-            >
-              ⚙️ Admin
-            </button>
+          <div className="bg-black/40 backdrop-blur-lg border border-white/10 rounded-2xl p-6 shadow-2xl">
+            <h2 className="text-white/80 text-center mb-4 text-lg font-medium">Share your thoughts</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Textarea
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Leave a comment..."
+                className="bg-black/60 border-white/30 text-white placeholder:text-white/60 resize-none rounded-xl focus:border-white/50 transition-colors"
+                rows={4}
+                data-testid="input-comment"
+              />
+              <Button 
+                type="submit" 
+                disabled={submitComment.isPending || !comment.trim()}
+                className="w-full bg-gradient-to-r from-white to-gray-200 text-black hover:from-gray-100 hover:to-white disabled:opacity-50 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+                data-testid="button-submit-comment"
+              >
+                {submitComment.isPending ? "Submitting..." : "Submit Comment"}
+              </Button>
+            </form>
           </div>
         </div>
       </div>

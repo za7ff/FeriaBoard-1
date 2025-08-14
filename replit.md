@@ -1,12 +1,12 @@
 # Overview
 
-This is a minimalist personal website for "Feria" with a black animated background and simple comment system. The website features just the name "Feria" in large white text and a comment submission area below. Comments are only visible to admin via hidden login. The design is clean and minimal with animated gradient background and floating particles.
+This is a minimalist personal website for "Feria" with an enhanced animated background and simple comment system. The website features the name "Feria" in large animated text with luxury shimmer effects, a welcome animation notification for new visitors, and a refined comment submission area. Comments are only visible to admin via hidden login. The design is elegant and modern with animated gradient background, enhanced floating particles with color variations, and smooth transitions throughout.
 
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
 Website language: English (fully converted from Arabic)
-Design preference: Minimalist, black animated background, clean design without unnecessary elements
+Design preference: Minimalist luxury design with enhanced animations, gradient backgrounds, welcome notifications, and premium visual effects
 Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database
@@ -64,6 +64,14 @@ Data persistence: Comments are permanently saved to PostgreSQL database
 - **Radix UI**: Comprehensive set of unstyled, accessible UI primitives
 - **shadcn/ui**: Pre-built component system based on Radix UI
 - **Lucide React**: Icon library for consistent iconography
+
+## Recent Enhancements (January 2025)
+- **Welcome Animation**: Animated notification saying "Welcome to Website Feria" with emojis that appears for new visitors
+- **Enhanced Visual Design**: Luxury shimmer effects on the main title with gradient text animations
+- **Improved Background**: Enhanced gradient background with subtle purple/blue color variations
+- **Enhanced Particles**: Floating particles now include purple and blue color accents for more visual appeal
+- **Refined Form Design**: Comment form now has improved styling with backdrop blur, rounded corners, and better visual hierarchy
+- **Smooth Transitions**: Added smooth transitions and hover effects throughout the interface
 
 ## Styling & Design
 - **Tailwind CSS**: Utility-first CSS framework with custom configuration
