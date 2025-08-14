@@ -82,7 +82,7 @@ export default function Home() {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
         {/* Name */}
-        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider">
+        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider glow-text">
           Feria
         </h1>
 
