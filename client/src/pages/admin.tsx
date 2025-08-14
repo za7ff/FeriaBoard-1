@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { type Comment } from "@shared/schema";
-import { Home, Trash2, LogOut } from "lucide-react";
+import { Home, Trash2, LogOut, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { Link, useLocation } from "wouter";
 import { apiRequest, queryClient } from "@/lib/queryClient";
@@ -18,16 +18,26 @@ export default function Admin() {
     const adminLoggedIn = localStorage.getItem('adminLoggedIn');
     if (adminLoggedIn === 'true') {
       setIsLoggedIn(true);
+      // Invalidate comments cache when admin page loads
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/comments"] });
     } else {
       setLocation('/admin/login');
     }
   }, [setLocation]);
 
   // Admin comments query
-  const { data: adminComments = [], isLoading } = useQuery<Comment[]>({
+  const { data: adminComments = [], isLoading, refetch } = useQuery<Comment[]>({
     queryKey: ["/api/admin/comments"],
     enabled: isLoggedIn,
+    staleTime: 0, // Always refetch
+    refetchOnWindowFocus: true,
+    refetchInterval: 5000, // Refetch every 5 seconds
   });
+
+  // Add a manual refresh button
+  const handleRefresh = () => {
+    refetch();
+  };
 
   // Delete comment mutation
   const deleteComment = useMutation({
@@ -107,6 +117,16 @@ export default function Admin() {
               <h2 className="text-2xl font-semibold text-white">
                 All Comments ({adminComments.length})
               </h2>
+              <Button
+                onClick={handleRefresh}
+                variant="outline"
+                size="sm"
+                className="border-white/30 text-white hover:bg-white/10"
+                disabled={isLoading}
+              >
+                <RefreshCw size={16} className={`mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                Refresh
+              </Button>
             </div>
 
             {isLoading ? (
