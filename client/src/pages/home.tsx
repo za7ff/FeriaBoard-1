@@ -15,8 +15,8 @@ export default function Home() {
 
   // Show welcome animation on page load
   useEffect(() => {
-    // Clear localStorage for testing - remove this line when done testing
-    // localStorage.removeItem('hasSeenWelcome');
+    // Clear localStorage for testing during development
+    localStorage.removeItem('hasSeenWelcome');
     
     const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
     if (!hasSeenWelcome) {
@@ -27,7 +27,7 @@ export default function Home() {
       const hideTimer = setTimeout(() => {
         setShowWelcome(false);
         localStorage.setItem('hasSeenWelcome', 'true');
-      }, 4000);
+      }, 4500);
 
       return () => {
         clearTimeout(showTimer);
