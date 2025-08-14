@@ -9,7 +9,7 @@ Website language: English (fully converted from Arabic)
 Design preference: Minimalist, black animated background, clean design without unnecessary elements
 Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
 Admin credentials: username "admin", password "secret123" (hidden from UI)
-Background music: Hidden audio system with 20% volume, auto-plays on user interaction
+Data persistence: Comments are permanently saved to PostgreSQL database
 
 # System Architecture
 
@@ -32,9 +32,10 @@ Background music: Hidden audio system with 20% volume, auto-plays on user intera
 ## Data Layer
 - **Database**: PostgreSQL with Neon Database serverless hosting
 - **ORM**: Drizzle ORM for type-safe database operations
-- **Schema**: Two main entities - users (for future authentication) and comments (with approval workflow)
+- **Schema**: Two main entities - users (admin authentication) and comments (persistent storage)
 - **Validation**: Zod schemas for runtime validation shared between client and server
-- **Storage Pattern**: Abstracted storage interface with in-memory implementation for development
+- **Storage Pattern**: DatabaseStorage implementation with PostgreSQL persistence
+- **Persistence**: Comments are permanently stored and survive server restarts
 
 ## Authentication & Authorization
 - **Current State**: Basic structure in place but not fully implemented

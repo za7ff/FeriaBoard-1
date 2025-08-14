@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { insertCommentSchema, type InsertComment } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
@@ -11,43 +11,7 @@ export default function Home() {
   const [comment, setComment] = useState("");
   const { toast } = useToast();
   const [, setLocation] = useLocation();
-  const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Initialize background music
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.volume = 0.2; // 20% volume
-      audio.loop = true;
-      
-      // Try to play music, but handle autoplay restrictions
-      const playMusic = async () => {
-        try {
-          await audio.play();
-        } catch (error) {
-          // Autoplay blocked, music will start on first user interaction
-          console.log("Autoplay blocked, music will start on user interaction");
-        }
-      };
-      
-      playMusic();
-      
-      // Start music on any user interaction if not already playing
-      const startMusicOnInteraction = () => {
-        if (audio.paused) {
-          audio.play().catch(() => {});
-        }
-      };
-      
-      document.addEventListener('click', startMusicOnInteraction);
-      document.addEventListener('keypress', startMusicOnInteraction);
-      
-      return () => {
-        document.removeEventListener('click', startMusicOnInteraction);
-        document.removeEventListener('keypress', startMusicOnInteraction);
-      };
-    }
-  }, []);
 
 
 
@@ -92,15 +56,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen animated-bg relative">
-      {/* Hidden background music */}
-      <audio
-        ref={audioRef}
-        preload="auto"
-        style={{ display: 'none' }}
-      >
-        <source src="https://cdn.pixabay.com/audio/2022/03/21/audio_4b738d7c56.mp3" type="audio/mpeg" />
-      </audio>
-      
+
       <div className="floating-particles"></div>
       
 
