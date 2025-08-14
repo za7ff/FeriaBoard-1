@@ -9,38 +9,10 @@ import { useLocation } from "wouter";
 
 export default function Home() {
   const [comment, setComment] = useState("");
-  const [showContextMenu, setShowContextMenu] = useState(false);
-  const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
-  // Right-click context menu (only with Shift key for security)
-  useEffect(() => {
-    const handleContextMenu = (e: MouseEvent) => {
-      if (e.shiftKey) {
-        e.preventDefault();
-        setContextMenuPosition({ x: e.clientX, y: e.clientY });
-        setShowContextMenu(true);
-      }
-    };
 
-    const handleClick = () => {
-      setShowContextMenu(false);
-    };
-
-    document.addEventListener("contextmenu", handleContextMenu);
-    document.addEventListener("click", handleClick);
-    
-    return () => {
-      document.removeEventListener("contextmenu", handleContextMenu);
-      document.removeEventListener("click", handleClick);
-    };
-  }, []);
-
-  const handleAdminAccess = () => {
-    setLocation("/admin/login");
-    setShowContextMenu(false);
-  };
 
   // Submit comment mutation
   const submitComment = useMutation({
@@ -85,25 +57,7 @@ export default function Home() {
     <div className="min-h-screen animated-bg relative">
       <div className="floating-particles"></div>
       
-      {/* Context Menu */}
-      {showContextMenu && (
-        <div
-          className="fixed z-50 bg-black/90 border border-white/30 rounded-lg shadow-lg backdrop-blur-sm"
-          style={{
-            left: contextMenuPosition.x,
-            top: contextMenuPosition.y,
-          }}
-          data-testid="context-menu"
-        >
-          <button
-            onClick={handleAdminAccess}
-            className="w-full px-4 py-2 text-left text-white hover:bg-white/10 rounded-lg transition-colors text-sm"
-            data-testid="context-menu-admin"
-          >
-            Admin Login
-          </button>
-        </div>
-      )}
+
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
@@ -136,10 +90,10 @@ export default function Home() {
           <div className="mt-6 text-center">
             <button
               onClick={() => setLocation("/admin")}
-              className="text-white/70 hover:text-white transition-colors text-sm underline"
+              className="bg-white/20 hover:bg-white/30 text-white px-6 py-2 rounded-lg transition-colors text-base border border-white/30"
               data-testid="link-admin"
             >
-              View Comments
+              View All Comments
             </button>
           </div>
         </div>
