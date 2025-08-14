@@ -17,11 +17,11 @@ export default function Home() {
   useEffect(() => {
     const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
     if (!hasSeenWelcome) {
-      setTimeout(() => setShowWelcome(true), 1000);
+      setTimeout(() => setShowWelcome(true), 800);
       setTimeout(() => {
         setShowWelcome(false);
         localStorage.setItem('hasSeenWelcome', 'true');
-      }, 4000);
+      }, 4500);
     }
   }, []);
 
@@ -81,14 +81,23 @@ export default function Home() {
     <div className="min-h-screen modern-bg relative">
       {/* Welcome Animation */}
       {showWelcome && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-          <div className="welcome-notification modern-card px-8 py-6 mx-4">
-            <div className="flex items-center justify-center space-x-3">
-              <span className="text-3xl">👋</span>
-              <p className="text-white text-xl font-medium">
-                Welcome to Website Feria
-              </p>
-              <span className="text-3xl">✨</span>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md">
+          <div className="welcome-notification modern-card px-10 py-8 mx-4 max-w-md text-center">
+            <div className="welcome-content">
+              <div className="mb-4">
+                <span className="text-5xl animate-bounce inline-block">👋</span>
+              </div>
+              <h2 className="text-white text-2xl font-bold mb-2 welcome-text">
+                Welcome to
+              </h2>
+              <h1 className="text-white text-3xl font-bold mb-4 welcome-title">
+                Website Feria
+              </h1>
+              <div className="flex justify-center space-x-2">
+                <span className="text-2xl animate-pulse">✨</span>
+                <span className="text-2xl animate-pulse delay-150">💫</span>
+                <span className="text-2xl animate-pulse delay-300">⭐</span>
+              </div>
             </div>
           </div>
         </div>
