@@ -6,7 +6,7 @@ This is a minimalist personal website for "Feria" with an enhanced animated back
 
 Preferred communication style: Simple, everyday language.
 Website language: English (fully converted from Arabic)
-Design preference: Minimalist luxury design with enhanced animations, gradient backgrounds, welcome notifications, and premium visual effects
+Design preference: Clean minimalist black design with simple animated background and white floating particles
 Admin access: Shift + Right-click context menu for secure hidden admin access (no visible credentials)
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database
@@ -66,12 +66,10 @@ Data persistence: Comments are permanently saved to PostgreSQL database
 - **Lucide React**: Icon library for consistent iconography
 
 ## Recent Enhancements (January 2025)
-- **Welcome Animation**: Animated notification saying "Welcome to Website Feria" with emojis that appears for new visitors
-- **Enhanced Visual Design**: Luxury shimmer effects on the main title with gradient text animations
-- **Improved Background**: Enhanced gradient background with subtle purple/blue color variations
-- **Enhanced Particles**: Floating particles now include purple and blue color accents for more visual appeal
-- **Refined Form Design**: Comment form now has improved styling with backdrop blur, rounded corners, and better visual hierarchy
-- **Smooth Transitions**: Added smooth transitions and hover effects throughout the interface
+- **Welcome Animation**: Simple animated notification saying "Welcome to Website Feria" with emojis for new visitors
+- **Clean Black Design**: Pure black background with white floating particles animation
+- **Admin Dashboard**: Fully functional admin page for managing comments with delete functionality
+- **Minimalist Form**: Clean comment submission form with simple white button styling
 
 ## Styling & Design
 - **Tailwind CSS**: Utility-first CSS framework with custom configuration

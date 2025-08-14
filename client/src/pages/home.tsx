@@ -81,14 +81,14 @@ export default function Home() {
     <div className="min-h-screen animated-bg relative">
       {/* Welcome Animation */}
       {showWelcome && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="welcome-notification bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-md border border-white/20 rounded-3xl px-8 py-6 mx-4 shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
+          <div className="welcome-notification bg-black/80 border border-white/30 rounded-lg px-8 py-6 mx-4">
             <div className="flex items-center justify-center space-x-3">
-              <span className="text-4xl animate-bounce">🎉</span>
-              <p className="text-white text-xl md:text-2xl font-semibold tracking-wide welcome-text">
+              <span className="text-3xl">🎉</span>
+              <p className="text-white text-xl font-medium">
                 Welcome to Website Feria
               </p>
-              <span className="text-4xl animate-bounce delay-300">✨</span>
+              <span className="text-3xl">✨</span>
             </div>
           </div>
         </div>
@@ -98,37 +98,31 @@ export default function Home() {
       
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6">
-        {/* Name with enhanced styling */}
-        <div className="text-center mb-12">
-          <h1 className="text-8xl md:text-9xl font-bold text-white tracking-wider glow-text luxury-title">
-            Feria
-          </h1>
-          <div className="w-32 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent mx-auto mt-4"></div>
-        </div>
+        {/* Name */}
+        <h1 className="text-8xl md:text-9xl font-bold text-white mb-12 tracking-wider glow-text">
+          Feria
+        </h1>
 
-        {/* Comment form with enhanced styling */}
+        {/* Comment form */}
         <div className="w-full max-w-lg">
-          <div className="bg-black/40 backdrop-blur-lg border border-white/10 rounded-2xl p-6 shadow-2xl">
-            <h2 className="text-white/80 text-center mb-4 text-lg font-medium">Share your thoughts</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <Textarea
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-                placeholder="Leave a comment..."
-                className="bg-black/60 border-white/30 text-white placeholder:text-white/60 resize-none rounded-xl focus:border-white/50 transition-colors"
-                rows={4}
-                data-testid="input-comment"
-              />
-              <Button 
-                type="submit" 
-                disabled={submitComment.isPending || !comment.trim()}
-                className="w-full bg-gradient-to-r from-white to-gray-200 text-black hover:from-gray-100 hover:to-white disabled:opacity-50 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
-                data-testid="button-submit-comment"
-              >
-                {submitComment.isPending ? "Submitting..." : "Submit Comment"}
-              </Button>
-            </form>
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Textarea
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+              placeholder="Leave a comment..."
+              className="bg-black/50 border-white/20 text-white placeholder:text-white/50 resize-none"
+              rows={4}
+              data-testid="input-comment"
+            />
+            <Button 
+              type="submit" 
+              disabled={submitComment.isPending || !comment.trim()}
+              className="w-full bg-white text-black hover:bg-white/90 disabled:opacity-50"
+              data-testid="button-submit-comment"
+            >
+              {submitComment.isPending ? "Submitting..." : "Submit Comment"}
+            </Button>
+          </form>
         </div>
       </div>
     </div>
