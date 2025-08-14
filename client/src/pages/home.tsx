@@ -86,14 +86,14 @@ export default function Home() {
             </Button>
           </form>
           
-          {/* Admin Login button - clearly visible */}
-          <div className="mt-8 text-center">
+          {/* Admin button in top right corner */}
+          <div className="fixed top-6 right-6 z-50">
             <button
               onClick={() => setLocation("/admin/login")}
-              className="bg-white text-black hover:bg-gray-200 px-8 py-3 rounded-lg transition-colors text-lg font-semibold shadow-lg"
+              className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white px-6 py-3 rounded-full transition-all duration-300 text-base font-bold shadow-2xl backdrop-blur-sm transform hover:scale-105"
               data-testid="link-admin"
             >
-              🔐 Admin Login
+              ⚙️ إدارة
             </button>
           </div>
         </div>
