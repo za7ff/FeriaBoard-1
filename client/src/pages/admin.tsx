@@ -82,14 +82,14 @@ export default function Admin() {
       
       <div className="relative z-10 min-h-screen px-6 py-8">
         <div className="max-w-6xl mx-auto">
-          {/* Top bar with logout - positioned at top right */}
-          <div className="flex justify-end mb-6">
+          {/* LOGOUT BUTTON - TOP RIGHT CORNER */}
+          <div className="absolute top-6 right-6 z-50">
             <Button
               onClick={handleLogout}
-              className="bg-red-600/80 hover:bg-red-600 text-white border-0 px-6 py-2 rounded-full shadow-lg backdrop-blur-sm transition-all duration-200"
+              className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white border-0 px-8 py-3 rounded-xl shadow-2xl backdrop-blur-sm transition-all duration-300 text-lg font-bold transform hover:scale-105"
             >
-              <LogOut size={18} className="mr-2" />
-              تسجيل خروج
+              <LogOut size={20} className="mr-3" />
+              🚪 خروج
             </Button>
           </div>
           
