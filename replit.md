@@ -11,7 +11,8 @@ Admin access: Admin button positioned on the right side for easy access
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database
 Personal information: Name is Meshall alHarbi, age 20, lives in Al-Qassim, Buraydah
-Information button: Added "Information about me" button with personal details and avatar
+Information button: Added "Information about me" button with personal details and custom Discord avatar
+Avatar: Uses Discord profile image (https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp)
 
 # System Architecture
 

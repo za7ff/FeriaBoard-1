@@ -145,8 +145,12 @@ export default function Home() {
             <div className="mb-8 z-10 relative">
               <div className="avatar-container w-32 h-32 mx-auto mb-6 relative">
                 <div className="avatar-glow"></div>
-                <div className="avatar bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full flex items-center justify-center text-4xl font-bold text-white relative z-10">
-                  M
+                <div className="avatar rounded-full overflow-hidden relative z-10 border-4 border-white/30">
+                  <img 
+                    src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp" 
+                    alt="Meshall alHarbi"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="avatar-ring"></div>
               </div>
