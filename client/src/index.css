@@ -43,7 +43,7 @@
     position: relative;
   }
 
-  .elegant-bg-shapes {
+  .geometric-bg-shapes {
     position: fixed;
     top: 0;
     left: 0;
@@ -54,85 +54,97 @@
     overflow: hidden;
   }
 
-  /* Simple Circle - Top Right */
-  .elegant-bg-shapes::before {
+  /* Diamond Shape - Top Left */
+  .geometric-bg-shapes::before {
     content: '';
     position: absolute;
-    top: 12%;
-    right: 18%;
+    top: 15%;
+    left: 20%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    transform: rotate(45deg);
+    animation: geometricFloat1 25s infinite ease-in-out;
+  }
+
+  /* Triangle - Top Right */
+  .geometric-bg-shapes::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 45px solid rgba(255, 255, 255, 0.10);
+    animation: geometricFloat2 20s infinite ease-in-out reverse;
+  }
+
+  /* Pentagon - Left Center */
+  .geometric-shape-1 {
+    position: absolute;
+    top: 45%;
+    left: 10%;
     width: 60px;
     height: 60px;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
     background: transparent;
-    animation: elegantFloat1 20s infinite ease-in-out;
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    animation: geometricFloat3 30s infinite ease-in-out;
   }
 
-  /* Simple Square - Bottom Left */
-  .elegant-bg-shapes::after {
-    content: '';
-    position: absolute;
-    bottom: 15%;
-    left: 15%;
-    width: 45px;
-    height: 45px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: transparent;
-    transform: rotate(45deg);
-    animation: elegantFloat2 25s infinite ease-in-out reverse;
-  }
-
-  /* Triangle - Left Center */
-  .elegant-shape-1 {
-    position: absolute;
-    top: 40%;
-    left: 8%;
-    width: 0;
-    height: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 40px solid rgba(255, 255, 255, 0.05);
-    animation: elegantFloat3 30s infinite ease-in-out;
-  }
-
-  /* Hexagon - Top Center */
-  .elegant-shape-2 {
+  /* Hexagon - Center Top */
+  .geometric-shape-2 {
     position: absolute;
     top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 48%;
+    width: 55px;
+    height: 55px;
+    border: 1px solid rgba(255, 255, 255, 0.11);
+    background: transparent;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: geometricFloat4 18s infinite ease-in-out reverse;
+  }
+
+  /* Octagon - Right Center */
+  .geometric-shape-3 {
+    position: absolute;
+    top: 60%;
+    right: 18%;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: transparent;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    animation: geometricFloat5 22s infinite ease-in-out;
+  }
+
+  /* Star Shape - Bottom Left */
+  .geometric-shape-4 {
+    position: absolute;
+    bottom: 20%;
+    left: 25%;
     width: 50px;
     height: 50px;
     border: 1px solid rgba(255, 255, 255, 0.07);
     background: transparent;
-    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    animation: elegantFloat4 18s infinite ease-in-out reverse;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: geometricFloat6 28s infinite ease-in-out reverse;
   }
 
-  /* Small Circle - Right Center */
-  .elegant-shape-3 {
+  /* Rectangle - Bottom Center */
+  .geometric-shape-5 {
     position: absolute;
-    top: 55%;
-    right: 12%;
-    width: 35px;
-    height: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 50%;
+    bottom: 15%;
+    left: 55%;
+    width: 80px;
+    height: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     background: transparent;
-    animation: elegantFloat5 22s infinite ease-in-out;
-  }
-
-  /* Rectangle - Bottom Right */
-  .elegant-shape-4 {
-    position: absolute;
-    bottom: 25%;
-    right: 25%;
-    width: 70px;
-    height: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    background: transparent;
-    border-radius: 4px;
-    animation: elegantFloat6 28s infinite ease-in-out reverse;
+    border-radius: 6px;
+    animation: geometricFloat7 35s infinite ease-in-out;
   }
 
   .feria-title {
@@ -731,51 +743,51 @@
 
 
 
-@keyframes elegantFloat1 {
+@keyframes geometricFloat1 {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0px) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(45deg) translateY(-12px) scale(1.03);
+    opacity: 1;
+  }
+}
+
+@keyframes geometricFloat2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+    opacity: 1;
+  }
+}
+
+@keyframes geometricFloat3 {
   0%, 100% {
     transform: translateY(0px) scale(1);
     opacity: 0.6;
   }
   50% {
-    transform: translateY(-10px) scale(1.02);
-    opacity: 1;
-  }
-}
-
-@keyframes elegantFloat2 {
-  0%, 100% {
-    transform: rotate(45deg) translateY(0px) scale(1);
-    opacity: 0.4;
-  }
-  50% {
-    transform: rotate(45deg) translateY(-8px) scale(1.03);
-    opacity: 0.7;
-  }
-}
-
-@keyframes elegantFloat3 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(-12px) rotate(5deg);
-    opacity: 0.8;
-  }
-}
-
-@keyframes elegantFloat4 {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0px) scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateX(-50%) translateY(-9px) scale(1.04);
+    transform: translateY(-15px) scale(1.04);
     opacity: 0.9;
   }
 }
 
-@keyframes elegantFloat5 {
+@keyframes geometricFloat4 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-8px) rotate(10deg) scale(1.02);
+    opacity: 1;
+  }
+}
+
+@keyframes geometricFloat5 {
   0%, 100% {
     transform: translateY(0px) scale(1);
     opacity: 0.7;
@@ -786,14 +798,25 @@
   }
 }
 
-@keyframes elegantFloat6 {
+@keyframes geometricFloat6 {
   0%, 100% {
     transform: translateY(0px) rotate(0deg);
-    opacity: 0.3;
+    opacity: 0.5;
   }
   50% {
-    transform: translateY(-7px) rotate(2deg);
-    opacity: 0.6;
+    transform: translateY(-13px) rotate(8deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes geometricFloat7 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-9px) rotate(3deg);
+    opacity: 0.7;
   }
 }
 

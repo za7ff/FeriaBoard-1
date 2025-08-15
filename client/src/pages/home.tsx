@@ -187,30 +187,16 @@ export default function Home() {
         </div>
       )}
 
-      {/* Elegant minimal background shapes */}
-      <div className="elegant-bg-shapes">
-        <div className="elegant-shape-1"></div>
-        <div className="elegant-shape-2"></div>
-        <div className="elegant-shape-3"></div>
-        <div className="elegant-shape-4"></div>
+      {/* Beautiful geometric background shapes */}
+      <div className="geometric-bg-shapes">
+        <div className="geometric-shape-1"></div>
+        <div className="geometric-shape-2"></div>
+        <div className="geometric-shape-3"></div>
+        <div className="geometric-shape-4"></div>
+        <div className="geometric-shape-5"></div>
       </div>
       
-      {/* Additional floating elements */}
-      <div className="floating-particles">
-        <div className="particle particle-1"></div>
-        <div className="particle particle-2"></div>
-        <div className="particle particle-3"></div>
-        <div className="particle particle-4"></div>
-        <div className="particle particle-5"></div>
-        <div className="particle particle-6"></div>
-      </div>
 
-      {/* Glowing orbs */}
-      <div className="glowing-orbs">
-        <div className="orb orb-1"></div>
-        <div className="orb orb-2"></div>
-        <div className="orb orb-3"></div>
-      </div>
 
       {/* Buttons */}
       <div className="fixed top-6 right-6 z-20 flex flex-col space-y-3">
