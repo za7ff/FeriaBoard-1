@@ -187,11 +187,10 @@ export default function Home() {
         </div>
       )}
 
-      {/* Beautiful animated line art background */}
-      <div className="simple-line-bg">
-        <div className="simple-shape-1"></div>
-        <div className="simple-shape-2"></div>
-        <div className="simple-shape-3"></div>
+      {/* Clean minimal background */}
+      <div className="clean-line-bg">
+        <div className="clean-shape-1"></div>
+        <div className="clean-shape-2"></div>
       </div>
       
 
