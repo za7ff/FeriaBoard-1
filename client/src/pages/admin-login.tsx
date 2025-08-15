@@ -29,15 +29,11 @@ export default function AdminLogin() {
     onSuccess: (data) => {
       console.log("Login success response:", data);
       if (data.success) {
-        localStorage.setItem('adminLoggedIn', 'true');
         toast({
           title: "Login successful",
           description: "Welcome to the admin dashboard!",
         });
-        // Small delay to ensure localStorage is set
-        setTimeout(() => {
-          setLocation('/admin');
-        }, 100);
+        setLocation('/admin');
       }
     },
     onError: (error: any) => {

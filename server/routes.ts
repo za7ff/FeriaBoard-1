@@ -3,6 +3,9 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertCommentSchema, insertUserSchema } from "@shared/schema";
 import { z } from "zod";
+import session from "express-session";
+// @ts-ignore
+import MemoryStore from "memorystore";
 
 // Security: Rate limiting and IP blocking for failed login attempts
 class SecurityManager {
@@ -84,7 +87,59 @@ class SecurityManager {
 
 const security = new SecurityManager();
 
+// Discord notification function
+async function sendDiscordNotification(comment: string) {
+  const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+  if (!webhookUrl) {
+    console.warn("Discord webhook URL not configured");
+    return;
+  }
+
+  try {
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        embeds: [{
+          title: "New Comment on Feria Website 💬",
+          description: comment,
+          color: 0x5865F2,
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: "Feria Website"
+          }
+        }]
+      }),
+    });
+
+    if (response.ok) {
+      console.log("✅ Discord notification sent successfully");
+    } else {
+      console.error("❌ Failed to send Discord notification:", response.status, response.statusText);
+    }
+  } catch (error) {
+    console.error("❌ Error sending Discord notification:", error);
+  }
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Configure persistent sessions
+  const MemoryStoreConstructor = MemoryStore(session);
+  app.use(session({
+    secret: process.env.SESSION_SECRET || 'feria-session-secret-key-2025',
+    resave: false,
+    saveUninitialized: false,
+    store: new MemoryStoreConstructor({
+      checkPeriod: 86400000 // prune expired entries every 24h
+    }),
+    cookie: {
+      secure: false, // Set to true in production with HTTPS
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+    }
+  }));
   // Initialize admin user on startup
   try {
     const adminExists = await storage.getUserByUsername("admin");
@@ -101,6 +156,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertCommentSchema.parse(req.body);
       const comment = await storage.createComment(validatedData);
+      
+      // Send Discord notification
+      await sendDiscordNotification(validatedData.content);
+      
       res.status(201).json({ 
         message: "Comment submitted successfully.",
         comment 
@@ -151,6 +210,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       if (user && user.password === password) {
         security.recordSuccessfulLogin(clientIP);
+        
+        // Create persistent session
+        (req.session as any).isAdminAuthenticated = true;
+        (req.session as any).adminId = user.id;
+        (req.session as any).loginTime = Date.now();
+        
         res.json({ success: true, message: "Login successful" });
       } else {
         const result = security.recordFailedAttempt(clientIP);
@@ -177,8 +242,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Check admin authentication status
+  app.get("/api/admin/status", (req, res) => {
+    const session = req.session as any;
+    const isAuthenticated = !!session.isAdminAuthenticated;
+    
+    if (isAuthenticated) {
+      res.json({ 
+        authenticated: true, 
+        loginTime: session.loginTime,
+        sessionId: req.sessionID
+      });
+    } else {
+      res.json({ authenticated: false });
+    }
+  });
+
+  // Admin logout
+  app.post("/api/admin/logout", (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Session destruction error:", err);
+        res.status(500).json({ success: false, message: "Logout failed" });
+      } else {
+        res.clearCookie('connect.sid');
+        res.json({ success: true, message: "Logged out successfully" });
+      }
+    });
+  });
+
+  // Middleware to check admin authentication
+  const requireAdminAuth = (req: any, res: any, next: any) => {
+    const session = req.session as any;
+    if (session.isAdminAuthenticated) {
+      next();
+    } else {
+      res.status(401).json({ message: "Authentication required" });
+    }
+  };
+
   // Get all comments (for admin)
-  app.get("/api/admin/comments", async (req, res) => {
+  app.get("/api/admin/comments", requireAdminAuth, async (req, res) => {
     try {
       const comments = await storage.getAllComments();
       res.json(comments);
@@ -188,7 +292,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Delete comment (admin only)
-  app.delete("/api/admin/comments/:id", async (req, res) => {
+  app.delete("/api/admin/comments/:id", requireAdminAuth, async (req, res) => {
     try {
       const { id } = req.params;
       const success = await storage.deleteComment(id);

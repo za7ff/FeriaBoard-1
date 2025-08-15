@@ -13,17 +13,22 @@ export default function Admin() {
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
+  // Check authentication status from server
+  const { data: authStatus, isLoading: authLoading } = useQuery({
+    queryKey: ["/api/admin/status"],
+    retry: false,
+  });
+
   useEffect(() => {
-    // Check if admin is logged in
-    const adminLoggedIn = localStorage.getItem('adminLoggedIn');
-    if (adminLoggedIn === 'true') {
-      setIsLoggedIn(true);
-      // Invalidate comments cache when admin page loads
-      queryClient.invalidateQueries({ queryKey: ["/api/admin/comments"] });
-    } else {
-      setLocation('/admin/login');
+    if (!authLoading) {
+      if ((authStatus as any)?.authenticated) {
+        setIsLoggedIn(true);
+        queryClient.invalidateQueries({ queryKey: ["/api/admin/comments"] });
+      } else {
+        setLocation('/admin/login');
+      }
     }
-  }, [setLocation]);
+  }, [authStatus, authLoading, setLocation]);
 
   // Admin comments query
   const { data: adminComments = [], isLoading, refetch } = useQuery<Comment[]>({
@@ -61,9 +66,31 @@ export default function Admin() {
     },
   });
 
+  // Logout mutation
+  const logout = useMutation({
+    mutationFn: async () => {
+      const response = await apiRequest("POST", "/api/admin/logout");
+      return response.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Logged out",
+        description: "You have been successfully logged out.",
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/admin/status"] });
+      setLocation('/');
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to logout properly.",
+        variant: "destructive",
+      });
+    },
+  });
+
   const handleLogout = () => {
-    localStorage.removeItem('adminLoggedIn');
-    setLocation('/');
+    logout.mutate();
   };
 
   const handleDeleteComment = (commentId: string) => {
