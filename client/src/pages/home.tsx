@@ -187,10 +187,11 @@ export default function Home() {
         </div>
       )}
 
-      {/* Simple line art background */}
+      {/* Beautiful animated line art background */}
       <div className="simple-line-bg">
         <div className="simple-shape-1"></div>
         <div className="simple-shape-2"></div>
+        <div className="simple-shape-3"></div>
       </div>
       
 
