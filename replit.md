@@ -6,7 +6,7 @@ This is a minimalist personal website for "Feria" with an enhanced animated back
 
 Preferred communication style: Simple, everyday language.
 Website language: English (fully converted from Arabic)
-Design preference: Clean modern dark design with just the Feria text and comment form, minimal and functional
+Design preference: Formal and calm design with subtle animations, professional appearance, minimal and sophisticated
 Admin access: Admin button positioned on the right side for easy access
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database

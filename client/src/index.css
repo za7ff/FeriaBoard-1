@@ -332,20 +332,20 @@
 
 /* Information Modal Animations */
 .info-overlay {
-  animation: modalFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: modalFadeIn 0.8s ease-out forwards;
 }
 
 .info-overlay.info-fade-out {
-  animation: modalFadeOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: modalFadeOut 0.6s ease-in forwards;
 }
 
 .info-modal {
-  animation: modalSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: modalSlideIn 1s ease-out forwards;
   position: relative;
 }
 
 .info-modal.info-modal-fade-out {
-  animation: modalSlideOut 0.5s cubic-bezier(0.55, 0, 0.55, 0.2) forwards;
+  animation: modalSlideOut 0.6s ease-in forwards;
 }
 
 .modal-particles {
@@ -404,12 +404,11 @@
 
 .avatar-container {
   position: relative;
-  animation: avatarEntrance 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s both;
+  animation: avatarEntrance 1.5s ease-out 0.6s both;
 }
 
 .avatar {
-  animation: avatarPulse 3s ease-in-out infinite;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3), 0 0 50px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .avatar img {
@@ -422,78 +421,76 @@
 
 .avatar-glow {
   position: absolute;
-  inset: -10px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  inset: -5px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   border-radius: 50%;
-  filter: blur(20px);
-  opacity: 0.5;
-  animation: avatarGlow 4s ease-in-out infinite;
+  filter: blur(10px);
+  opacity: 0.6;
 }
 
 .avatar-ring {
   position: absolute;
-  inset: -15px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  inset: -8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  animation: avatarRing 6s linear infinite;
 }
 
 .info-title {
-  animation: titleSlideIn 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  animation: titleSlideIn 1.2s ease-out 0.8s both;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .title-underline {
   width: 0;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.6);
+  height: 2px;
+  background: rgba(255, 255, 255, 0.4);
   margin: 0 auto;
-  border-radius: 2px;
-  animation: underlineGrow 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+  border-radius: 1px;
+  animation: underlineGrow 1.5s ease-out 1.2s both;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  animation: itemSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  animation: itemSlideIn 1s ease-out both;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 
-.info-item:nth-child(1) { animation-delay: 1.2s; }
-.info-item:nth-child(2) { animation-delay: 1.4s; }
-.info-item:nth-child(3) { animation-delay: 1.6s; }
+.info-item:nth-child(1) { animation-delay: 1.4s; }
+.info-item:nth-child(2) { animation-delay: 1.6s; }
+.info-item:nth-child(3) { animation-delay: 1.8s; }
 
 .info-item:hover {
   background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .info-icon {
-  font-size: 24px;
-  margin-right: 16px;
-  animation: iconBounce 2s ease-in-out infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  font-size: 22px;
+  margin-right: 18px;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
 }
 
 .info-value {
-  animation: valueGlow 3s ease-in-out infinite;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
 .close-button {
-  animation: closeButtonEntrance 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.8s both;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: closeButtonEntrance 1s ease-out 2s both;
+  transition: all 0.3s ease;
 }
 
 .close-button:hover {
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+  transform: scale(1.05);
+  opacity: 0.8;
 }
 
 @keyframes modalFadeIn {
@@ -521,31 +518,22 @@
 @keyframes modalSlideIn {
   0% {
     opacity: 0;
-    transform: scale(0.6) translateY(50px) rotateX(20deg);
-    filter: blur(10px);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05) translateY(-10px) rotateX(0deg);
-    filter: blur(2px);
+    transform: scale(0.95) translateY(20px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0) rotateX(0deg);
-    filter: blur(0px);
+    transform: scale(1) translateY(0);
   }
 }
 
 @keyframes modalSlideOut {
   0% {
     opacity: 1;
-    transform: scale(1) translateY(0) rotateX(0deg);
-    filter: blur(0px);
+    transform: scale(1) translateY(0);
   }
   100% {
     opacity: 0;
-    transform: scale(0.6) translateY(50px) rotateX(-10deg);
-    filter: blur(5px);
+    transform: scale(0.95) translateY(20px);
   }
 }
 
@@ -563,18 +551,11 @@
 @keyframes avatarEntrance {
   0% {
     opacity: 0;
-    transform: scale(0.3) rotate(-360deg) translateY(100px);
-    filter: blur(10px);
-  }
-  60% {
-    opacity: 0.8;
-    transform: scale(1.1) rotate(-45deg) translateY(-20px);
-    filter: blur(2px);
+    transform: scale(0.8) translateY(20px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0px);
-    filter: blur(0px);
+    transform: scale(1) translateY(0px);
   }
 }
 
@@ -612,18 +593,11 @@
 @keyframes titleSlideIn {
   0% {
     opacity: 0;
-    transform: translateY(40px) scale(0.8);
-    filter: blur(5px);
-  }
-  60% {
-    opacity: 0.8;
-    transform: translateY(-5px) scale(1.05);
-    filter: blur(1px);
+    transform: translateY(15px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0px);
+    transform: translateY(0);
   }
 }
 
@@ -639,18 +613,11 @@
 @keyframes itemSlideIn {
   0% {
     opacity: 0;
-    transform: translateX(-50px) scale(0.8);
-    filter: blur(3px);
-  }
-  60% {
-    opacity: 0.8;
-    transform: translateX(10px) scale(1.05);
-    filter: blur(1px);
+    transform: translateX(-20px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0) scale(1);
-    filter: blur(0px);
+    transform: translateX(0);
   }
 }
 
@@ -675,18 +642,11 @@
 @keyframes closeButtonEntrance {
   0% {
     opacity: 0;
-    transform: scale(0.3) rotate(-180deg) translateY(-50px);
-    filter: blur(5px);
-  }
-  70% {
-    opacity: 0.8;
-    transform: scale(1.2) rotate(10deg) translateY(5px);
-    filter: blur(1px);
+    transform: scale(0.9);
   }
   100% {
     opacity: 1;
-    transform: scale(1) rotate(0deg) translateY(0px);
-    filter: blur(0px);
+    transform: scale(1);
   }
 }
 
