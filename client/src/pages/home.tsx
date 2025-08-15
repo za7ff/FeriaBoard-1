@@ -224,7 +224,7 @@ export default function Home() {
           className="bg-blue-500/20 border border-blue-500/30 text-white hover:bg-blue-500/30 backdrop-blur-sm px-6 py-3 rounded-lg"
           data-testid="button-info"
         >
-          Information about me
+          Feria
         </Button>
       </div>
       
