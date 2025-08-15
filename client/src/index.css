@@ -55,7 +55,7 @@
     background: linear-gradient(45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%), 
                 linear-gradient(-45deg, rgba(0,0,0,0.02) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.02) 75%);
     background-size: 50px 50px;
-    animation: backgroundFlow 60s linear infinite;
+    animation: backgroundFlow 8s linear infinite;
   }
 
   /* Diagonal Lines Across Screen */
@@ -68,7 +68,7 @@
     height: 2px;
     background: rgba(255, 255, 255, 0.2);
     transform: rotate(15deg);
-    animation: diagonalFlow1 20s linear infinite;
+    animation: diagonalFlow1 4s linear infinite;
   }
 
   /* Counter Diagonal */
@@ -81,7 +81,7 @@
     height: 2px;
     background: rgba(255, 255, 255, 0.15);
     transform: rotate(-15deg);
-    animation: diagonalFlow2 25s linear infinite reverse;
+    animation: diagonalFlow2 3s linear infinite reverse;
   }
 
   /* Minimal Rectangle */
@@ -93,7 +93,7 @@
     height: 60px;
     border: 3px solid rgba(255, 255, 255, 0.3);
     background: transparent;
-    animation: activeFloat3 12s infinite ease-in-out;
+    animation: activeFloat3 2s infinite ease-in-out;
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   }
@@ -108,7 +108,7 @@
     border: 3px solid rgba(255, 255, 255, 0.28);
     border-radius: 50%;
     background: transparent;
-    animation: activeFloat4 14s infinite ease-in-out reverse;
+    animation: activeFloat4 2.5s infinite ease-in-out reverse;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.12);
   }
 
@@ -120,7 +120,7 @@
     width: 3px;
     height: 80px;
     background: rgba(255, 255, 255, 0.38);
-    animation: activeFloat5 9s infinite ease-in-out;
+    animation: activeFloat5 1.5s infinite ease-in-out;
     border-radius: 2px;
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.18);
   }
@@ -135,7 +135,7 @@
     border: 3px solid rgba(255, 255, 255, 0.25);
     background: transparent;
     transform: rotate(45deg);
-    animation: activeFloat6 11s infinite ease-in-out reverse;
+    animation: activeFloat6 2.2s infinite ease-in-out reverse;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   }
 
@@ -148,7 +148,7 @@
     height: 60px;
     border: 2px solid rgba(255, 255, 255, 0.3);
     background: transparent;
-    animation: gridFloat1 6s infinite ease-in-out;
+    animation: gridFloat1 1.8s infinite ease-in-out;
   }
 
   .geometric-grid-2 {
@@ -159,7 +159,7 @@
     height: 80px;
     border: 2px solid rgba(255, 255, 255, 0.25);
     background: transparent;
-    animation: gridFloat2 8s infinite ease-in-out reverse;
+    animation: gridFloat2 2.1s infinite ease-in-out reverse;
   }
 
   .geometric-grid-3 {
@@ -170,7 +170,7 @@
     height: 30px;
     border: 2px solid rgba(255, 255, 255, 0.35);
     background: transparent;
-    animation: gridFloat3 7s infinite ease-in-out;
+    animation: gridFloat3 1.6s infinite ease-in-out;
   }
 
   .geometric-grid-4 {
@@ -182,7 +182,7 @@
     border: 2px solid rgba(255, 255, 255, 0.28);
     background: transparent;
     transform: rotate(45deg);
-    animation: gridFloat4 9s infinite ease-in-out reverse;
+    animation: gridFloat4 1.9s infinite ease-in-out reverse;
   }
 
   .geometric-grid-5 {
@@ -193,7 +193,7 @@
     height: 25px;
     border: 2px solid rgba(255, 255, 255, 0.32);
     background: transparent;
-    animation: gridFloat5 5s infinite ease-in-out;
+    animation: gridFloat5 1.2s infinite ease-in-out;
   }
 
   .geometric-grid-6 {
@@ -204,7 +204,7 @@
     height: 100px;
     border: 2px solid rgba(255, 255, 255, 0.22);
     background: transparent;
-    animation: gridFloat6 10s infinite ease-in-out reverse;
+    animation: gridFloat6 2.3s infinite ease-in-out reverse;
   }
 
   .geometric-grid-7 {
@@ -215,7 +215,7 @@
     height: 45px;
     border: 2px solid rgba(255, 255, 255, 0.26);
     background: transparent;
-    animation: gridFloat7 6.5s infinite ease-in-out;
+    animation: gridFloat7 1.4s infinite ease-in-out;
   }
 
   .geometric-grid-8 {
@@ -226,7 +226,7 @@
     height: 20px;
     border: 2px solid rgba(255, 255, 255, 0.24);
     background: transparent;
-    animation: gridFloat8 7.5s infinite ease-in-out reverse;
+    animation: gridFloat8 1.7s infinite ease-in-out reverse;
   }
 
   /* L-shaped elements */
@@ -240,7 +240,7 @@
     border-right: none;
     border-bottom: none;
     background: transparent;
-    animation: gridFloat9 8.5s infinite ease-in-out;
+    animation: gridFloat9 2.4s infinite ease-in-out;
   }
 
   .geometric-grid-10 {
@@ -253,7 +253,7 @@
     border-left: none;
     border-top: none;
     background: transparent;
-    animation: gridFloat10 9.5s infinite ease-in-out reverse;
+    animation: gridFloat10 2.6s infinite ease-in-out reverse;
   }
 
   /* Additional Grid Elements for Full Screen Coverage */
@@ -265,7 +265,7 @@
     height: 60px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     background: transparent;
-    animation: gridFloat11 7.2s infinite ease-in-out;
+    animation: gridFloat11 1.3s infinite ease-in-out;
   }
 
   .geometric-grid-12 {
@@ -276,7 +276,7 @@
     height: 25px;
     border: 1px solid rgba(255, 255, 255, 0.22);
     background: transparent;
-    animation: gridFloat12 6.8s infinite ease-in-out reverse;
+    animation: gridFloat12 1.1s infinite ease-in-out reverse;
   }
 
   .geometric-grid-13 {
@@ -288,7 +288,7 @@
     border: 1px solid rgba(255, 255, 255, 0.20);
     background: transparent;
     transform: rotate(45deg);
-    animation: gridFloat13 8.1s infinite ease-in-out;
+    animation: gridFloat13 1.8s infinite ease-in-out;
   }
 
   .geometric-grid-14 {
@@ -299,7 +299,7 @@
     height: 15px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     background: transparent;
-    animation: gridFloat14 5.5s infinite ease-in-out reverse;
+    animation: gridFloat14 0.9s infinite ease-in-out reverse;
   }
 
   .geometric-grid-15 {
@@ -310,7 +310,7 @@
     height: 70px;
     border: 1px solid rgba(255, 255, 255, 0.16);
     background: transparent;
-    animation: gridFloat15 9.3s infinite ease-in-out;
+    animation: gridFloat15 2.1s infinite ease-in-out;
   }
 
   .geometric-grid-16 {
@@ -321,7 +321,7 @@
     height: 35px;
     border: 1px solid rgba(255, 255, 255, 0.19);
     background: transparent;
-    animation: gridFloat16 7.7s infinite ease-in-out reverse;
+    animation: gridFloat16 1.5s infinite ease-in-out reverse;
   }
 
   .geometric-grid-17 {
@@ -334,7 +334,7 @@
     border-bottom: none;
     border-right: none;
     background: transparent;
-    animation: gridFloat17 8.9s infinite ease-in-out;
+    animation: gridFloat17 1.7s infinite ease-in-out;
   }
 
   .geometric-grid-18 {
@@ -345,7 +345,7 @@
     height: 20px;
     border: 1px solid rgba(255, 255, 255, 0.17);
     background: transparent;
-    animation: gridFloat18 6.2s infinite ease-in-out reverse;
+    animation: gridFloat18 1.0s infinite ease-in-out reverse;
   }
 
   .geometric-grid-19 {
@@ -357,7 +357,7 @@
     border: 1px solid rgba(255, 255, 255, 0.21);
     background: transparent;
     transform: rotate(45deg);
-    animation: gridFloat19 7.4s infinite ease-in-out;
+    animation: gridFloat19 1.6s infinite ease-in-out;
   }
 
   .geometric-grid-20 {
@@ -368,7 +368,7 @@
     height: 85px;
     border: 1px solid rgba(255, 255, 255, 0.14);
     background: transparent;
-    animation: gridFloat20 10.1s infinite ease-in-out reverse;
+    animation: gridFloat20 2.2s infinite ease-in-out reverse;
   }
 
   .feria-title {
