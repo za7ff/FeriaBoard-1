@@ -187,10 +187,10 @@ export default function Home() {
         </div>
       )}
 
-      {/* Line art background shapes */}
-      <div className="line-art-background">
-        <div className="line-pattern-1"></div>
-        <div className="line-pattern-2"></div>
+      {/* Simple line art background */}
+      <div className="simple-line-bg">
+        <div className="simple-shape-1"></div>
+        <div className="simple-shape-2"></div>
       </div>
       
 
