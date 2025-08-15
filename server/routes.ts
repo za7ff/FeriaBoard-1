@@ -125,20 +125,28 @@ async function sendDiscordNotification(comment: string) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Configure persistent sessions
+  // Configure persistent sessions with enhanced settings
   const MemoryStoreConstructor = MemoryStore(session);
+  const sessionStore = new MemoryStoreConstructor({
+    checkPeriod: 86400000, // prune expired entries every 24h
+    max: 1000, // maximum number of sessions to store
+    ttl: 30 * 24 * 60 * 60 * 1000 // 30 days
+  });
+  
   app.use(session({
-    secret: process.env.SESSION_SECRET || 'feria-session-secret-key-2025',
-    resave: false,
+    name: 'feria.session', // Custom session name
+    secret: process.env.SESSION_SECRET || 'feria-session-secret-key-2025-enhanced',
+    resave: true, // Changed to true to ensure session updates are saved
     saveUninitialized: false,
-    store: new MemoryStoreConstructor({
-      checkPeriod: 86400000 // prune expired entries every 24h
-    }),
+    store: sessionStore,
     cookie: {
       secure: false, // Set to true in production with HTTPS
       httpOnly: true,
-      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
-    }
+      maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+      sameSite: 'lax' // Improve session persistence
+    },
+    rolling: true, // Extend session on each request
+    unset: 'keep' // Keep session data even if unset
   }));
   // Initialize admin user on startup
   try {
@@ -211,10 +219,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       if (user && user.password === password) {
         security.recordSuccessfulLogin(clientIP);
         
-        // Create persistent session
+        // Create persistent session with extended data
         (req.session as any).isAdminAuthenticated = true;
         (req.session as any).adminId = user.id;
         (req.session as any).loginTime = Date.now();
+        (req.session as any).lastActivity = Date.now();
+        (req.session as any).userAgent = req.get('User-Agent');
+        
+        // Force session save
+        req.session.save((err: any) => {
+          if (err) {
+            console.error('Session save error:', err);
+          } else {
+            console.log('✅ Admin session saved successfully');
+          }
+        });
         
         res.json({ success: true, message: "Login successful" });
       } else {
@@ -242,16 +261,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Check admin authentication status
+  // Check admin authentication status with session details
   app.get("/api/admin/status", (req, res) => {
     const session = req.session as any;
     const isAuthenticated = !!session.isAdminAuthenticated;
     
     if (isAuthenticated) {
+      // Update last activity on status check
+      session.lastActivity = Date.now();
+      
       res.json({ 
         authenticated: true, 
         loginTime: session.loginTime,
-        sessionId: req.sessionID
+        lastActivity: session.lastActivity,
+        sessionId: req.sessionID,
+        sessionMaxAge: 30 * 24 * 60 * 60 * 1000 // 30 days in milliseconds
       });
     } else {
       res.json({ authenticated: false });
@@ -271,10 +295,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     });
   });
 
-  // Middleware to check admin authentication
+  // Middleware to check admin authentication with session refresh
   const requireAdminAuth = (req: any, res: any, next: any) => {
     const session = req.session as any;
     if (session.isAdminAuthenticated) {
+      // Refresh session timestamp on each authenticated request
+      session.lastActivity = Date.now();
       next();
     } else {
       res.status(401).json({ message: "Authentication required" });
