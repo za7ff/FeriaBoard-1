@@ -138,6 +138,123 @@
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   }
 
+  /* Geometric Grid Shapes */
+  .geometric-grid-1 {
+    position: absolute;
+    top: 10%;
+    right: 35%;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    animation: gridFloat1 6s infinite ease-in-out;
+  }
+
+  .geometric-grid-2 {
+    position: absolute;
+    top: 25%;
+    right: 45%;
+    width: 40px;
+    height: 80px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    background: transparent;
+    animation: gridFloat2 8s infinite ease-in-out reverse;
+  }
+
+  .geometric-grid-3 {
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    width: 90px;
+    height: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    animation: gridFloat3 7s infinite ease-in-out;
+  }
+
+  .geometric-grid-4 {
+    position: absolute;
+    bottom: 40%;
+    right: 30%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.28);
+    background: transparent;
+    transform: rotate(45deg);
+    animation: gridFloat4 9s infinite ease-in-out reverse;
+  }
+
+  .geometric-grid-5 {
+    position: absolute;
+    bottom: 15%;
+    right: 40%;
+    width: 70px;
+    height: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.32);
+    background: transparent;
+    animation: gridFloat5 5s infinite ease-in-out;
+  }
+
+  .geometric-grid-6 {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    width: 25px;
+    height: 100px;
+    border: 2px solid rgba(255, 255, 255, 0.22);
+    background: transparent;
+    animation: gridFloat6 10s infinite ease-in-out reverse;
+  }
+
+  .geometric-grid-7 {
+    position: absolute;
+    top: 60%;
+    left: 15%;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(255, 255, 255, 0.26);
+    background: transparent;
+    animation: gridFloat7 6.5s infinite ease-in-out;
+  }
+
+  .geometric-grid-8 {
+    position: absolute;
+    bottom: 50%;
+    left: 60%;
+    width: 80px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.24);
+    background: transparent;
+    animation: gridFloat8 7.5s infinite ease-in-out reverse;
+  }
+
+  /* L-shaped elements */
+  .geometric-grid-9 {
+    position: absolute;
+    top: 20%;
+    left: 60%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.30);
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    animation: gridFloat9 8.5s infinite ease-in-out;
+  }
+
+  .geometric-grid-10 {
+    position: absolute;
+    bottom: 25%;
+    left: 45%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.27);
+    border-left: none;
+    border-top: none;
+    background: transparent;
+    animation: gridFloat10 9.5s infinite ease-in-out reverse;
+  }
+
   .feria-title {
     background: linear-gradient(135deg, 
       #ffffff 0%, 
@@ -825,6 +942,136 @@
   75% {
     transform: rotate(48deg) translateY(-5px) scale(1.06);
     opacity: 0.7;
+  }
+}
+
+@keyframes gridFloat1 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes gridFloat2 {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  33% {
+    transform: translateY(-15px) scale(1.05) rotate(2deg);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translateY(-8px) scale(0.95) rotate(-2deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes gridFloat3 {
+  0%, 100% {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-15px) scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridFloat4 {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0px) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(50deg) translateY(-12px) scale(1.06);
+    opacity: 0.7;
+  }
+  50% {
+    transform: rotate(40deg) translateY(-18px) scale(0.94);
+    opacity: 0.9;
+  }
+  75% {
+    transform: rotate(47deg) translateY(-6px) scale(1.03);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridFloat5 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) translateX(8px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes gridFloat6 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translateY(-25px) scale(1.04);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translateY(-12px) scale(0.96);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridFloat7 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-14px) translateX(-8px) scale(1.07);
+    opacity: 0.5;
+  }
+}
+
+@keyframes gridFloat8 {
+  0%, 100% {
+    transform: translateX(0px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(12px) scale(1.05);
+    opacity: 0.7;
+  }
+}
+
+@keyframes gridFloat9 {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-16px) scale(1.03) rotate(3deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gridFloat10 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 1;
+  }
+  33% {
+    transform: translateY(-8px) translateX(-10px) scale(1.04);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translateY(-15px) translateX(5px) scale(0.98);
+    opacity: 0.9;
   }
 }
 

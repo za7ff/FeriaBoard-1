@@ -187,12 +187,22 @@ export default function Home() {
         </div>
       )}
 
-      {/* Clean minimal background */}
+      {/* Geometric grid background */}
       <div className="clean-line-bg">
         <div className="clean-shape-1"></div>
         <div className="clean-shape-2"></div>
         <div className="clean-shape-3"></div>
         <div className="clean-shape-4"></div>
+        <div className="geometric-grid-1"></div>
+        <div className="geometric-grid-2"></div>
+        <div className="geometric-grid-3"></div>
+        <div className="geometric-grid-4"></div>
+        <div className="geometric-grid-5"></div>
+        <div className="geometric-grid-6"></div>
+        <div className="geometric-grid-7"></div>
+        <div className="geometric-grid-8"></div>
+        <div className="geometric-grid-9"></div>
+        <div className="geometric-grid-10"></div>
       </div>
       
 
