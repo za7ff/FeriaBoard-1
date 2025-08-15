@@ -43,7 +43,7 @@
     position: relative;
   }
 
-  .geometric-shapes {
+  .line-art-shapes {
     position: fixed;
     top: 0;
     left: 0;
@@ -54,109 +54,176 @@
     overflow: hidden;
   }
 
-  /* Circle Shape 1 */
-  .geometric-shapes::before {
-    content: '';
+  /* Heart Shape - Top Right */
+  .line-art-shape-1 {
     position: absolute;
     top: 10%;
-    left: 15%;
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    animation: geometricFloat1 20s infinite ease-in-out;
+    right: 15%;
+    width: 120px;
+    height: 120px;
+    animation: lineArtFloat1 25s infinite ease-in-out;
   }
 
-  /* Square Shape 1 */
-  .geometric-shapes::after {
+  .line-art-shape-1::before {
     content: '';
     position: absolute;
-    top: 70%;
-    right: 20%;
+    width: 52px;
+    height: 40px;
+    left: 50px;
+    top: 0;
+    background: transparent;
+    border-radius: 26px 26px 0 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
+    transform: rotate(-45deg) translateX(13px) translateY(-13px);
+  }
+
+  .line-art-shape-1::after {
+    content: '';
+    position: absolute;
+    width: 52px;
+    height: 40px;
+    left: 50px;
+    top: 0;
+    background: transparent;
+    border-radius: 26px 26px 0 0;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
+    transform: rotate(45deg) translateX(-13px) translateY(-13px);
+  }
+
+  /* Geometric Lines - Left Side */
+  .line-art-shape-2 {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 150px;
+    height: 200px;
+    animation: lineArtFloat2 30s infinite ease-in-out reverse;
+  }
+
+  .line-art-shape-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    background: transparent;
+  }
+
+  .line-art-shape-2::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
     width: 60px;
     height: 60px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
     transform: rotate(45deg);
-    animation: geometricFloat2 25s infinite ease-in-out reverse;
+    background: transparent;
   }
 
-  /* Triangle Shape */
-  .geometric-bg-shape-1 {
-    position: absolute;
-    top: 25%;
-    left: 80%;
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 50px solid rgba(255, 255, 255, 0.04);
-    animation: geometricFloat3 30s infinite ease-in-out;
-  }
-
-  /* Diamond Shape */
-  .geometric-bg-shape-2 {
+  /* Abstract Lines - Center */
+  .line-art-shape-3 {
     position: absolute;
     top: 60%;
-    left: 10%;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transform: rotate(45deg);
-    animation: geometricFloat4 18s infinite ease-in-out;
+    left: 70%;
+    width: 100px;
+    height: 100px;
+    animation: lineArtFloat3 20s infinite ease-in-out;
   }
 
-  /* Pentagon Shape */
-  .geometric-bg-shape-3 {
+  .line-art-shape-3::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg);
+  }
+
+  .line-art-shape-3::after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    width: 60px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    transform: rotate(-30deg);
+  }
+
+  /* Curved Lines - Bottom Left */
+  .line-art-shape-4 {
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    width: 100px;
+    height: 100px;
+    animation: lineArtFloat4 35s infinite ease-in-out reverse;
+  }
+
+  .line-art-shape-4::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    background: transparent;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  /* Triangle Lines - Top Center */
+  .line-art-shape-5 {
     position: absolute;
     top: 15%;
-    right: 40%;
+    left: 45%;
+    width: 80px;
+    height: 80px;
+    animation: lineArtFloat5 28s infinite ease-in-out;
+  }
+
+  .line-art-shape-5::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+    border-left-width: 0;
+    border-right-width: 0;
+    clip-path: polygon(0 100%, 50% 0, 100% 100%, 98% 100%, 50% 5%, 2% 100%);
+  }
+
+  /* Hexagon Lines - Right Center */
+  .line-art-shape-6 {
+    position: absolute;
+    top: 40%;
+    right: 30%;
+    width: 90px;
+    height: 90px;
+    animation: lineArtFloat6 22s infinite ease-in-out reverse;
+  }
+
+  .line-art-shape-6::before {
+    content: '';
+    position: absolute;
     width: 70px;
     height: 70px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-    animation: geometricFloat5 22s infinite ease-in-out reverse;
-  }
-
-  /* Hexagon Shape */
-  .geometric-bg-shape-4 {
-    position: absolute;
-    top: 45%;
-    left: 75%;
-    width: 45px;
-    height: 45px;
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+    border: 1.5px solid rgba(255, 255, 255, 0.11);
+    background: transparent;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    animation: geometricFloat6 26s infinite ease-in-out;
-  }
-
-  /* Rectangle Shape */
-  .geometric-bg-shape-5 {
-    position: absolute;
-    top: 80%;
-    right: 45%;
-    width: 90px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    animation: geometricFloat7 28s infinite ease-in-out;
-  }
-
-  /* Star Shape */
-  .geometric-bg-shape-6 {
-    position: absolute;
-    top: 35%;
-    left: 25%;
-    width: 55px;
-    height: 55px;
-    background: rgba(255, 255, 255, 0.04);
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    animation: geometricFloat8 24s infinite ease-in-out reverse;
   }
 
   .feria-title {
@@ -755,90 +822,68 @@
 
 
 
-@keyframes geometricFloat1 {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(-20px) scale(1.05);
-    opacity: 1;
-  }
-}
-
-@keyframes geometricFloat2 {
-  0%, 100% {
-    transform: rotate(45deg) translateY(0px) scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: rotate(45deg) translateY(-15px) scale(1.1);
-    opacity: 0.9;
-  }
-}
-
-@keyframes geometricFloat3 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.7;
-  }
-  50% {
-    transform: translateY(-25px) rotate(10deg);
-    opacity: 1;
-  }
-}
-
-@keyframes geometricFloat4 {
-  0%, 100% {
-    transform: rotate(45deg) translateX(0px) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: rotate(45deg) translateX(10px) scale(1.08);
-    opacity: 0.8;
-  }
-}
-
-@keyframes geometricFloat5 {
+@keyframes lineArtFloat1 {
   0%, 100% {
     transform: translateY(0px) rotate(0deg) scale(1);
     opacity: 0.7;
   }
   50% {
-    transform: translateY(-18px) rotate(15deg) scale(1.06);
+    transform: translateY(-15px) rotate(5deg) scale(1.03);
+    opacity: 1;
+  }
+}
+
+@keyframes lineArtFloat2 {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px) scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes lineArtFloat3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-12px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes lineArtFloat4 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-18px) scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+@keyframes lineArtFloat5 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-14px) rotate(-8deg) scale(1.04);
     opacity: 0.95;
   }
 }
 
-@keyframes geometricFloat6 {
+@keyframes lineArtFloat6 {
   0%, 100% {
-    transform: translateY(0px) scale(1);
+    transform: translateY(0px) rotate(0deg) scale(1);
     opacity: 0.8;
   }
   50% {
-    transform: translateY(-22px) scale(1.12);
-    opacity: 1;
-  }
-}
-
-@keyframes geometricFloat7 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.6;
-  }
-  50% {
-    transform: translateY(-16px) rotate(5deg);
-    opacity: 0.9;
-  }
-}
-
-@keyframes geometricFloat8 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.75;
-  }
-  50% {
-    transform: translateY(-20px) rotate(12deg) scale(1.07);
+    transform: translateY(-16px) rotate(15deg) scale(1.06);
     opacity: 1;
   }
 }

@@ -187,14 +187,14 @@ export default function Home() {
         </div>
       )}
 
-      {/* Geometric background shapes */}
-      <div className="geometric-shapes">
-        <div className="geometric-bg-shape-1"></div>
-        <div className="geometric-bg-shape-2"></div>
-        <div className="geometric-bg-shape-3"></div>
-        <div className="geometric-bg-shape-4"></div>
-        <div className="geometric-bg-shape-5"></div>
-        <div className="geometric-bg-shape-6"></div>
+      {/* Line art background shapes */}
+      <div className="line-art-shapes">
+        <div className="line-art-shape-1"></div>
+        <div className="line-art-shape-2"></div>
+        <div className="line-art-shape-3"></div>
+        <div className="line-art-shape-4"></div>
+        <div className="line-art-shape-5"></div>
+        <div className="line-art-shape-6"></div>
       </div>
       
       {/* Additional floating elements */}
