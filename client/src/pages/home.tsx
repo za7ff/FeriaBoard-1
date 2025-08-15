@@ -164,21 +164,21 @@ export default function Home() {
               <div className="info-item">
                 <div className="info-icon">👤</div>
                 <div className="info-text">
-                  <span className="text-blue-400 font-semibold text-lg">Name:</span>
+                  <span className="text-gray-300 font-semibold text-lg">Name:</span>
                   <span className="text-white text-lg ml-3 info-value">Meshall alHarbi</span>
                 </div>
               </div>
               <div className="info-item">
                 <div className="info-icon">🎂</div>
                 <div className="info-text">
-                  <span className="text-purple-400 font-semibold text-lg">Age:</span>
+                  <span className="text-gray-300 font-semibold text-lg">Age:</span>
                   <span className="text-white text-lg ml-3 info-value">20</span>
                 </div>
               </div>
               <div className="info-item">
                 <div className="info-icon">📍</div>
                 <div className="info-text">
-                  <span className="text-green-400 font-semibold text-lg">Location:</span>
+                  <span className="text-gray-300 font-semibold text-lg">Location:</span>
                   <span className="text-white text-lg ml-3 info-value">Al-Qassim, Buraydah</span>
                 </div>
               </div>
