@@ -205,7 +205,7 @@ export default function Home() {
           Feria
         </Button>
         <a
-          href="https://discord.com/users/2wo."
+          href="https://discordapp.com/users/700928520716681237"
           target="_blank"
           rel="noopener noreferrer"
           className="bg-indigo-500/20 border border-indigo-500/30 text-white hover:bg-indigo-500/30 backdrop-blur-sm px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm font-medium"
