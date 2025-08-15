@@ -134,7 +134,7 @@ export default function Home() {
                 setTimeout(() => {
                   setShowInfo(false);
                   setInfoAnimating(false);
-                }, 400);
+                }, 500);
               }}
               className="absolute top-4 right-4 bg-red-500/20 border border-red-500/30 text-white hover:bg-red-500/30 backdrop-blur-sm px-3 py-2 rounded-lg text-sm z-10 close-button"
               data-testid="button-close-info"
