@@ -117,37 +117,59 @@ export default function Home() {
 
       {/* Information Modal */}
       {showInfo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md">
-          <div className="modern-card p-8 mx-4 max-w-md text-center relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md info-overlay">
+          <div className="info-modal modern-card p-8 mx-4 max-w-lg text-center relative overflow-hidden">
+            {/* Animated background particles for modal */}
+            <div className="modal-particles">
+              <div className="modal-particle modal-particle-1"></div>
+              <div className="modal-particle modal-particle-2"></div>
+              <div className="modal-particle modal-particle-3"></div>
+              <div className="modal-particle modal-particle-4"></div>
+            </div>
+            
             <Button
               onClick={() => setShowInfo(false)}
-              className="absolute top-4 right-4 bg-red-500/20 border border-red-500/30 text-white hover:bg-red-500/30 backdrop-blur-sm px-3 py-2 rounded-lg text-sm"
+              className="absolute top-4 right-4 bg-red-500/20 border border-red-500/30 text-white hover:bg-red-500/30 backdrop-blur-sm px-3 py-2 rounded-lg text-sm z-10 close-button"
               data-testid="button-close-info"
             >
               ×
             </Button>
             
-            <div className="mb-6">
-              <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl font-bold text-white">
-                M
+            <div className="mb-8 z-10 relative">
+              <div className="avatar-container w-32 h-32 mx-auto mb-6 relative">
+                <div className="avatar-glow"></div>
+                <div className="avatar bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-full flex items-center justify-center text-4xl font-bold text-white relative z-10">
+                  M
+                </div>
+                <div className="avatar-ring"></div>
               </div>
-              <h2 className="text-white text-2xl font-bold mb-2">
+              <h2 className="text-white text-3xl font-bold mb-3 info-title">
                 Information about me
               </h2>
+              <div className="title-underline"></div>
             </div>
             
-            <div className="text-left space-y-3">
-              <div className="flex items-center space-x-3">
-                <span className="text-blue-400 font-semibold">Name:</span>
-                <span className="text-white">Meshall alHarbi</span>
+            <div className="info-content space-y-6 z-10 relative">
+              <div className="info-item">
+                <div className="info-icon">👤</div>
+                <div className="info-text">
+                  <span className="text-blue-400 font-semibold text-lg">Name:</span>
+                  <span className="text-white text-lg ml-3 info-value">Meshall alHarbi</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-blue-400 font-semibold">Age:</span>
-                <span className="text-white">20</span>
+              <div className="info-item">
+                <div className="info-icon">🎂</div>
+                <div className="info-text">
+                  <span className="text-purple-400 font-semibold text-lg">Age:</span>
+                  <span className="text-white text-lg ml-3 info-value">20</span>
+                </div>
               </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-blue-400 font-semibold">Location:</span>
-                <span className="text-white">Al-Qassim, Buraydah</span>
+              <div className="info-item">
+                <div className="info-icon">📍</div>
+                <div className="info-text">
+                  <span className="text-green-400 font-semibold text-lg">Location:</span>
+                  <span className="text-white text-lg ml-3 info-value">Al-Qassim, Buraydah</span>
+                </div>
               </div>
             </div>
           </div>
