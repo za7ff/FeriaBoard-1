@@ -43,7 +43,7 @@
     position: relative;
   }
 
-  .line-art-shapes {
+  .elegant-bg-shapes {
     position: fixed;
     top: 0;
     left: 0;
@@ -54,176 +54,85 @@
     overflow: hidden;
   }
 
-  /* Heart Shape - Top Right */
-  .line-art-shape-1 {
-    position: absolute;
-    top: 10%;
-    right: 15%;
-    width: 120px;
-    height: 120px;
-    animation: lineArtFloat1 25s infinite ease-in-out;
-  }
-
-  .line-art-shape-1::before {
+  /* Simple Circle - Top Right */
+  .elegant-bg-shapes::before {
     content: '';
     position: absolute;
-    width: 52px;
-    height: 40px;
-    left: 50px;
-    top: 0;
-    background: transparent;
-    border-radius: 26px 26px 0 0;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    border-bottom: none;
-    transform: rotate(-45deg) translateX(13px) translateY(-13px);
-  }
-
-  .line-art-shape-1::after {
-    content: '';
-    position: absolute;
-    width: 52px;
-    height: 40px;
-    left: 50px;
-    top: 0;
-    background: transparent;
-    border-radius: 26px 26px 0 0;
-    border: 1.5px solid rgba(255, 255, 255, 0.15);
-    border-bottom: none;
-    transform: rotate(45deg) translateX(-13px) translateY(-13px);
-  }
-
-  /* Geometric Lines - Left Side */
-  .line-art-shape-2 {
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    width: 150px;
-    height: 200px;
-    animation: lineArtFloat2 30s infinite ease-in-out reverse;
-  }
-
-  .line-art-shape-2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 80px;
-    height: 80px;
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
-    border-radius: 50%;
-    background: transparent;
-  }
-
-  .line-art-shape-2::after {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 12%;
+    right: 18%;
     width: 60px;
     height: 60px;
-    border: 1.5px solid rgba(255, 255, 255, 0.08);
-    transform: rotate(45deg);
-    background: transparent;
-  }
-
-  /* Abstract Lines - Center */
-  .line-art-shape-3 {
-    position: absolute;
-    top: 60%;
-    left: 70%;
-    width: 100px;
-    height: 100px;
-    animation: lineArtFloat3 20s infinite ease-in-out;
-  }
-
-  .line-art-shape-3::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 80px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotate(30deg);
-  }
-
-  .line-art-shape-3::after {
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 20px;
-    width: 60px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.08);
-    transform: rotate(-30deg);
-  }
-
-  /* Curved Lines - Bottom Left */
-  .line-art-shape-4 {
-    position: absolute;
-    top: 75%;
-    left: 20%;
-    width: 100px;
-    height: 100px;
-    animation: lineArtFloat4 35s infinite ease-in-out reverse;
-  }
-
-  .line-art-shape-4::before {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     background: transparent;
-    border-right: none;
-    border-bottom: none;
+    animation: elegantFloat1 20s infinite ease-in-out;
   }
 
-  /* Triangle Lines - Top Center */
-  .line-art-shape-5 {
-    position: absolute;
-    top: 15%;
-    left: 45%;
-    width: 80px;
-    height: 80px;
-    animation: lineArtFloat5 28s infinite ease-in-out;
-  }
-
-  .line-art-shape-5::before {
+  /* Simple Square - Bottom Left */
+  .elegant-bg-shapes::after {
     content: '';
     position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    border-bottom: 60px solid transparent;
-    border-bottom-color: rgba(255, 255, 255, 0.12);
-    border-bottom-style: solid;
-    border-bottom-width: 1.5px;
-    border-left-width: 0;
-    border-right-width: 0;
-    clip-path: polygon(0 100%, 50% 0, 100% 100%, 98% 100%, 50% 5%, 2% 100%);
+    bottom: 15%;
+    left: 15%;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: transparent;
+    transform: rotate(45deg);
+    animation: elegantFloat2 25s infinite ease-in-out reverse;
   }
 
-  /* Hexagon Lines - Right Center */
-  .line-art-shape-6 {
+  /* Triangle - Left Center */
+  .elegant-shape-1 {
     position: absolute;
     top: 40%;
-    right: 30%;
-    width: 90px;
-    height: 90px;
-    animation: lineArtFloat6 22s infinite ease-in-out reverse;
+    left: 8%;
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 40px solid rgba(255, 255, 255, 0.05);
+    animation: elegantFloat3 30s infinite ease-in-out;
   }
 
-  .line-art-shape-6::before {
-    content: '';
+  /* Hexagon - Top Center */
+  .elegant-shape-2 {
     position: absolute;
-    width: 70px;
-    height: 70px;
-    border: 1.5px solid rgba(255, 255, 255, 0.11);
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
     background: transparent;
     clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    animation: elegantFloat4 18s infinite ease-in-out reverse;
+  }
+
+  /* Small Circle - Right Center */
+  .elegant-shape-3 {
+    position: absolute;
+    top: 55%;
+    right: 12%;
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 50%;
+    background: transparent;
+    animation: elegantFloat5 22s infinite ease-in-out;
+  }
+
+  /* Rectangle - Bottom Right */
+  .elegant-shape-4 {
+    position: absolute;
+    bottom: 25%;
+    right: 25%;
+    width: 70px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    border-radius: 4px;
+    animation: elegantFloat6 28s infinite ease-in-out reverse;
   }
 
   .feria-title {
@@ -822,69 +731,69 @@
 
 
 
-@keyframes lineArtFloat1 {
+@keyframes elegantFloat1 {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.7;
+    transform: translateY(0px) scale(1);
+    opacity: 0.6;
   }
   50% {
-    transform: translateY(-15px) rotate(5deg) scale(1.03);
+    transform: translateY(-10px) scale(1.02);
     opacity: 1;
   }
 }
 
-@keyframes lineArtFloat2 {
+@keyframes elegantFloat2 {
   0%, 100% {
-    transform: translateY(0px) translateX(0px) scale(1);
+    transform: rotate(45deg) translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: rotate(45deg) translateY(-8px) scale(1.03);
+    opacity: 0.7;
+  }
+}
+
+@keyframes elegantFloat3 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes elegantFloat4 {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0px) scale(1);
     opacity: 0.6;
   }
   50% {
-    transform: translateY(-20px) translateX(10px) scale(1.05);
+    transform: translateX(-50%) translateY(-9px) scale(1.04);
     opacity: 0.9;
   }
 }
 
-@keyframes lineArtFloat3 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translateY(-12px) rotate(10deg);
-    opacity: 1;
-  }
-}
-
-@keyframes lineArtFloat4 {
+@keyframes elegantFloat5 {
   0%, 100% {
     transform: translateY(0px) scale(1);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateY(-18px) scale(1.08);
-    opacity: 0.8;
-  }
-}
-
-@keyframes lineArtFloat5 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
     opacity: 0.7;
   }
   50% {
-    transform: translateY(-14px) rotate(-8deg) scale(1.04);
-    opacity: 0.95;
+    transform: translateY(-11px) scale(1.05);
+    opacity: 1;
   }
 }
 
-@keyframes lineArtFloat6 {
+@keyframes elegantFloat6 {
   0%, 100% {
-    transform: translateY(0px) rotate(0deg) scale(1);
-    opacity: 0.8;
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.3;
   }
   50% {
-    transform: translateY(-16px) rotate(15deg) scale(1.06);
-    opacity: 1;
+    transform: translateY(-7px) rotate(2deg);
+    opacity: 0.6;
   }
 }
 

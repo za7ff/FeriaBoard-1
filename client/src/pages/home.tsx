@@ -187,14 +187,12 @@ export default function Home() {
         </div>
       )}
 
-      {/* Line art background shapes */}
-      <div className="line-art-shapes">
-        <div className="line-art-shape-1"></div>
-        <div className="line-art-shape-2"></div>
-        <div className="line-art-shape-3"></div>
-        <div className="line-art-shape-4"></div>
-        <div className="line-art-shape-5"></div>
-        <div className="line-art-shape-6"></div>
+      {/* Elegant minimal background shapes */}
+      <div className="elegant-bg-shapes">
+        <div className="elegant-shape-1"></div>
+        <div className="elegant-shape-2"></div>
+        <div className="elegant-shape-3"></div>
+        <div className="elegant-shape-4"></div>
       </div>
       
       {/* Additional floating elements */}
