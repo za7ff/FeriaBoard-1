@@ -156,6 +156,23 @@ export default function Home() {
 
       {/* Animated background shapes */}
       <div className="animated-shapes"></div>
+      
+      {/* Additional floating elements */}
+      <div className="floating-particles">
+        <div className="particle particle-1"></div>
+        <div className="particle particle-2"></div>
+        <div className="particle particle-3"></div>
+        <div className="particle particle-4"></div>
+        <div className="particle particle-5"></div>
+        <div className="particle particle-6"></div>
+      </div>
+
+      {/* Glowing orbs */}
+      <div className="glowing-orbs">
+        <div className="orb orb-1"></div>
+        <div className="orb orb-2"></div>
+        <div className="orb orb-3"></div>
+      </div>
 
       {/* Buttons */}
       <div className="fixed top-6 right-6 z-20 flex flex-col space-y-3">
