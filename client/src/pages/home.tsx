@@ -187,8 +187,15 @@ export default function Home() {
         </div>
       )}
 
-      {/* Animated background shapes */}
-      <div className="animated-shapes"></div>
+      {/* Geometric background shapes */}
+      <div className="geometric-shapes">
+        <div className="geometric-bg-shape-1"></div>
+        <div className="geometric-bg-shape-2"></div>
+        <div className="geometric-bg-shape-3"></div>
+        <div className="geometric-bg-shape-4"></div>
+        <div className="geometric-bg-shape-5"></div>
+        <div className="geometric-bg-shape-6"></div>
+      </div>
       
       {/* Additional floating elements */}
       <div className="floating-particles">
