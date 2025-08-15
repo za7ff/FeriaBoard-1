@@ -60,12 +60,13 @@
     position: absolute;
     top: 20%;
     left: 15%;
-    width: 150px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.25);
+    width: 180px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.4);
     transform: rotate(25deg);
-    animation: gentleFloat1 20s infinite ease-in-out;
-    border-radius: 1px;
+    animation: activeFloat1 8s infinite ease-in-out;
+    border-radius: 2px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
 
   /* Simple Line 2 - Horizontal */
@@ -74,11 +75,12 @@
     position: absolute;
     top: 70%;
     right: 20%;
-    width: 100px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.20);
-    animation: gentleFloat2 25s infinite ease-in-out reverse;
-    border-radius: 1px;
+    width: 120px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.35);
+    animation: activeFloat2 10s infinite ease-in-out reverse;
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
   }
 
   /* Minimal Rectangle */
@@ -86,12 +88,13 @@
     position: absolute;
     top: 35%;
     right: 15%;
-    width: 80px;
-    height: 50px;
-    border: 2px solid rgba(255, 255, 255, 0.18);
+    width: 90px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
     background: transparent;
-    animation: gentleFloat3 30s infinite ease-in-out;
-    border-radius: 4px;
+    animation: activeFloat3 12s infinite ease-in-out;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   }
 
   /* Small Circle */
@@ -99,12 +102,13 @@
     position: absolute;
     bottom: 30%;
     left: 25%;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.28);
     border-radius: 50%;
     background: transparent;
-    animation: gentleFloat4 35s infinite ease-in-out reverse;
+    animation: activeFloat4 14s infinite ease-in-out reverse;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.12);
   }
 
   /* Vertical Line */
@@ -112,11 +116,12 @@
     position: absolute;
     top: 45%;
     left: 50%;
-    width: 2px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.22);
-    animation: gentleFloat5 28s infinite ease-in-out;
-    border-radius: 1px;
+    width: 3px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.38);
+    animation: activeFloat5 9s infinite ease-in-out;
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.18);
   }
 
   /* Small Square */
@@ -124,12 +129,13 @@
     position: absolute;
     top: 15%;
     left: 30%;
-    width: 25px;
-    height: 25px;
-    border: 2px solid rgba(255, 255, 255, 0.12);
+    width: 35px;
+    height: 35px;
+    border: 3px solid rgba(255, 255, 255, 0.25);
     background: transparent;
     transform: rotate(45deg);
-    animation: gentleFloat6 32s infinite ease-in-out reverse;
+    animation: activeFloat6 11s infinite ease-in-out reverse;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
   }
 
   .feria-title {
@@ -728,68 +734,96 @@
 
 
 
-@keyframes gentleFloat1 {
+@keyframes activeFloat1 {
   0%, 100% {
-    transform: rotate(25deg) translateY(0px);
+    transform: rotate(25deg) translateY(0px) scale(1);
     opacity: 1;
   }
+  25% {
+    transform: rotate(27deg) translateY(-15px) scale(1.05);
+    opacity: 0.8;
+  }
   50% {
-    transform: rotate(25deg) translateY(-8px);
+    transform: rotate(23deg) translateY(-20px) scale(1.02);
+    opacity: 0.9;
+  }
+  75% {
+    transform: rotate(26deg) translateY(-8px) scale(1.03);
     opacity: 0.7;
   }
 }
 
-@keyframes gentleFloat2 {
+@keyframes activeFloat2 {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) scale(1);
     opacity: 1;
   }
-  50% {
-    transform: translateY(-6px);
+  33% {
+    transform: translateY(-12px) scale(1.04);
     opacity: 0.8;
   }
+  66% {
+    transform: translateY(-18px) scale(1.01);
+    opacity: 0.9;
+  }
 }
 
-@keyframes gentleFloat3 {
+@keyframes activeFloat3 {
+  0%, 100% {
+    transform: translateY(0px) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.06) rotate(2deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes activeFloat4 {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-10px) scale(1.08);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-16px) scale(1.04);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-6px) scale(1.06);
+    opacity: 0.7;
+  }
+}
+
+@keyframes activeFloat5 {
   0%, 100% {
     transform: translateY(0px) scale(1);
     opacity: 1;
   }
   50% {
-    transform: translateY(-5px) scale(1.01);
+    transform: translateY(-20px) scale(1.02);
     opacity: 0.6;
   }
 }
 
-@keyframes gentleFloat4 {
+@keyframes activeFloat6 {
   0%, 100% {
-    transform: translateY(0px) scale(1);
+    transform: rotate(45deg) translateY(0px) scale(1);
     opacity: 1;
   }
-  50% {
-    transform: translateY(-4px) scale(1.02);
-    opacity: 0.5;
-  }
-}
-
-@keyframes gentleFloat5 {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-    opacity: 1;
+  25% {
+    transform: rotate(50deg) translateY(-8px) scale(1.04);
+    opacity: 0.8;
   }
   50% {
-    transform: translateY(-7px) scale(1.01);
-    opacity: 0.6;
+    transform: rotate(40deg) translateY(-14px) scale(1.02);
+    opacity: 0.9;
   }
-}
-
-@keyframes gentleFloat6 {
-  0%, 100% {
-    transform: rotate(45deg) translateY(0px);
-    opacity: 1;
-  }
-  50% {
-    transform: rotate(45deg) translateY(-5px);
+  75% {
+    transform: rotate(48deg) translateY(-5px) scale(1.06);
     opacity: 0.7;
   }
 }
