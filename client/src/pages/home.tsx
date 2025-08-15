@@ -11,6 +11,7 @@ export default function Home() {
   const [comment, setComment] = useState("");
   const [showWelcome, setShowWelcome] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [infoAnimating, setInfoAnimating] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
@@ -117,8 +118,8 @@ export default function Home() {
 
       {/* Information Modal */}
       {showInfo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md info-overlay">
-          <div className="info-modal modern-card p-8 mx-4 max-w-lg text-center relative overflow-hidden">
+        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md info-overlay ${infoAnimating ? 'info-fade-out' : ''}`}>
+          <div className={`info-modal modern-card p-8 mx-4 max-w-lg text-center relative overflow-hidden ${infoAnimating ? 'info-modal-fade-out' : ''}`}>
             {/* Animated background particles for modal */}
             <div className="modal-particles">
               <div className="modal-particle modal-particle-1"></div>
@@ -128,7 +129,13 @@ export default function Home() {
             </div>
             
             <Button
-              onClick={() => setShowInfo(false)}
+              onClick={() => {
+                setInfoAnimating(true);
+                setTimeout(() => {
+                  setShowInfo(false);
+                  setInfoAnimating(false);
+                }, 400);
+              }}
               className="absolute top-4 right-4 bg-red-500/20 border border-red-500/30 text-white hover:bg-red-500/30 backdrop-blur-sm px-3 py-2 rounded-lg text-sm z-10 close-button"
               data-testid="button-close-info"
             >
@@ -206,7 +213,10 @@ export default function Home() {
           Admin
         </Button>
         <Button
-          onClick={() => setShowInfo(true)}
+          onClick={() => {
+            setShowInfo(true);
+            setInfoAnimating(false);
+          }}
           className="bg-blue-500/20 border border-blue-500/30 text-white hover:bg-blue-500/30 backdrop-blur-sm px-6 py-3 rounded-lg"
           data-testid="button-info"
         >
