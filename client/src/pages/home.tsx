@@ -187,33 +187,8 @@ export default function Home() {
         </div>
       )}
 
-      {/* Full screen animated geometric background */}
-      <div className="clean-line-bg">
-        <div className="clean-shape-1"></div>
-        <div className="clean-shape-2"></div>
-        <div className="clean-shape-3"></div>
-        <div className="clean-shape-4"></div>
-        <div className="geometric-grid-1"></div>
-        <div className="geometric-grid-2"></div>
-        <div className="geometric-grid-3"></div>
-        <div className="geometric-grid-4"></div>
-        <div className="geometric-grid-5"></div>
-        <div className="geometric-grid-6"></div>
-        <div className="geometric-grid-7"></div>
-        <div className="geometric-grid-8"></div>
-        <div className="geometric-grid-9"></div>
-        <div className="geometric-grid-10"></div>
-        <div className="geometric-grid-11"></div>
-        <div className="geometric-grid-12"></div>
-        <div className="geometric-grid-13"></div>
-        <div className="geometric-grid-14"></div>
-        <div className="geometric-grid-15"></div>
-        <div className="geometric-grid-16"></div>
-        <div className="geometric-grid-17"></div>
-        <div className="geometric-grid-18"></div>
-        <div className="geometric-grid-19"></div>
-        <div className="geometric-grid-20"></div>
-      </div>
+      {/* Luxury elegant background */}
+      <div className="luxury-background"></div>
       
 
 
