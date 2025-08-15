@@ -10,6 +10,7 @@ import { useLocation } from "wouter";
 export default function Home() {
   const [comment, setComment] = useState("");
   const [showWelcome, setShowWelcome] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
@@ -114,17 +115,63 @@ export default function Home() {
         </div>
       )}
 
+      {/* Information Modal */}
+      {showInfo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md">
+          <div className="modern-card p-8 mx-4 max-w-md text-center relative">
+            <Button
+              onClick={() => setShowInfo(false)}
+              className="absolute top-4 right-4 bg-red-500/20 border border-red-500/30 text-white hover:bg-red-500/30 backdrop-blur-sm px-3 py-2 rounded-lg text-sm"
+              data-testid="button-close-info"
+            >
+              ×
+            </Button>
+            
+            <div className="mb-6">
+              <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-3xl font-bold text-white">
+                M
+              </div>
+              <h2 className="text-white text-2xl font-bold mb-2">
+                Information about me
+              </h2>
+            </div>
+            
+            <div className="text-left space-y-3">
+              <div className="flex items-center space-x-3">
+                <span className="text-blue-400 font-semibold">Name:</span>
+                <span className="text-white">Meshall alHarbi</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-blue-400 font-semibold">Age:</span>
+                <span className="text-white">20</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-blue-400 font-semibold">Location:</span>
+                <span className="text-white">Al-Qassim, Buraydah</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Animated background shapes */}
       <div className="animated-shapes"></div>
 
-      {/* Admin button */}
-      <div className="fixed top-6 right-6 z-20">
+      {/* Buttons */}
+      <div className="fixed top-6 right-6 z-20 flex flex-col space-y-3">
         <Button
           onClick={() => setLocation("/admin/login")}
           className="bg-white/10 border border-white/20 text-white hover:bg-white/20 backdrop-blur-sm px-6 py-3 rounded-lg"
           data-testid="button-admin"
         >
           Admin
+        </Button>
+        <Button
+          onClick={() => setShowInfo(true)}
+          className="bg-blue-500/20 border border-blue-500/30 text-white hover:bg-blue-500/30 backdrop-blur-sm px-6 py-3 rounded-lg"
+          data-testid="button-info"
+        >
+          Information about me
         </Button>
       </div>
       

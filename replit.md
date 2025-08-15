@@ -10,6 +10,8 @@ Design preference: Clean modern dark design with just the Feria text and comment
 Admin access: Admin button positioned on the right side for easy access
 Admin credentials: username "admin", password "newpass123" (hidden from UI)
 Data persistence: Comments are permanently saved to PostgreSQL database
+Personal information: Name is Meshall alHarbi, age 20, lives in Al-Qassim, Buraydah
+Information button: Added "Information about me" button with personal details and avatar
 
 # System Architecture
 
