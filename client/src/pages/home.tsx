@@ -191,6 +191,8 @@ export default function Home() {
       <div className="clean-line-bg">
         <div className="clean-shape-1"></div>
         <div className="clean-shape-2"></div>
+        <div className="clean-shape-3"></div>
+        <div className="clean-shape-4"></div>
       </div>
       
 
