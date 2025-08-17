@@ -233,9 +233,15 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-left scroll-reveal-left typewriter-trigger">
-              <div className="typewriter-container text-2xl font-bold text-white mb-4">
-                <span className="text-white">{typewriterText}</span>
-                {showTypewriter && !typingComplete && <span className="typewriter-cursor"></span>}
+              <div className="typewriter-container text-2xl font-bold text-white mb-4 min-h-[2rem]">
+                {showTypewriter ? (
+                  <>
+                    <span className="text-white">{typewriterText}</span>
+                    {!typingComplete && <span className="typewriter-cursor"></span>}
+                  </>
+                ) : (
+                  <span className="text-white opacity-0">Hi, I'm Meshall</span>
+                )}
               </div>
               <p className={`text-gray-300 mb-6 ${typingComplete ? 'typewriter-paragraph' : 'opacity-0'}`}>
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
