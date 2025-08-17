@@ -229,31 +229,28 @@
   }
 }
 
-/* Elegant hand wave animation */
-@keyframes elegantWave {
-  0%, 90%, 100% {
+/* Balanced hand wave animation */
+@keyframes balancedWave {
+  0%, 100% {
     transform: rotate(0deg) scale(1);
   }
-  15% {
-    transform: rotate(12deg) scale(1.05);
+  20% {
+    transform: rotate(15deg) scale(1.02);
   }
-  30% {
-    transform: rotate(-8deg) scale(1.02);
-  }
-  45% {
-    transform: rotate(10deg) scale(1.03);
+  40% {
+    transform: rotate(-5deg) scale(1.01);
   }
   60% {
-    transform: rotate(-6deg) scale(1.01);
+    transform: rotate(10deg) scale(1.01);
   }
-  75% {
-    transform: rotate(4deg) scale(1.01);
+  80% {
+    transform: rotate(0deg) scale(1);
   }
 }
 
 .animate-subtle-wave {
-  animation: elegantWave 3s ease-in-out infinite;
-  transform-origin: 70% 70%;
+  animation: balancedWave 2.5s ease-in-out infinite;
+  transform-origin: 65% 65%;
 }
 
 /* Gentle glow animation for the whole badge */
