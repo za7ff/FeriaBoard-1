@@ -193,7 +193,7 @@ export default function Game() {
                 />
               </div>
               <p className="text-gray-400">
-                {computerChoice ? `فيريا اختار ${computerChoice === 'rock' ? 'حجر' : computerChoice === 'paper' ? 'ورقة' : 'مقص'}` : "يفكر..."}
+                {computerChoice ? `اختار ${computerChoice === 'rock' ? 'حجر' : computerChoice === 'paper' ? 'ورقة' : 'مقص'}` : "يفكر..."}
               </p>
             </CardContent>
           </Card>
