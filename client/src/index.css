@@ -936,55 +936,89 @@
 }
 
 
-/* Scroll Animations */
+/* Premium Scroll Animations */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
+  transform: translateY(40px) scale(0.95);
+  filter: blur(5px);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal.revealed {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
 }
 
 .scroll-reveal-left {
   opacity: 0;
-  transform: translateX(-50px);
-  transition: all 0.8s ease-out;
+  transform: translateX(-80px) rotate(-5deg);
+  filter: blur(8px) brightness(0.7);
+  transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-left.revealed {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) rotate(0deg);
+  filter: blur(0px) brightness(1);
 }
 
 .scroll-reveal-right {
   opacity: 0;
-  transform: translateX(50px);
-  transition: all 0.8s ease-out;
+  transform: translateX(80px) rotate(5deg);
+  filter: blur(8px) brightness(0.7);
+  transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-right.revealed {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) rotate(0deg);
+  filter: blur(0px) brightness(1);
 }
 
 .scroll-reveal-scale {
   opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.8s ease-out;
+  transform: scale(0.6) rotateY(45deg);
+  filter: blur(10px);
+  transition: all 1.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-reveal-scale.revealed {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(1) rotateY(0deg);
+  filter: blur(0px);
 }
 
-/* Staggered delays */
-.scroll-reveal:nth-child(1) { transition-delay: 0.1s; }
-.scroll-reveal:nth-child(2) { transition-delay: 0.2s; }
-.scroll-reveal:nth-child(3) { transition-delay: 0.3s; }
-.scroll-reveal:nth-child(4) { transition-delay: 0.4s; }
-.scroll-reveal:nth-child(5) { transition-delay: 0.5s; }
+/* Advanced staggered delays with glow effects */
+.scroll-reveal:nth-child(1) { 
+  transition-delay: 0.1s; 
+}
+.scroll-reveal:nth-child(2) { 
+  transition-delay: 0.3s; 
+}
+.scroll-reveal:nth-child(3) { 
+  transition-delay: 0.5s; 
+}
+.scroll-reveal:nth-child(4) { 
+  transition-delay: 0.7s; 
+}
+.scroll-reveal:nth-child(5) { 
+  transition-delay: 0.9s; 
+}
+
+/* Glow effect on reveal */
+.scroll-reveal.revealed h2,
+.scroll-reveal.revealed h3 {
+  text-shadow: 0 0 30px rgba(251, 146, 60, 0.3);
+}
+
+/* Floating animation for images */
+.scroll-reveal-right.revealed img {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
 

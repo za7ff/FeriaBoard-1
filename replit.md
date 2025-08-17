@@ -72,13 +72,14 @@ Avatar: Uses Discord profile image (https://cdn.discordapp.com/avatars/700928520
 
 ## Recent Enhancements (January 2025)
 - **Complete Theme Overhaul**: Redesigned to match baguzel.com's modern aesthetic
-- **Navigation Header**: Professional top navigation with Home, About, Contact, and Admin links
+- **Bottom Navigation**: Professional bottom navigation with Home, About, Contact links for better mobile UX
 - **Hero Section**: Large heading with professional tagline and call-to-action button
 - **Skills Showcase**: Horizontal scrolling tags displaying technical expertise
 - **Statistics Section**: Professional stats display with impressive numbers
 - **Color Scheme**: Dark theme with orange accent colors matching baguzel.com
 - **Typography**: Modern Inter font with proper weight hierarchy
 - **Professional Layout**: Clean sections with proper spacing and card-based design
+- **Premium Scroll Animations**: Advanced scroll-triggered animations with blur effects, rotations, 3D transforms, glow effects, and floating animations using cubic-bezier easing
 
 ## Styling & Design
 - **Tailwind CSS**: Utility-first CSS framework with custom configuration
