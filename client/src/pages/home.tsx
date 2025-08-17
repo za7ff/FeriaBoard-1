@@ -232,7 +232,7 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 baguzel-heading scroll-reveal">About</h2>
+          <h2 className="text-4xl md:text-5xl font-normal mb-8 baguzel-heading scroll-reveal">About</h2>
           <p className="text-gray-300 text-lg mb-12 scroll-reveal">Learn more about me</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
