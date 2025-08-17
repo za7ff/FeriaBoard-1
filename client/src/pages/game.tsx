@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Trophy, Star } from "lucide-react";
+import { useLocation } from "wouter";
 
 const choices = ["rock", "paper", "scissors"] as const;
 type Choice = typeof choices[number];
@@ -115,11 +116,11 @@ export default function Game() {
         <div className="flex items-center justify-between mb-8">
           <Button 
             variant="ghost" 
-            onClick={() => window.history.back()}
+            onClick={() => window.location.href = "/"}
             className="text-white hover:text-gray-300"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            العودة للرئيسية
+            back
           </Button>
           
           <div className="flex items-center gap-4">
