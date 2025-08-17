@@ -59,7 +59,7 @@ export default function Game() {
             setResult("You Win! 🎉");
             setPlayerScore(prev => prev + 1);
           } else if (winner === "computer") {
-            setResult("Feria Wins! 😊");
+            setResult("يا هطف فزت ههههههه");
             setComputerScore(prev => prev + 1);
           } else {
             setResult("It's a Tie! 🤝");
