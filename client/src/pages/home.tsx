@@ -153,9 +153,9 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center -mt-52">
           {/* Welcome Badge with Animation */}
-          <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 rounded-full px-6 py-3 mb-12 hover:scale-105 transition-all duration-300 animate-gentle-glow">
-            <span className="text-xl animate-subtle-wave">👋</span>
-            <span className="text-orange-400 font-medium text-lg">Feria Welcome's You!</span>
+          <div className="inline-flex flex-col items-center gap-3 bg-orange-500/10 border border-orange-500/20 rounded-2xl px-8 py-6 mb-12 hover:scale-105 transition-all duration-300 animate-gentle-glow">
+            <span className="text-2xl animate-subtle-wave">👋</span>
+            <span className="text-orange-400 font-medium text-lg text-center whitespace-nowrap">Feria Welcome's You!</span>
           </div>
 
           {/* Main Heading */}
