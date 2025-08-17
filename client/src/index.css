@@ -137,21 +137,25 @@
   .baguzel-btn {
     background: hsl(15 100% 60%);
     color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
     font-weight: 600;
+    font-size: 1.125rem;
     border: none;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    box-shadow: 0 10px 25px rgba(251, 146, 60, 0.3);
   }
 
   .baguzel-btn:hover {
     background: hsl(15 100% 55%);
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(251, 146, 60, 0.4);
   }
 
   .baguzel-card {

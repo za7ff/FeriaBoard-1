@@ -153,20 +153,20 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center px-6 py-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Welcome Badge */}
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-8">
-            <span className="text-lg">👋</span>
-            <span className="text-orange-400 font-medium">Feria Welcome's You!</span>
+          <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 rounded-full px-6 py-3 mb-12">
+            <span className="text-xl">👋</span>
+            <span className="text-orange-400 font-medium text-lg">Feria Welcome's You!</span>
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-12 baguzel-heading">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-tight mb-16 baguzel-heading">
             Feria
           </h1>
 
           {/* CTA Button */}
           <a
             href="#comments"
-            className="baguzel-btn text-lg"
+            className="baguzel-btn text-xl px-8 py-4"
             data-testid="button-cta"
             onClick={(e) => {
               e.preventDefault();
