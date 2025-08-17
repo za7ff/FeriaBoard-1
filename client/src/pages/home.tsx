@@ -71,7 +71,6 @@ export default function Home() {
                 document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <HomeIcon className="w-4 h-4" />
               Home
             </a>
             <a 
@@ -83,19 +82,17 @@ export default function Home() {
                 setShowInfo(true);
               }}
             >
-              <User className="w-4 h-4" />
               About
             </a>
             <a
               href="#contact"
-              className="nav-item text-center"
+              className="nav-item"
               data-testid="link-contact"
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector('#comments')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
-              <MessageSquare className="w-4 h-4" />
               Contact
             </a>
           </div>
