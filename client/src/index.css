@@ -1040,11 +1040,12 @@
 
 .typewriter-cursor {
   display: inline-block;
-  width: 3px;
-  height: 1.5rem;
+  width: 2px;
+  height: 1.2em;
   background-color: #f97316;
-  margin-left: 2px;
+  margin-left: 3px;
   animation: blink 1s infinite;
+  vertical-align: text-bottom;
 }
 
 @keyframes typewriter {
