@@ -171,7 +171,6 @@ export default function Home() {
           </div>
         </div>
       </nav>
-
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center -mt-52">
@@ -232,7 +231,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
       {/* About Section */}
       <section id="about" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -298,7 +296,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
       <section id="contact" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10 bg-gray-900/50">
         <div className="max-w-2xl mx-auto text-center">
@@ -316,7 +313,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="text-left">
-                  <h4 className="text-white font-medium">Discord</h4>
+                  <h4 className="text-white font-medium">Meshall</h4>
                   <p className="text-gray-400 text-sm">Contact me on Discord</p>
                 </div>
               </div>
