@@ -284,7 +284,7 @@ export default function Home() {
                 </div>
                 <div className="text-left">
                   <h4 className="text-white font-medium">Discord</h4>
-                  <p className="text-gray-400 text-sm">700928520716681237</p>
+                  <p className="text-gray-400 text-sm">Contact me on Discord</p>
                 </div>
               </div>
               
