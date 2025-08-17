@@ -113,7 +113,7 @@ export default function Game() {
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             حجر ورقة مقص
           </h1>
-          <p className="text-gray-400 text-lg">تحدى فيريا في لعبة كلاسيكية!</p>
+          <p className="text-gray-400 text-lg">1v1</p>
         </div>
 
         {/* Game Area */}
