@@ -12,6 +12,7 @@ import HeroGeometric from "@/components/HeroGeometric";
 export default function Home() {
   const [comment, setComment] = useState("");
   const [showInfo, setShowInfo] = useState(false);
+  const [showComments, setShowComments] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
@@ -29,6 +30,7 @@ export default function Home() {
         description: "Your comment has been added.",
       });
       setComment("");
+      setShowComments(false);
     },
     onError: (error: any) => {
       toast({
@@ -172,26 +174,30 @@ export default function Home() {
           </h1>
 
           {/* CTA Button */}
-          <a
-            href="#comments"
+          <button
             className="baguzel-btn text-xl px-8 py-4"
             data-testid="button-cta"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('#comments')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              });
-            }}
+            onClick={() => setShowComments(!showComments)}
           >
             Comment
-          </a>
+          </button>
         </div>
       </section>
-      {/* Contact/Comment Section */}
-      <section id="comments" className="py-16 px-6 relative z-10">
-        <div className="max-w-lg mx-auto">
-          <div className="baguzel-card">
-            <h3 className="text-2xl font-bold baguzel-heading mb-6 text-center">Leave a Comment</h3>
+      {/* Comment Modal */}
+      {showComments && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+          <div className="baguzel-card max-w-md w-full">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold baguzel-heading">Comment</h3>
+              <button
+                onClick={() => setShowComments(false)}
+                className="text-gray-400 hover:text-white transition-colors text-xl"
+                data-testid="button-close-comments"
+              >
+                ✕
+              </button>
+            </div>
+            
             <form onSubmit={handleSubmit} className="space-y-4">
               <Textarea
                 value={comment}
@@ -212,7 +218,7 @@ export default function Home() {
             </form>
           </div>
         </div>
-      </section>
+      )}
     </div>
   );
 }
