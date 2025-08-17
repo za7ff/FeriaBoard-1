@@ -58,23 +58,26 @@ export default function Home() {
     return () => window.removeEventListener('scroll', throttledScroll);
   }, []);
 
-  // Typewriter effect for About section
+  // Enhanced typewriter effect with character-by-character animation
   useEffect(() => {
     if (showTypewriter) {
       const text = "Hi, I'm Meshall";
       let index = 0;
       
+      // Clear any existing text first
+      setTypewriterText("");
+      
       const typeInterval = setInterval(() => {
-        if (index <= text.length) {
-          setTypewriterText(text.slice(0, index));
+        if (index < text.length) {
+          setTypewriterText(text.slice(0, index + 1));
           index++;
         } else {
           clearInterval(typeInterval);
           setTimeout(() => {
             setTypingComplete(true);
-          }, 1000);
+          }, 800);
         }
-      }, 150);
+      }, 120); // Slightly faster for better flow
 
       return () => clearInterval(typeInterval);
     }
@@ -233,21 +236,32 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-left scroll-reveal-left typewriter-trigger">
-              <h3 className="text-2xl font-bold text-white mb-4 min-h-[2rem]">
+              <h3 className={`text-2xl font-bold text-white mb-4 min-h-[2rem] ${typingComplete ? 'typewriter-complete' : ''}`}>
                 {showTypewriter ? (
-                  <>
-                    <span>{typewriterText}</span>
+                  <div className="typewriter-container">
+                    {typewriterText.split('').map((char, index) => (
+                      <span 
+                        key={index}
+                        className="typewriter-char"
+                        style={{ 
+                          animationDelay: `${index * 0.08}s`,
+                          display: char === ' ' ? 'inline' : 'inline-block'
+                        }}
+                      >
+                        {char === ' ' ? '\u00A0' : char}
+                      </span>
+                    ))}
                     {!typingComplete && <span className="typewriter-cursor"></span>}
-                  </>
+                  </div>
                 ) : (
                   "Hi, I'm Meshall"
                 )}
               </h3>
-              <p className={`text-gray-300 mb-6 ${typingComplete ? 'typewriter-paragraph' : 'opacity-0'}`}>
+              <p className={`text-gray-300 mb-6 transition-all duration-1000 ${typingComplete ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`} style={{transitionDelay: '0.3s'}}>
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
                 I love creating modern web applications and exploring new technologies.
               </p>
-              <p className={`text-gray-300 mb-6 ${typingComplete ? 'typewriter-paragraph' : 'opacity-0'}`} style={{animationDelay: '0.5s'}}>
+              <p className={`text-gray-300 mb-6 transition-all duration-1000 ${typingComplete ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`} style={{transitionDelay: '0.6s'}}>
                 Currently focused on full-stack development with React, Node.js, 
                 and modern web technologies. Always eager to learn and take on new challenges.
               </p>

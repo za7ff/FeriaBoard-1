@@ -1023,48 +1023,84 @@
 }
 
 
-/* Typewriter Animation - Fixed */
+/* Advanced Typewriter Animation */
 .typewriter-container {
   position: relative;
   display: inline-block;
 }
 
-.typewriter-text {
+.typewriter-char {
   opacity: 0;
-}
-
-.typewriter-text.active {
-  opacity: 1;
-  animation: typewriter 3s steps(15, end) forwards;
+  transform: translateY(10px) scale(0.8);
+  filter: blur(3px);
+  animation: charReveal 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 .typewriter-cursor {
   display: inline-block;
-  width: 2px;
+  width: 3px;
   height: 1.2em;
-  background-color: #f97316;
+  background: linear-gradient(45deg, #f97316, #fb923c);
   margin-left: 3px;
-  animation: blink 1s infinite;
+  animation: advancedBlink 1.2s ease-in-out infinite, cursorGlow 2s ease-in-out infinite;
   vertical-align: text-bottom;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
 }
 
-@keyframes typewriter {
+@keyframes charReveal {
   0% {
-    width: 0;
-    overflow: hidden;
+    opacity: 0;
+    transform: translateY(15px) scale(0.7) rotateX(90deg);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-2px) scale(1.1) rotateX(0deg);
+    filter: blur(1px);
   }
   100% {
-    width: 100%;
-    overflow: hidden;
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0);
   }
 }
 
-@keyframes blink {
-  0%, 50% {
+@keyframes advancedBlink {
+  0%, 30% {
     opacity: 1;
+    transform: scaleY(1);
   }
-  51%, 100% {
+  35%, 65% {
     opacity: 0;
+    transform: scaleY(0.8);
+  }
+  70%, 100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes cursorGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.8), 0 0 30px rgba(249, 115, 22, 0.4);
+  }
+}
+
+/* Text glow effect after typing completes */
+.typewriter-complete {
+  animation: textGlow 1s ease-out forwards;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(249, 115, 22, 0.1);
   }
 }
 
