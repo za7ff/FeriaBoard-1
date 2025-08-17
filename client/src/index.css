@@ -1028,8 +1028,8 @@
   overflow: hidden;
   border-right: 3px solid #f97316;
   white-space: nowrap;
-  margin: 0 auto;
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  width: 0;
+  animation: typing 3.5s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
@@ -1048,6 +1048,16 @@
   50% { 
     border-color: #f97316;
   }
+}
+
+/* Alternative character by character typing */
+.char-typewriter {
+  display: inline-block;
+}
+
+.char-typewriter .char {
+  opacity: 0;
+  animation: charReveal 0.1s ease-out forwards;
 }
 
 .typewriter-paragraph {
