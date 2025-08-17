@@ -82,7 +82,7 @@ export default function Game() {
             if (newPlayerScore > newComputerScore) {
               setFinalMessage("🎉 مبروك! أنت الفائز!");
             } else if (newComputerScore > newPlayerScore) {
-              setFinalMessage("😅 فيريا فاز هذه المرة!");
+              setFinalMessage("برا ي هطففففففف ههههههههههههههههههه Ezzzzzzzzzzzz");
             } else {
               setFinalMessage("🤝 تعادل! لعبة رائعة!");
             }
@@ -172,7 +172,7 @@ export default function Game() {
                 </div>
               )}
               {gameOver && (
-                <div className="text-xl font-bold text-center animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                <div className="text-xl font-bold text-center animate-pulse from-yellow-400 to-orange-500 bg-clip-text text-transparent bg-[#00000000]">
                   {finalMessage}
                 </div>
               )}
