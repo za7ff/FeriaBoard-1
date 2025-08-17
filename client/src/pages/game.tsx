@@ -84,7 +84,7 @@ export default function Game() {
             } else if (newComputerScore > newPlayerScore) {
               setFinalMessage("برا ي هطففففففف ههههههههههههههههههه Ezzzzzzzzzzzz");
             } else {
-              setFinalMessage("🤝 تعادل! لعبة رائعة!");
+              setFinalMessage("تعادل قهررر");
             }
           }
           
