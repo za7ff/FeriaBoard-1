@@ -208,22 +208,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Tags */}
-      <section className="py-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {[
-              'Application Development', 'Front-End Development', 'Bots Programming', 
-              'UI Design', 'UX Design', 'Responsive Web Development', 
-              'Interactive User Interfaces', 'Advanced Workflow Optimization'
-            ].map((skill, index) => (
-              <span key={index} className="skill-tag">
-                {skill}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
 
 
