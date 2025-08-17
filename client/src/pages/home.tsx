@@ -11,32 +11,11 @@ import HeroGeometric from "@/components/HeroGeometric";
 
 export default function Home() {
   const [comment, setComment] = useState("");
-  const [showWelcome, setShowWelcome] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
-  // Show welcome animation on page load
-  useEffect(() => {
-    localStorage.removeItem('hasSeenWelcome');
-    
-    const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-    if (!hasSeenWelcome) {
-      const showTimer = setTimeout(() => {
-        setShowWelcome(true);
-      }, 500);
-      
-      const hideTimer = setTimeout(() => {
-        setShowWelcome(false);
-        localStorage.setItem('hasSeenWelcome', 'true');
-      }, 4500);
 
-      return () => {
-        clearTimeout(showTimer);
-        clearTimeout(hideTimer);
-      };
-    }
-  }, []);
 
   // Submit comment mutation
   const submitComment = useMutation({
@@ -118,20 +97,7 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Welcome notification overlay */}
-      {showWelcome && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center">
-          <div className="baguzel-card max-w-md mx-4">
-            <div className="text-center">
-              <div className="mb-4">
-                <span className="text-6xl">👋</span>
-              </div>
-              <p className="text-xl mb-2 text-orange-400">Feria Welcome's You!</p>
-              <h2 className="text-2xl font-bold baguzel-heading">Hello there!</h2>
-            </div>
-          </div>
-        </div>
-      )}
+
 
       {/* Personal info modal */}
       {showInfo && (
@@ -199,13 +165,17 @@ export default function Home() {
 
           {/* CTA Button */}
           <a
-            href="https://discordapp.com/users/700928520716681237"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#comments"
             className="baguzel-btn text-lg"
             data-testid="button-cta"
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#comments')?.scrollIntoView({ 
+                behavior: 'smooth' 
+              });
+            }}
           >
-            Let's Work Together
+            Comment
           </a>
         </div>
       </section>
@@ -215,7 +185,7 @@ export default function Home() {
 
 
       {/* Comment Section */}
-      <section className="py-16 px-6 relative z-10">
+      <section id="comments" className="py-16 px-6 relative z-10">
         <div className="max-w-lg mx-auto">
           <div className="baguzel-card">
             <h3 className="text-2xl font-bold baguzel-heading mb-6 text-center">Leave a Comment</h3>
