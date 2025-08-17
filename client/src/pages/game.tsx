@@ -59,10 +59,10 @@ export default function Game() {
             setResult("You Win! 🎉");
             setPlayerScore(prev => prev + 1);
           } else if (winner === "computer") {
-            setResult("يا هطف فزت ههههههه");
+            setResult("خسرت يا هطف فزت انا ههههههه");
             setComputerScore(prev => prev + 1);
           } else {
-            setResult("It's a Tie! 🤝");
+            setResult("تعادل");
           }
           
           setShowResult(true);
