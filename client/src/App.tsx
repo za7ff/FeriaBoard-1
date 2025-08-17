@@ -7,11 +7,13 @@ import Home from "@/pages/home";
 import Admin from "@/pages/admin";
 import AdminLogin from "@/pages/admin-login";
 import NotFound from "@/pages/not-found";
+import Game from "@/pages/game";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/game" component={Game} />
       <Route path="/admin" component={Admin} />
       <Route path="/admin/login" component={AdminLogin} />
       <Route path="*" component={NotFound} />

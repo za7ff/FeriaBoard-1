@@ -184,13 +184,23 @@ export default function Home() {
           <h1 className="md:text-7xl baguzel-heading text-[34px] font-extralight pl-[-5px] pr-[-5px] ml-[-1px] mr-[-1px] mt-[24px] mb-[24px] pt-[17px] pb-[17px]">Meshall .</h1>
 
           {/* CTA Button */}
-          <button
-            className="baguzel-btn text-xl px-8 py-4"
-            data-testid="button-cta"
-            onClick={() => setShowComments(!showComments)}
-          >
-            Comment
-          </button>
+          <div className="flex flex-col gap-4">
+            <button
+              className="baguzel-btn text-xl px-8 py-4"
+              data-testid="button-cta"
+              onClick={() => setShowComments(!showComments)}
+            >
+              Comment
+            </button>
+            
+            <button
+              onClick={() => window.location.href = '/game'}
+              className="baguzel-btn text-lg px-8 py-4 bg-gradient-to-r from-white/10 to-gray-800/50 hover:from-white/20 hover:to-gray-700/50 border border-white/20"
+              data-testid="button-game"
+            >
+              🎮 Play a Game With Feria
+            </button>
+          </div>
         </div>
       </section>
       {/* Comment Modal */}
