@@ -172,7 +172,7 @@ export default function Game() {
                 </div>
               )}
               {gameOver && (
-                <div className="text-xl font-bold text-center animate-pulse from-yellow-400 to-orange-500 bg-clip-text text-transparent bg-[#00000000]">
+                <div className="text-xl font-bold text-center animate-pulse text-yellow-400">
                   {finalMessage}
                 </div>
               )}
