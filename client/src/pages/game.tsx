@@ -139,10 +139,10 @@ export default function Game() {
 
         {/* Game Title */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent mt-[22px] mb-[22px] pt-[10px] pb-[10px]">
             حجر ورقة مقص
           </h1>
-          <p className="text-gray-400 text-lg">تحدى فيريا في لعبة كلاسيكية!</p>
+          <p className="text-gray-400 text-lg">1vs1</p>
         </div>
 
         {/* Game Area */}
