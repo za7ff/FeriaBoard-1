@@ -215,7 +215,7 @@ export default function Home() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Leave a comment..."
-                className="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+                className="w-full p-4 bg-[#120f0f00] border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
                 rows={4}
                 data-testid="input-comment"
               />
