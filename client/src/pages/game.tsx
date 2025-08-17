@@ -9,13 +9,14 @@ type Choice = typeof choices[number];
 
 const getWinner = (playerChoice: Choice, computerChoice: Choice): "player" | "computer" | "tie" => {
   if (playerChoice === computerChoice) return "tie";
-  if (
-    (playerChoice === "rock" && computerChoice === "scissors") ||
-    (playerChoice === "paper" && computerChoice === "rock") ||
-    (playerChoice === "scissors" && computerChoice === "paper")
-  ) {
+  
+  // 70% chance for player to win
+  const playerWinChance = Math.random() < 0.7;
+  
+  if (playerWinChance) {
     return "player";
   }
+  
   return "computer";
 };
 
@@ -33,9 +34,12 @@ export default function Game() {
   const [computerScore, setComputerScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const [attemptsLeft, setAttemptsLeft] = useState(5);
+  const [gameOver, setGameOver] = useState(false);
+  const [finalMessage, setFinalMessage] = useState("");
 
   const playGame = (choice: Choice) => {
-    if (isPlaying) return;
+    if (isPlaying || gameOver) return;
     
     setIsPlaying(true);
     setPlayerChoice(choice);
@@ -55,14 +59,33 @@ export default function Game() {
         const winner = getWinner(choice, finalComputerChoice);
         
         setTimeout(() => {
+          let newPlayerScore = playerScore;
+          let newComputerScore = computerScore;
+          
           if (winner === "player") {
             setResult("فزت! 🎉");
-            setPlayerScore(prev => prev + 1);
+            newPlayerScore = playerScore + 1;
+            setPlayerScore(newPlayerScore);
           } else if (winner === "computer") {
             setResult("خسرت يا هطف فزت انا ههههههه");
-            setComputerScore(prev => prev + 1);
+            newComputerScore = computerScore + 1;
+            setComputerScore(newComputerScore);
           } else {
             setResult("تعادل");
+          }
+          
+          const newAttemptsLeft = attemptsLeft - 1;
+          setAttemptsLeft(newAttemptsLeft);
+          
+          if (newAttemptsLeft === 0) {
+            setGameOver(true);
+            if (newPlayerScore > newComputerScore) {
+              setFinalMessage("🎉 مبروك! أنت الفائز!");
+            } else if (newComputerScore > newPlayerScore) {
+              setFinalMessage("😅 فيريا فاز هذه المرة!");
+            } else {
+              setFinalMessage("🤝 تعادل! لعبة رائعة!");
+            }
           }
           
           setShowResult(true);
@@ -80,6 +103,9 @@ export default function Game() {
     setComputerScore(0);
     setShowResult(false);
     setIsPlaying(false);
+    setAttemptsLeft(5);
+    setGameOver(false);
+    setFinalMessage("");
   };
 
   return (
@@ -105,6 +131,9 @@ export default function Game() {
               <Star className="w-4 h-4 mr-1" />
               Feria: {computerScore}
             </Badge>
+            <Badge variant="outline" className="border-orange-500/20 text-orange-400">
+              المحاولات المتبقية: {attemptsLeft}
+            </Badge>
           </div>
         </div>
 
@@ -113,7 +142,7 @@ export default function Game() {
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
             حجر ورقة مقص
           </h1>
-          <p className="text-gray-400 text-lg">1v1</p>
+          <p className="text-gray-400 text-lg">تحدى فيريا في لعبة كلاسيكية!</p>
         </div>
 
         {/* Game Area */}
@@ -121,7 +150,7 @@ export default function Game() {
           {/* Player Side */}
           <Card className="bg-gray-900/50 border-gray-700">
             <CardHeader className="text-center">
-              <CardTitle className="text-white">You</CardTitle>
+              <CardTitle className="text-white">أنت</CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center text-4xl">
@@ -137,9 +166,14 @@ export default function Game() {
           <div className="flex items-center justify-center">
             <div className="text-center">
               <div className="text-2xl font-bold text-white mb-4">VS</div>
-              {showResult && (
+              {showResult && !gameOver && (
                 <div className="text-lg font-semibold text-center animate-bounce">
                   {result}
+                </div>
+              )}
+              {gameOver && (
+                <div className="text-xl font-bold text-center animate-pulse bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+                  {finalMessage}
                 </div>
               )}
             </div>
@@ -172,7 +206,7 @@ export default function Game() {
               <Button
                 key={choice}
                 onClick={() => playGame(choice)}
-                disabled={isPlaying}
+                disabled={isPlaying || gameOver}
                 className="h-20 text-4xl bg-gray-800 hover:bg-gray-700 border border-gray-600 disabled:opacity-50"
               >
                 {choiceEmojis[choice]}
@@ -185,7 +219,7 @@ export default function Game() {
               onClick={resetGame}
               variant="outline"
               className="border-white/20 text-white hover:bg-white/10"
-            >Reset</Button>
+            >إعادة اللعبة</Button>
           </div>
         </div>
 
