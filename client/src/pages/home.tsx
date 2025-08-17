@@ -196,9 +196,7 @@ export default function Home() {
               onClick={() => window.location.href = '/game'}
               className="baguzel-btn text-lg px-8 py-4 bg-gradient-to-r from-white/10 to-gray-800/50 hover:from-white/20 hover:to-gray-700/50 border border-white/20"
               data-testid="button-game"
-            >
-              🎮 Play a Game With Feria
-            </button>
+            > Play a Game With Feria</button>
           </div>
         </div>
       </section>
