@@ -185,9 +185,7 @@ export default function Game() {
               onClick={resetGame}
               variant="outline"
               className="border-white/20 text-white hover:bg-white/10"
-            >
-              إعادة اللعبة
-            </Button>
+            >Reset</Button>
           </div>
         </div>
 
