@@ -292,7 +292,7 @@ export default function Home() {
                   <img
                     src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
                     alt="Meshall alHarbi"
-                    className="w-48 h-48 rounded-full border-4 border-orange-500/30"
+                    className="w-48 h-48 rounded-full border-4 border-white/30"
                   />
                 </div>
               </div>

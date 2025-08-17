@@ -135,8 +135,8 @@
 
   /* Button styles inspired by baguzel.com */
   .baguzel-btn {
-    background: hsl(15 100% 60%);
-    color: white;
+    background: hsl(0 0% 100%);
+    color: hsl(222 16% 8%);
     padding: 1rem 2rem;
     border-radius: 1rem;
     font-weight: 600;
@@ -149,13 +149,13 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    box-shadow: 0 10px 25px rgba(251, 146, 60, 0.3);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
   }
 
   .baguzel-btn:hover {
-    background: hsl(15 100% 55%);
+    background: hsl(0 0% 95%);
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 15px 35px rgba(251, 146, 60, 0.4);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.4);
   }
 
   .baguzel-card {
@@ -246,11 +246,11 @@
 /* Gentle glow animation for the whole badge */
 @keyframes gentleGlow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(251, 146, 60, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
     transform: translateY(0px);
   }
   50% {
-    box-shadow: 0 0 20px rgba(251, 146, 60, 0.3);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     transform: translateY(-1px);
   }
 }
@@ -1009,7 +1009,7 @@
 /* Glow effect on reveal */
 .scroll-reveal.revealed h2,
 .scroll-reveal.revealed h3 {
-  text-shadow: 0 0 30px rgba(251, 146, 60, 0.3);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
 }
 
 /* Floating animation for images */
