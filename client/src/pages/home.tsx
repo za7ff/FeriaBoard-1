@@ -153,7 +153,7 @@ export default function Home() {
       <section className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center -mt-52">
           {/* Welcome Badge with Animation */}
-          <div className="inline-flex items-center gap-3 bg-gray-800/50 border border-gray-700/50 rounded-full px-5 py-3 mb-12 hover:scale-105 transition-all duration-300 animate-gentle-glow">
+          <div className="inline-flex items-center gap-3 bg-gray-800/50 border border-gray-700/50 rounded-full px-5 py-3 mb-12 hover:scale-105 transition-all duration-300">
             <span className="text-lg animate-subtle-wave">👋</span>
             <span className="text-gray-300 font-medium text-sm">Baguzel Welcome's You!</span>
           </div>
