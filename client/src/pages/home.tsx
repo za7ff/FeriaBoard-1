@@ -61,7 +61,7 @@ export default function Home() {
       <HeroGeometric />
       {/* Navigation Header */}
       <nav className="fixed top-0 left-0 right-0 z-50 p-6 relative">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-center">
           <div className="flex items-center gap-8">
             <a 
               href="#home" 
@@ -97,13 +97,15 @@ export default function Home() {
             </a>
           </div>
           
-          <button
-            onClick={() => setLocation("/admin/login")}
-            className="nav-item"
-            data-testid="button-admin"
-          >
-            Admin
-          </button>
+          <div className="absolute right-6">
+            <button
+              onClick={() => setLocation("/admin/login")}
+              className="nav-item"
+              data-testid="button-admin"
+            >
+              Admin
+            </button>
+          </div>
         </div>
       </nav>
       {/* Personal info modal */}
