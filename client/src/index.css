@@ -1022,3 +1022,64 @@
   50% { transform: translateY(-10px); }
 }
 
+
+/* Typewriter Animation */
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid #f97316;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { 
+    width: 0;
+  }
+  to { 
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from, to { 
+    border-color: transparent;
+  }
+  50% { 
+    border-color: #f97316;
+  }
+}
+
+.typewriter-paragraph {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 4s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Character by character typing effect */
+.char-typing {
+  opacity: 0;
+  animation: charFadeIn 0.1s ease-out forwards;
+}
+
+@keyframes charFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

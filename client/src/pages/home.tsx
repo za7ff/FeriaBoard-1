@@ -15,6 +15,7 @@ export default function Home() {
   const [showComments, setShowComments] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
+  const [typingComplete, setTypingComplete] = useState(false);
 
   // Enhanced scroll animation setup
   useEffect(() => {
@@ -48,6 +49,15 @@ export default function Home() {
     handleScroll(); // Check initial state
     
     return () => window.removeEventListener('scroll', throttledScroll);
+  }, []);
+
+  // Typewriter effect for About section
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTypingComplete(true);
+    }, 4000); // Start after typewriter completes
+
+    return () => clearTimeout(timer);
   }, []);
 
 
@@ -203,12 +213,12 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-left scroll-reveal-left">
-              <h3 className="text-2xl font-bold text-white mb-4">Hi, I'm Meshall</h3>
-              <p className="text-gray-300 mb-6">
+              <h3 className="text-2xl font-bold text-white mb-4 typewriter">Hi, I'm Meshall</h3>
+              <p className={`text-gray-300 mb-6 ${typingComplete ? 'typewriter-paragraph' : 'opacity-0'}`}>
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
                 I love creating modern web applications and exploring new technologies.
               </p>
-              <p className="text-gray-300 mb-6">
+              <p className={`text-gray-300 mb-6 ${typingComplete ? 'typewriter-paragraph' : 'opacity-0'}`} style={{animationDelay: '0.5s'}}>
                 Currently focused on full-stack development with React, Node.js, 
                 and modern web technologies. Always eager to learn and take on new challenges.
               </p>
