@@ -229,27 +229,54 @@
   }
 }
 
-/* Balanced hand wave animation */
-@keyframes balancedWave {
-  0%, 100% {
-    transform: rotate(0deg) scale(1);
+/* Quick wave animation */
+@keyframes quickWave {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(20deg);
+  }
+  10% {
+    transform: rotate(-15deg);
+  }
+  15% {
+    transform: rotate(18deg);
   }
   20% {
-    transform: rotate(15deg) scale(1.02);
+    transform: rotate(-12deg);
   }
-  40% {
-    transform: rotate(-5deg) scale(1.01);
+  25% {
+    transform: rotate(15deg);
   }
-  60% {
-    transform: rotate(10deg) scale(1.01);
+  30% {
+    transform: rotate(0deg);
+  }
+  30%, 70% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(15deg);
   }
   80% {
-    transform: rotate(0deg) scale(1);
+    transform: rotate(-12deg);
+  }
+  85% {
+    transform: rotate(10deg);
+  }
+  90% {
+    transform: rotate(-8deg);
+  }
+  95% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
 .animate-subtle-wave {
-  animation: balancedWave 2.5s ease-in-out infinite;
+  animation: quickWave 4s ease-in-out infinite;
   transform-origin: 65% 65%;
 }
 
