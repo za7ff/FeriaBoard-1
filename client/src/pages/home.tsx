@@ -177,16 +177,16 @@ export default function Home() {
           {/* Welcome Badge with Animation */}
           <div className="inline-flex items-center gap-3 bg-gray-800/50 border border-gray-700/50 rounded-full px-5 py-3 mb-12 hover:scale-105 transition-all duration-300">
             <div className="animate-subtle-wave">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-                <g transform="translate(2,1)">
-                  <path d="M8 18c1.1 0 2-.9 2-2v-1h2c1.1 0 2-.9 2-2v-1h1c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2s-2 .9-2 2v2h-1V8c0-1.1-.9-2-2-2s-2 .9-2 2v4H8V8c0-1.1-.9-2-2-2s-2 .9-2 2v6H3V8c0-1.1-.9-2-2-2s-2 .9-2 2v8c0 2.2 1.8 4 4 4h5z" fill="currentColor" opacity="0.9"/>
-                  <path d="M16 8c0-1.1-.9-2-2-2s-2 .9-2 2v2h2c1.1 0 2-.9 2-2z" fill="currentColor" opacity="0.95"/>
-                  <path d="M13 6V4c0-1.1-.9-2-2-2s-2 .9-2 2v8h2V6h2z" fill="currentColor"/>
-                  <path d="M10 6V3c0-1.1-.9-2-2-2s-2 .9-2 2v9h2V6h2z" fill="currentColor"/>
-                  <path d="M7 6V4c0-1.1-.9-2-2-2s-2 .9-2 2v8h2V6h2z" fill="currentColor" opacity="0.95"/>
-                  <path d="M4 6V5c0-1.1-.9-2-2-2s-2 .9-2 2v9h2V6h2z" fill="currentColor" opacity="0.9"/>
-                  <ellipse cx="8" cy="10" rx="3" ry="1.5" fill="white" opacity="0.1"/>
-                </g>
+              <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-2h-12v2z" fill="#F4D03F"/>
+                <ellipse cx="16" cy="18" rx="6" ry="4" fill="#F4D03F"/>
+                <path d="M9 16c-1.1 0-2-.9-2-2v-3c0-1.1.9-2 2-2s2 .9 2 2v3c0 1.1-.9 2-2 2z" fill="#F4D03F"/>
+                <path d="M13 14v-7c0-1.1.9-2 2-2s2 .9 2 2v7h-4z" fill="#F4D03F"/>
+                <path d="M16 14v-8c0-1.1.9-2 2-2s2 .9 2 2v8h-4z" fill="#F4D03F"/>
+                <path d="M19 14v-7c0-1.1.9-2 2-2s2 .9 2 2v7h-4z" fill="#F4D03F"/>
+                <path d="M22 14v-5c0-1.1.9-2 2-2s2 .9 2 2v5h-4z" fill="#F4D03F"/>
+                <ellipse cx="16" cy="16" rx="4" ry="2" fill="#F7DC6F" opacity="0.6"/>
+                <path d="M10 19c0 0.5.4 1 1 1h10c.6 0 1-.5 1-1v-1H10v1z" fill="#D4AC0D" opacity="0.3"/>
               </svg>
             </div>
             <span className="text-gray-300 font-medium text-sm">Feria Welcome's You!</span>
