@@ -16,6 +16,25 @@ export default function Home() {
   const { toast } = useToast();
   const [, setLocation] = useLocation();
 
+  // Scroll animation setup
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+      elements.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('revealed');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
 
   // Submit comment mutation
@@ -165,11 +184,11 @@ export default function Home() {
       {/* About Section */}
       <section id="about" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 baguzel-heading">About</h2>
-          <p className="text-gray-300 text-lg mb-12">Learn more about me</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 baguzel-heading scroll-reveal">About</h2>
+          <p className="text-gray-300 text-lg mb-12 scroll-reveal">Learn more about me</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="text-left">
+            <div className="text-left scroll-reveal-left">
               <h3 className="text-2xl font-bold text-white mb-4">Hi, I'm Meshall</h3>
               <p className="text-gray-300 mb-6">
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
@@ -195,7 +214,7 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="flex justify-center">
+            <div className="flex justify-center scroll-reveal-right">
               <div className="relative">
                 <div className="w-64 h-64 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-full flex items-center justify-center">
                   <img
@@ -213,10 +232,10 @@ export default function Home() {
       {/* Contact Section */}
       <section id="contact" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10 bg-gray-900/50">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 baguzel-heading">Contact</h2>
-          <p className="text-gray-300 text-lg mb-12">Get in touch with me</p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 baguzel-heading scroll-reveal">Contact</h2>
+          <p className="text-gray-300 text-lg mb-12 scroll-reveal">Get in touch with me</p>
           
-          <div className="baguzel-card max-w-md mx-auto">
+          <div className="baguzel-card max-w-md mx-auto scroll-reveal-scale">
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center">
