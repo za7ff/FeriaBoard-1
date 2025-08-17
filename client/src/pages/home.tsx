@@ -88,7 +88,7 @@ export default function Home() {
             </a>
             <a
               href="#contact"
-              className="nav-item"
+              className="nav-item text-center"
               data-testid="link-contact"
               onClick={(e) => {
                 e.preventDefault();
@@ -109,9 +109,6 @@ export default function Home() {
           </button>
         </div>
       </nav>
-
-
-
       {/* Personal info modal */}
       {showInfo && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
@@ -161,7 +158,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center -mt-52">
@@ -192,11 +188,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-
-
-
-
-
       {/* Contact/Comment Section */}
       <section id="comments" className="py-16 px-6 relative z-10">
         <div className="max-w-lg mx-auto">
