@@ -1023,41 +1023,49 @@
 }
 
 
-/* Typewriter Animation */
-.typewriter {
-  overflow: hidden;
-  border-right: 3px solid #f97316;
-  white-space: nowrap;
-  width: 0;
-  animation: typing 3.5s steps(20, end) forwards, blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from { 
-    width: 0;
-  }
-  to { 
-    width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from, to { 
-    border-color: transparent;
-  }
-  50% { 
-    border-color: #f97316;
-  }
-}
-
-/* Alternative character by character typing */
-.char-typewriter {
+/* Typewriter Animation - Fixed */
+.typewriter-container {
+  position: relative;
   display: inline-block;
 }
 
-.char-typewriter .char {
+.typewriter-text {
   opacity: 0;
-  animation: charReveal 0.1s ease-out forwards;
+}
+
+.typewriter-text.active {
+  opacity: 1;
+  animation: typewriter 3s steps(15, end) forwards;
+}
+
+.typewriter-cursor {
+  position: absolute;
+  right: -3px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: #f97316;
+  animation: blink 1s infinite;
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0;
+    overflow: hidden;
+  }
+  100% {
+    width: 100%;
+    overflow: hidden;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
 }
 
 .typewriter-paragraph {

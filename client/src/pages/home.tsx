@@ -17,6 +17,7 @@ export default function Home() {
   const [, setLocation] = useLocation();
   const [typingComplete, setTypingComplete] = useState(false);
   const [showTypewriter, setShowTypewriter] = useState(false);
+  const [typewriterText, setTypewriterText] = useState("");
 
   // Enhanced scroll animation setup
   useEffect(() => {
@@ -60,11 +61,22 @@ export default function Home() {
   // Typewriter effect for About section
   useEffect(() => {
     if (showTypewriter) {
-      const timer = setTimeout(() => {
-        setTypingComplete(true);
-      }, 4000); // Start after typewriter completes
+      const text = "Hi, I'm Meshall";
+      let index = 0;
+      
+      const typeInterval = setInterval(() => {
+        if (index <= text.length) {
+          setTypewriterText(text.slice(0, index));
+          index++;
+        } else {
+          clearInterval(typeInterval);
+          setTimeout(() => {
+            setTypingComplete(true);
+          }, 1000);
+        }
+      }, 150);
 
-      return () => clearTimeout(timer);
+      return () => clearInterval(typeInterval);
     }
   }, [showTypewriter]);
 
@@ -221,9 +233,10 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-left scroll-reveal-left typewriter-trigger">
-              <h3 className={`text-2xl font-bold text-white mb-4 ${showTypewriter ? 'typewriter' : ''}`}>
-                Hi, I'm Meshall
-              </h3>
+              <div className="typewriter-container text-2xl font-bold text-white mb-4">
+                <span className="text-white">{typewriterText}</span>
+                {showTypewriter && !typingComplete && <span className="typewriter-cursor"></span>}
+              </div>
               <p className={`text-gray-300 mb-6 ${typingComplete ? 'typewriter-paragraph' : 'opacity-0'}`}>
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
                 I love creating modern web applications and exploring new technologies.
