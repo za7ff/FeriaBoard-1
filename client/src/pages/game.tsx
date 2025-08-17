@@ -128,7 +128,7 @@ export default function Game() {
                 {playerChoice ? choiceEmojis[playerChoice] : "🤔"}
               </div>
               <p className="text-gray-400">
-                {playerChoice ? `اخترت ${playerChoice === 'rock' ? 'حجر' : playerChoice === 'paper' ? 'ورقة' : 'مقص'}` : "اختر خيارك"}
+                {playerChoice ? `اخترت ${playerChoice === 'rock' ? 'حجر' : playerChoice === 'paper' ? 'ورقة' : 'مقص'}` : "اختار"}
               </p>
             </CardContent>
           </Card>
