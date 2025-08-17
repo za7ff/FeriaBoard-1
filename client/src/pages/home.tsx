@@ -172,23 +172,14 @@ export default function Home() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold leading-tight mb-8 baguzel-heading">
-            Transforming Ideas into Engaging<br />
-            Digital Experiences through<br />
-            Innovation and Precision.
+          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-12 baguzel-heading">
+            Feria
           </h1>
-
-          {/* Subheading */}
-          <p className="text-lg md:text-xl baguzel-subheading max-w-3xl mx-auto mb-12">
-            I am a skilled bots programmer and front-end developer, passionate about building seamless, 
-            interactive user experiences and innovative automation solutions. Explore my portfolio to see 
-            how technology and design come together to create impactful digital solutions.
-          </p>
 
           {/* CTA Button */}
           <a
             href="#comments"
-            className="baguzel-btn text-lg px-8 py-4"
+            className="baguzel-btn text-xl px-8 py-4"
             data-testid="button-cta"
             onClick={(e) => {
               e.preventDefault();
@@ -197,7 +188,7 @@ export default function Home() {
               });
             }}
           >
-            Let's Work Together
+            Comment
           </a>
         </div>
       </section>
