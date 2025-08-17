@@ -225,23 +225,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 px-6">
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="stat-number">300<span className="text-orange-400">+</span></div>
-            <div className="stat-label">Completed Projects</div>
-          </div>
-          <div>
-            <div className="stat-number">500<span className="text-orange-400">+</span></div>
-            <div className="stat-label">Happy Customers</div>
-          </div>
-          <div>
-            <div className="stat-number">12<span className="text-orange-400">+</span></div>
-            <div className="stat-label">Years of Experience</div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Comment Section */}
       <section className="py-16 px-6">
