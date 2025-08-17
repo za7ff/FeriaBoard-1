@@ -288,13 +288,11 @@ export default function Home() {
             
             <div className="flex justify-center scroll-reveal-right">
               <div className="relative">
-                <div className="w-64 h-64 bg-gradient-to-r from-white/20 to-white/30 rounded-full flex items-center justify-center">
-                  <img
-                    src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
-                    alt="Meshall alHarbi"
-                    className="w-48 h-48 rounded-full border-4 border-white/30"
-                  />
-                </div>
+                <img
+                  src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
+                  alt="Meshall alHarbi"
+                  className="w-48 h-48 rounded-full border-4 border-white/30"
+                />
               </div>
             </div>
           </div>
