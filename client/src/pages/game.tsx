@@ -189,15 +189,7 @@ export default function Game() {
           </div>
         </div>
 
-        {/* Game Rules */}
-        <Card className="bg-gray-900/30 border-gray-700 mt-12">
-          <CardHeader>
-            <CardTitle className="text-white text-center">كيف تلعب</CardTitle>
-          </CardHeader>
-          <CardContent className="text-gray-300 text-center">
-            <p>🗿 الحجر يهزم المقص • 📄 الورقة تهزم الحجر • ✂️ المقص يهزم الورقة</p>
-          </CardContent>
-        </Card>
+        
       </div>
     </div>
   );
