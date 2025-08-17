@@ -63,24 +63,37 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 p-6 relative">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-8">
-            <a href="#" className="nav-item active">
+            <a 
+              href="#home" 
+              className="nav-item active"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#home')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               <HomeIcon className="w-4 h-4" />
               Home
             </a>
-            <button 
-              onClick={() => setShowInfo(true)}
+            <a 
+              href="#about"
               className="nav-item"
               data-testid="button-info"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowInfo(true);
+              }}
             >
               <User className="w-4 h-4" />
               About
-            </button>
+            </a>
             <a
-              href="https://discordapp.com/users/700928520716681237"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               className="nav-item"
-              data-testid="link-discord"
+              data-testid="link-contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector('#comments')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               <MessageSquare className="w-4 h-4" />
               Contact
@@ -150,7 +163,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
+      <section id="home" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center -mt-52">
           {/* Welcome Badge with Animation */}
           <div className="inline-flex items-center gap-3 bg-gray-800/50 border border-gray-700/50 rounded-full px-5 py-3 mb-12 hover:scale-105 transition-all duration-300">
@@ -184,7 +197,7 @@ export default function Home() {
 
 
 
-      {/* Comment Section */}
+      {/* Contact/Comment Section */}
       <section id="comments" className="py-16 px-6 relative z-10">
         <div className="max-w-lg mx-auto">
           <div className="baguzel-card">
