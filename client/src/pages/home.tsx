@@ -176,19 +176,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center -mt-52">
           {/* Welcome Badge with Animation */}
           <div className="inline-flex items-center gap-3 bg-gray-800/50 border border-gray-700/50 rounded-full px-5 py-3 mb-12 hover:scale-105 transition-all duration-300">
-            <div className="animate-subtle-wave">
-              <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10 20c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-2h-12v2z" fill="#F4D03F"/>
-                <ellipse cx="16" cy="18" rx="6" ry="4" fill="#F4D03F"/>
-                <path d="M9 16c-1.1 0-2-.9-2-2v-3c0-1.1.9-2 2-2s2 .9 2 2v3c0 1.1-.9 2-2 2z" fill="#F4D03F"/>
-                <path d="M13 14v-7c0-1.1.9-2 2-2s2 .9 2 2v7h-4z" fill="#F4D03F"/>
-                <path d="M16 14v-8c0-1.1.9-2 2-2s2 .9 2 2v8h-4z" fill="#F4D03F"/>
-                <path d="M19 14v-7c0-1.1.9-2 2-2s2 .9 2 2v7h-4z" fill="#F4D03F"/>
-                <path d="M22 14v-5c0-1.1.9-2 2-2s2 .9 2 2v5h-4z" fill="#F4D03F"/>
-                <ellipse cx="16" cy="16" rx="4" ry="2" fill="#F7DC6F" opacity="0.6"/>
-                <path d="M10 19c0 0.5.4 1 1 1h10c.6 0 1-.5 1-1v-1H10v1z" fill="#D4AC0D" opacity="0.3"/>
-              </svg>
-            </div>
+            <span className="text-lg animate-subtle-wave">👋</span>
             <span className="text-gray-300 font-medium text-sm">Feria Welcome's You!</span>
           </div>
 
