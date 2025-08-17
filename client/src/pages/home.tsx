@@ -328,11 +328,6 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="baguzel-btn w-full flex items-center justify-center gap-2"
                 >
-                  <img
-                    src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
-                    alt="Meshall"
-                    className="w-5 h-5 rounded-full"
-                  />
                   Contact on Discord
                 </a>
               </div>
