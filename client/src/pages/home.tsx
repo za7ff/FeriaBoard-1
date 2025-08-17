@@ -112,13 +112,13 @@ export default function Home() {
       </nav>
       {/* Personal info modal */}
       {showInfo && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4 about-backdrop">
-          <div className="baguzel-card max-w-md w-full modal-enter about-container">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+          <div className="baguzel-card max-w-md w-full modal-enter">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold baguzel-heading about-title">About Me</h3>
+              <h3 className="text-2xl font-bold baguzel-heading">About Me</h3>
               <button
                 onClick={() => setShowInfo(false)}
-                className="text-gray-400 hover:text-white transition-colors text-xl about-close"
+                className="text-gray-400 hover:text-white transition-colors text-xl"
                 data-testid="button-close-info"
               >
                 ✕
@@ -129,26 +129,26 @@ export default function Home() {
               <img
                 src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
                 alt="Profile"
-                className="w-20 h-20 rounded-full border-4 border-gray-600 about-avatar"
+                className="w-20 h-20 rounded-full border-4 border-gray-600"
               />
             </div>
             
             <div className="space-y-4">
-              <div className="flex items-center gap-3 info-item">
+              <div className="flex items-center gap-3">
                 <span className="text-2xl">👤</span>
                 <div>
                   <span className="text-gray-400 font-medium">Name:</span>
                   <span className="text-white ml-2">Meshall alHarbi</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 info-item">
+              <div className="flex items-center gap-3">
                 <span className="text-2xl">🎂</span>
                 <div>
                   <span className="text-gray-400 font-medium">Age:</span>
                   <span className="text-white ml-2">20</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3 info-item">
+              <div className="flex items-center gap-3">
                 <span className="text-2xl">📍</span>
                 <div>
                   <span className="text-gray-400 font-medium">Location:</span>
