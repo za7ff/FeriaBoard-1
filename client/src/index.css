@@ -1023,7 +1023,7 @@
 }
 
 
-/* Advanced Typewriter Animation */
+/* Simple Typewriter Animation */
 .typewriter-container {
   position: relative;
   display: inline-block;
@@ -1031,76 +1031,34 @@
 
 .typewriter-char {
   opacity: 0;
-  transform: translateY(10px) scale(0.8);
-  filter: blur(3px);
-  animation: charReveal 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: simpleCharReveal 0.2s ease-out forwards;
 }
 
 .typewriter-cursor {
   display: inline-block;
-  width: 3px;
+  width: 2px;
   height: 1.2em;
-  background: linear-gradient(45deg, #f97316, #fb923c);
-  margin-left: 3px;
-  animation: advancedBlink 1.2s ease-in-out infinite, cursorGlow 2s ease-in-out infinite;
+  background-color: #f97316;
+  margin-left: 2px;
+  animation: simpleBlink 1s infinite;
   vertical-align: text-bottom;
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
 }
 
-@keyframes charReveal {
+@keyframes simpleCharReveal {
   0% {
     opacity: 0;
-    transform: translateY(15px) scale(0.7) rotateX(90deg);
-    filter: blur(5px);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translateY(-2px) scale(1.1) rotateX(0deg);
-    filter: blur(1px);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1) rotateX(0deg);
-    filter: blur(0);
   }
 }
 
-@keyframes advancedBlink {
-  0%, 30% {
+@keyframes simpleBlink {
+  0%, 50% {
     opacity: 1;
-    transform: scaleY(1);
   }
-  35%, 65% {
+  51%, 100% {
     opacity: 0;
-    transform: scaleY(0.8);
-  }
-  70%, 100% {
-    opacity: 1;
-    transform: scaleY(1);
-  }
-}
-
-@keyframes cursorGlow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(249, 115, 22, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.8), 0 0 30px rgba(249, 115, 22, 0.4);
-  }
-}
-
-/* Text glow effect after typing completes */
-.typewriter-complete {
-  animation: textGlow 1s ease-out forwards;
-}
-
-@keyframes textGlow {
-  0% {
-    text-shadow: none;
-  }
-  100% {
-    text-shadow: 0 0 20px rgba(249, 115, 22, 0.3), 0 0 40px rgba(249, 115, 22, 0.1);
   }
 }
 

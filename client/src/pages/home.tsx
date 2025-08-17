@@ -58,13 +58,12 @@ export default function Home() {
     return () => window.removeEventListener('scroll', throttledScroll);
   }, []);
 
-  // Enhanced typewriter effect with character-by-character animation
+  // Simple typewriter effect
   useEffect(() => {
     if (showTypewriter) {
       const text = "Hi, I'm Meshall";
       let index = 0;
       
-      // Clear any existing text first
       setTypewriterText("");
       
       const typeInterval = setInterval(() => {
@@ -75,9 +74,9 @@ export default function Home() {
           clearInterval(typeInterval);
           setTimeout(() => {
             setTypingComplete(true);
-          }, 800);
+          }, 1000);
         }
-      }, 120); // Slightly faster for better flow
+      }, 100);
 
       return () => clearInterval(typeInterval);
     }
@@ -236,7 +235,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="text-left scroll-reveal-left typewriter-trigger">
-              <h3 className={`text-2xl font-bold text-white mb-4 min-h-[2rem] ${typingComplete ? 'typewriter-complete' : ''}`}>
+              <h3 className="text-2xl font-bold text-white mb-4 min-h-[2rem]">
                 {showTypewriter ? (
                   <div className="typewriter-container">
                     {typewriterText.split('').map((char, index) => (
@@ -244,7 +243,7 @@ export default function Home() {
                         key={index}
                         className="typewriter-char"
                         style={{ 
-                          animationDelay: `${index * 0.08}s`,
+                          animationDelay: `${index * 0.1}s`,
                           display: char === ' ' ? 'inline' : 'inline-block'
                         }}
                       >
@@ -257,11 +256,11 @@ export default function Home() {
                   "Hi, I'm Meshall"
                 )}
               </h3>
-              <p className={`text-gray-300 mb-6 transition-all duration-1000 ${typingComplete ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`} style={{transitionDelay: '0.3s'}}>
+              <p className="text-gray-300 mb-6">
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
                 I love creating modern web applications and exploring new technologies.
               </p>
-              <p className={`text-gray-300 mb-6 transition-all duration-1000 ${typingComplete ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`} style={{transitionDelay: '0.6s'}}>
+              <p className="text-gray-300 mb-6">
                 Currently focused on full-stack development with React, Node.js, 
                 and modern web technologies. Always eager to learn and take on new challenges.
               </p>
