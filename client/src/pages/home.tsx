@@ -78,10 +78,10 @@ export default function Home() {
             <a 
               href="#about"
               className="nav-item"
-              data-testid="button-info"
+              data-testid="link-about"
               onClick={(e) => {
                 e.preventDefault();
-                setShowInfo(true);
+                document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               About
@@ -92,7 +92,7 @@ export default function Home() {
               data-testid="link-contact"
               onClick={(e) => {
                 e.preventDefault();
-                document.querySelector('#comments')?.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               Contact
@@ -101,11 +101,11 @@ export default function Home() {
           
           <div className="absolute right-6">
             <button
-              onClick={() => setLocation("/admin/login")}
-              className="nav-item"
-              data-testid="button-admin"
+              onClick={() => setShowInfo(!showInfo)}
+              className="text-gray-300 hover:text-orange-500 transition-colors font-medium nav-item"
+              data-testid="button-info"
             >
-              Admin
+              Information about me
             </button>
           </div>
         </div>
