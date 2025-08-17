@@ -267,8 +267,7 @@
 }
 
 .animate-subtle-wave {
-  animation: singleWave 2s ease-out;
-  animation-fill-mode: forwards;
+  animation: singleWave 2s ease-out infinite;
   transform-origin: 70% 70%;
 }
 
