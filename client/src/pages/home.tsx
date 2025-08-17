@@ -11,7 +11,7 @@ import HeroGeometric from "@/components/HeroGeometric";
 
 export default function Home() {
   const [comment, setComment] = useState("");
-  const [showInfo, setShowInfo] = useState(false);
+
   const [showComments, setShowComments] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
@@ -98,67 +98,9 @@ export default function Home() {
               Contact
             </a>
           </div>
-          
-          <div className="absolute right-6">
-            <button
-              onClick={() => setShowInfo(!showInfo)}
-              className="text-gray-300 hover:text-orange-500 transition-colors font-medium nav-item"
-              data-testid="button-info"
-            >
-              Information about me
-            </button>
-          </div>
         </div>
       </nav>
-      {/* Personal info modal */}
-      {showInfo && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
-          <div className="baguzel-card max-w-md w-full modal-enter">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold baguzel-heading">About Me</h3>
-              <button
-                onClick={() => setShowInfo(false)}
-                className="text-gray-400 hover:text-white transition-colors text-xl"
-                data-testid="button-close-info"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="flex items-center justify-center mb-6">
-              <img
-                src="https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
-                alt="Profile"
-                className="w-20 h-20 rounded-full border-4 border-gray-600"
-              />
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">👤</span>
-                <div>
-                  <span className="text-gray-400 font-medium">Name:</span>
-                  <span className="text-white ml-2">Meshall alHarbi</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">🎂</span>
-                <div>
-                  <span className="text-gray-400 font-medium">Age:</span>
-                  <span className="text-white ml-2">20</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">📍</span>
-                <div>
-                  <span className="text-gray-400 font-medium">Location:</span>
-                  <span className="text-white ml-2">Al-Qassim, Buraydah</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center -mt-52">
