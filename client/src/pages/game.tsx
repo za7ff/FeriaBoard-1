@@ -10,14 +10,14 @@ type Choice = typeof choices[number];
 const getWinner = (playerChoice: Choice, computerChoice: Choice): "player" | "computer" | "tie" => {
   if (playerChoice === computerChoice) return "tie";
   
-  // 70% chance for player to win
-  const playerWinChance = Math.random() < 0.7;
+  // 85% chance for computer (Feria) to win
+  const computerWinChance = Math.random() < 0.85;
   
-  if (playerWinChance) {
-    return "player";
+  if (computerWinChance) {
+    return "computer";
   }
   
-  return "computer";
+  return "player";
 };
 
 const choiceEmojis = {
