@@ -164,7 +164,7 @@ export default function Home() {
           {/* Welcome Badge with Animation */}
           <div className="inline-flex items-center gap-3 bg-gray-800/50 border border-gray-700/50 rounded-full px-5 py-3 mb-12 hover:scale-105 transition-all duration-300">
             <span className="text-lg animate-subtle-wave">👋</span>
-            <span className="text-gray-300 font-medium text-sm">Baguzel Welcome's You!</span>
+            <span className="text-gray-300 font-medium text-sm">Feria Welcome's You!</span>
           </div>
 
           {/* Main Heading */}
