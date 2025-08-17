@@ -121,7 +121,7 @@ export default function Game() {
           {/* Player Side */}
           <Card className="bg-gray-900/50 border-gray-700">
             <CardHeader className="text-center">
-              <CardTitle className="text-white">أنت</CardTitle>
+              <CardTitle className="text-white">You</CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center text-4xl">
