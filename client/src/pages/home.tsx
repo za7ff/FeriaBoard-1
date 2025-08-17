@@ -181,9 +181,7 @@ export default function Home() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-12 baguzel-heading">
-            Feria
-          </h1>
+          <h1 className="md:text-7xl baguzel-heading text-[34px] font-extralight pl-[-5px] pr-[-5px] ml-[-1px] mr-[-1px] mt-[24px] mb-[24px] pt-[17px] pb-[17px]">Meshall .</h1>
 
           {/* CTA Button */}
           <button
