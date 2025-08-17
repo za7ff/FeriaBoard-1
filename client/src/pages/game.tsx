@@ -56,7 +56,7 @@ export default function Game() {
         
         setTimeout(() => {
           if (winner === "player") {
-            setResult("You Win! 🎉");
+            setResult("فزت! 🎉");
             setPlayerScore(prev => prev + 1);
           } else if (winner === "computer") {
             setResult("خسرت يا هطف فزت انا ههههههه");
@@ -93,13 +93,13 @@ export default function Game() {
             className="text-white hover:text-gray-300"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
+            العودة للرئيسية
           </Button>
           
           <div className="flex items-center gap-4">
             <Badge variant="outline" className="border-white/20 text-white">
               <Trophy className="w-4 h-4 mr-1" />
-              You: {playerScore}
+              أنت: {playerScore}
             </Badge>
             <Badge variant="outline" className="border-white/20 text-white">
               <Star className="w-4 h-4 mr-1" />
@@ -111,9 +111,9 @@ export default function Game() {
         {/* Game Title */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-            Rock Paper Scissors
+            حجر ورقة مقص
           </h1>
-          <p className="text-gray-400 text-lg">Challenge Feria to a classic game!</p>
+          <p className="text-gray-400 text-lg">تحدى فيريا في لعبة كلاسيكية!</p>
         </div>
 
         {/* Game Area */}
@@ -121,14 +121,14 @@ export default function Game() {
           {/* Player Side */}
           <Card className="bg-gray-900/50 border-gray-700">
             <CardHeader className="text-center">
-              <CardTitle className="text-white">You</CardTitle>
+              <CardTitle className="text-white">أنت</CardTitle>
             </CardHeader>
             <CardContent className="text-center">
               <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gray-800 flex items-center justify-center text-4xl">
                 {playerChoice ? choiceEmojis[playerChoice] : "🤔"}
               </div>
               <p className="text-gray-400">
-                {playerChoice ? `You chose ${playerChoice}` : "Make your choice"}
+                {playerChoice ? `اخترت ${playerChoice === 'rock' ? 'حجر' : playerChoice === 'paper' ? 'ورقة' : 'مقص'}` : "اختر خيارك"}
               </p>
             </CardContent>
           </Card>
@@ -159,7 +159,7 @@ export default function Game() {
                 />
               </div>
               <p className="text-gray-400">
-                {computerChoice ? `Feria chose ${computerChoice}` : "Thinking..."}
+                {computerChoice ? `فيريا اختار ${computerChoice === 'rock' ? 'حجر' : computerChoice === 'paper' ? 'ورقة' : 'مقص'}` : "يفكر..."}
               </p>
             </CardContent>
           </Card>
@@ -186,7 +186,7 @@ export default function Game() {
               variant="outline"
               className="border-white/20 text-white hover:bg-white/10"
             >
-              Reset Game
+              إعادة اللعبة
             </Button>
           </div>
         </div>
@@ -194,10 +194,10 @@ export default function Game() {
         {/* Game Rules */}
         <Card className="bg-gray-900/30 border-gray-700 mt-12">
           <CardHeader>
-            <CardTitle className="text-white text-center">How to Play</CardTitle>
+            <CardTitle className="text-white text-center">كيف تلعب</CardTitle>
           </CardHeader>
           <CardContent className="text-gray-300 text-center">
-            <p>🗿 Rock beats Scissors • 📄 Paper beats Rock • ✂️ Scissors beats Paper</p>
+            <p>🗿 الحجر يهزم المقص • 📄 الورقة تهزم الحجر • ✂️ المقص يهزم الورقة</p>
           </CardContent>
         </Card>
       </div>
