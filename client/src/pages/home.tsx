@@ -112,8 +112,8 @@ export default function Home() {
       </nav>
       {/* Personal info modal */}
       {showInfo && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4 animate-modal-backdrop-pro">
-          <div className="baguzel-card max-w-md w-full animate-professional-slide">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+          <div className="baguzel-card max-w-md w-full modal-enter">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold baguzel-heading">About Me</h3>
               <button
@@ -185,8 +185,8 @@ export default function Home() {
       </section>
       {/* Comment Modal */}
       {showComments && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4 animate-modal-backdrop-pro">
-          <div className="baguzel-card max-w-md w-full animate-professional-fade">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+          <div className="baguzel-card max-w-md w-full modal-enter">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold baguzel-heading">Comment</h3>
               <button
