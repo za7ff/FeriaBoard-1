@@ -10,19 +10,19 @@
   --card-foreground: hsl(210 7% 82%);
   --popover: hsl(222 16% 8%);
   --popover-foreground: hsl(210 7% 82%);
-  --primary: hsl(15 100% 60%);
-  --primary-foreground: hsl(210 7% 82%);
+  --primary: hsl(0 0% 100%);
+  --primary-foreground: hsl(222 16% 8%);
   --secondary: hsl(222 16% 15%);
   --secondary-foreground: hsl(210 7% 82%);
   --muted: hsl(222 16% 15%);
   --muted-foreground: hsl(215 10% 50%);
-  --accent: hsl(15 100% 60%);
-  --accent-foreground: hsl(210 7% 82%);
+  --accent: hsl(0 0% 100%);
+  --accent-foreground: hsl(222 16% 8%);
   --destructive: hsl(0 84% 60%);
   --destructive-foreground: hsl(0 0% 100%);
   --border: hsl(222 16% 20%);
   --input: hsl(222 16% 15%);
-  --ring: hsl(15 100% 60%);
+  --ring: hsl(0 0% 100%);
   --font-sans: Inter, system-ui, sans-serif;
   --radius: 0.75rem;
 }
@@ -61,9 +61,9 @@
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(circle at 20% 10%, rgba(255, 153, 102, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(255, 153, 102, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(255, 153, 102, 0.06) 0%, transparent 50%);
+      radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.06) 0%, transparent 50%);
     pointer-events: none;
   }
 
@@ -906,7 +906,7 @@
 }
 
 .nav-item:hover {
-  color: #f97316;
+  color: #ffffff;
 }
 
 .nav-item::after {
@@ -916,7 +916,7 @@
   left: 50%;
   width: 0;
   height: 2px;
-  background: #f97316;
+  background: #ffffff;
   transform: translateX(-50%);
   transition: width 0.25s ease;
 }
@@ -932,7 +932,7 @@
 
 .baguzel-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(251, 146, 60, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
 }
 
 
@@ -1037,7 +1037,7 @@
   display: inline-block;
   width: 2px;
   height: 1em;
-  background-color: #f97316;
+  background-color: #ffffff;
   margin-left: 3px;
   animation: cursorBlink 1s infinite;
 }
