@@ -150,7 +150,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-24 relative z-10">
+      <section className="min-h-screen flex items-center justify-center px-6 py-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Welcome Badge */}
           <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/20 rounded-full px-6 py-3 mb-12">
@@ -159,7 +159,7 @@ export default function Home() {
           </div>
 
           {/* Main Heading */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold leading-tight mb-16 baguzel-heading">
+          <h1 className="text-5xl md:text-7xl font-extrabold leading-tight mb-12 baguzel-heading">
             Feria
           </h1>
 
