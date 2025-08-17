@@ -18,6 +18,7 @@ export default function Home() {
   const [typingComplete, setTypingComplete] = useState(false);
   const [showTypewriter, setShowTypewriter] = useState(false);
   const [typewriterText, setTypewriterText] = useState("");
+  const [typewriterStarted, setTypewriterStarted] = useState(false);
 
   // Enhanced scroll animation setup
   useEffect(() => {
@@ -33,8 +34,9 @@ export default function Home() {
           element.classList.add('revealed');
           
           // Trigger typewriter when About section is visible
-          if (element.classList.contains('typewriter-trigger')) {
+          if (element.classList.contains('typewriter-trigger') && !typewriterStarted) {
             setShowTypewriter(true);
+            setTypewriterStarted(true);
           }
         }
       });
@@ -60,11 +62,13 @@ export default function Home() {
 
   // Simple typewriter effect
   useEffect(() => {
-    if (showTypewriter) {
+    if (showTypewriter && !typingComplete) {
       const text = "Hi, I'm Meshall";
       let index = 0;
       
+      // Reset states
       setTypewriterText("");
+      setTypingComplete(false);
       
       const typeInterval = setInterval(() => {
         if (index < text.length) {
@@ -74,11 +78,13 @@ export default function Home() {
           clearInterval(typeInterval);
           setTimeout(() => {
             setTypingComplete(true);
-          }, 1000);
+          }, 500);
         }
-      }, 100);
+      }, 120);
 
-      return () => clearInterval(typeInterval);
+      return () => {
+        clearInterval(typeInterval);
+      };
     }
   }, [showTypewriter]);
 
