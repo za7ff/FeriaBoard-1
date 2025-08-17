@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { Home as HomeIcon, User, MessageSquare } from "lucide-react";
+import HeroGeometric from "@/components/HeroGeometric";
 
 export default function Home() {
   const [comment, setComment] = useState("");
@@ -77,9 +78,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen baguzel-bg">
+    <div className="min-h-screen bg-[#030303] relative">
+      <HeroGeometric />
       {/* Navigation Header */}
-      <nav className="fixed top-0 left-0 right-0 z-50 p-6">
+      <nav className="fixed top-0 left-0 right-0 z-50 p-6 relative">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-8">
             <a href="#" className="nav-item active">
@@ -182,7 +184,7 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center px-6 py-24">
+      <section className="min-h-screen flex items-center justify-center px-6 py-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Welcome Badge */}
           <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-8">
@@ -213,7 +215,7 @@ export default function Home() {
 
 
       {/* Comment Section */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6 relative z-10">
         <div className="max-w-lg mx-auto">
           <div className="baguzel-card">
             <h3 className="text-2xl font-bold baguzel-heading mb-6 text-center">Leave a Comment</h3>
