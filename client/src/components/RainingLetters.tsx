@@ -89,56 +89,50 @@ interface ScrambledTitleProps {
 }
 
 const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
-  const elementRef = useRef<HTMLHeadingElement>(null)
-  const scramblerRef = useRef<TextScramble | null>(null)
-  const [mounted, setMounted] = useState(false)
+  const [currentText, setCurrentText] = useState('')
+  const [phraseIndex, setPhraseIndex] = useState(0)
+  
+  const phrases = [
+    'Welcome',
+    'and',
+    'to',
+    'ant',
+    'website',
+    'ant',
+    'FERIA'
+  ]
 
   useEffect(() => {
-    if (elementRef.current && !scramblerRef.current) {
-      scramblerRef.current = new TextScramble(elementRef.current)
-      setMounted(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (mounted && scramblerRef.current) {
-      const phrases = [
-        'Welcome',
-        'and',
-        'to',
-        'ant',
-        'website',
-        'ant',
-        'FERIA'
-      ]
-      
-      let counter = 0
-      const next = () => {
-        if (scramblerRef.current) {
-          scramblerRef.current.setText(phrases[counter]).then(() => {
-            if (counter === phrases.length - 1) {
-              setTimeout(() => {
-                onComplete?.()
-              }, 1500)
-            } else {
-              setTimeout(next, 1500)
-            }
-          })
-          counter = (counter + 1) % phrases.length
+    let timeoutId: NodeJS.Timeout
+    
+    const showNextPhrase = () => {
+      if (phraseIndex < phrases.length) {
+        setCurrentText(phrases[phraseIndex])
+        setPhraseIndex(prev => prev + 1)
+        
+        if (phraseIndex === phrases.length - 1) {
+          // Last phrase, trigger completion
+          timeoutId = setTimeout(() => {
+            onComplete?.()
+          }, 2000)
+        } else {
+          // Next phrase after delay
+          timeoutId = setTimeout(showNextPhrase, 1500)
         }
       }
-
-      next()
     }
-  }, [mounted, onComplete])
+
+    timeoutId = setTimeout(showNextPhrase, 500)
+    
+    return () => clearTimeout(timeoutId)
+  }, [phraseIndex, onComplete])
 
   return (
     <h1 
-      ref={elementRef}
       className="text-white text-4xl md:text-6xl font-bold tracking-wider text-center"
       style={{ fontFamily: 'monospace' }}
     >
-      
+      {currentText}
     </h1>
   )
 }
