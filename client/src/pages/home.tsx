@@ -274,7 +274,8 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2 scroll-reveal">
                   <span className="w-2 h-2 bg-white rounded-full"></span>
-                  <span className="text-gray-300">Backend Development</span>
+                  <span className="text-gray-300">Web development
+</span>
                 </div>
                 <div className="flex items-center gap-2 scroll-reveal">
                   <span className="w-2 h-2 bg-white rounded-full"></span>
