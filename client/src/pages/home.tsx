@@ -319,12 +319,12 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-3 scroll-reveal">
+              <div className="grid grid-cols-1 gap-3 scroll-reveal max-w-xs mx-auto">
                 <a 
                   href="https://discord.com/users/700928520716681237"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#5865F2]/20 to-[#5865F2]/10 hover:from-[#5865F2]/30 hover:to-[#5865F2]/20 border border-[#5865F2]/30 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-[#5865F2]/20 to-[#5865F2]/10 hover:from-[#5865F2]/30 hover:to-[#5865F2]/20 border border-[#5865F2]/30 transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 127.14 96.36">
                     <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
@@ -336,37 +336,24 @@ export default function Home() {
                   href="https://www.tiktok.com/@.ps5"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FF0050]/20 to-[#FF0050]/10 hover:from-[#FF0050]/30 hover:to-[#FF0050]/20 border border-[#FF0050]/30 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-[#FF0050]/20 to-[#FF0050]/10 hover:from-[#FF0050]/30 hover:to-[#FF0050]/20 border border-[#FF0050]/30 transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.527.02C13.858 0 15.188.01 16.52 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                   </svg>
-                  .ps5
+                  TikTok - .ps5
                 </a>
                 
                 <a 
                   href="https://www.tiktok.com/@_pc7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FF0050]/20 to-[#FF0050]/10 hover:from-[#FF0050]/30 hover:to-[#FF0050]/20 border border-[#FF0050]/30 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-[#FF0050]/20 to-[#FF0050]/10 hover:from-[#FF0050]/30 hover:to-[#FF0050]/20 border border-[#FF0050]/30 transition-all duration-300"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12.527.02C13.858 0 15.188.01 16.52 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
                   </svg>
-                  _pc7
-                </a>
-                
-                <a 
-                  href="https://snapchat.com/add/cipws"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FFFC00]/20 to-[#FFFC00]/10 hover:from-[#FFFC00]/30 hover:to-[#FFFC00]/20 border border-[#FFFC00]/30 transition-all duration-300"
-                >
-                  <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
-                    <path d="M12 1.2c2.76 0 4.8.6 4.8 2.4V7.2c0 3.36-1.56 6.6-4.8 6.6S7.2 10.56 7.2 7.2V3.6c0-1.8 2.04-2.4 4.8-2.4z"/>
-                    <path d="M6 18.8s.48-2.4 2.88-2.4 2.88 2.4 2.88 2.4S12.24 16.4 15.12 16.4s2.88 2.4 2.88 2.4v2.4H6v-2.4z"/>
-                  </svg>
-                  cipws
+                  TikTok - _pc7
                 </a>
               </div>
             </div>
