@@ -1,7 +1,9 @@
-"use client"
+import RainingLetters from "../components/RainingLetters"
 
-import HeroGeometric from "../components/kokonutui/hero-geometric"
-
-export default function SyntheticV0PageForDeployment() {
-  return <HeroGeometric />
+export default function Home() {
+  return (
+    <main className="min-h-screen">
+      <RainingLetters />
+    </main>
+  )
 }
