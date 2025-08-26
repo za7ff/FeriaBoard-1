@@ -102,18 +102,26 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   ]
 
   useEffect(() => {
-    const runSequence = async () => {
-      for (let i = 0; i < phrases.length; i++) {
-        setCurrentText(phrases[i])
-        await new Promise(resolve => setTimeout(resolve, 1500))
+    let currentIndex = 0
+    
+    const showNextPhrase = () => {
+      if (currentIndex < phrases.length) {
+        setCurrentText(phrases[currentIndex])
+        currentIndex++
+        
+        if (currentIndex < phrases.length) {
+          setTimeout(showNextPhrase, 1500)
+        } else {
+          // All phrases shown, trigger completion
+          setTimeout(() => {
+            onComplete?.()
+          }, 2000)
+        }
       }
-      // Auto redirect after all phrases
-      setTimeout(() => {
-        onComplete?.()
-      }, 2000)
     }
     
-    runSequence()
+    // Start the sequence
+    setTimeout(showNextPhrase, 500)
   }, [onComplete])
 
   return (
