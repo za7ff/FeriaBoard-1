@@ -319,53 +319,53 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-3 scroll-reveal">
+              <div className="grid grid-cols-2 gap-4 scroll-reveal">
                 <a 
                   href="https://discord.com/users/700928520716681237"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 hover:from-indigo-500/30 hover:to-purple-600/30 border border-indigo-400/20"
+                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#5865F2]/10 to-[#5865F2]/5 hover:from-[#5865F2]/20 hover:to-[#5865F2]/10 border border-[#5865F2]/20 hover:border-[#5865F2]/40 transition-all duration-300"
                 >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.010c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-                  </svg>
-                  Discord
+                  <div className="w-10 h-10 rounded-full bg-[#5865F2]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    💬
+                  </div>
+                  <span className="text-sm font-medium">Discord</span>
                 </a>
                 
                 <a 
                   href="https://www.tiktok.com/@.ps5"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-red-500/20 to-pink-500/20 hover:from-red-500/30 hover:to-pink-500/30 border border-pink-400/20"
+                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#FF0050]/10 to-[#FF0050]/5 hover:from-[#FF0050]/20 hover:to-[#FF0050]/10 border border-[#FF0050]/20 hover:border-[#FF0050]/40 transition-all duration-300"
                 >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.321 5.562a.631.631 0 0 0-.44-.44A19.29 19.29 0 0 0 12 4.667a19.29 19.29 0 0 0-6.881.456.631.631 0 0 0-.44.44A19.29 19.29 0 0 0 4.223 12c0 2.172.359 4.342.456 6.438a.631.631 0 0 0 .44.44c2.155.24 4.369.456 6.881.456s4.726-.216 6.881-.456a.631.631 0 0 0 .44-.44A19.29 19.29 0 0 0 19.777 12a19.29 19.29 0 0 0-.456-6.438zM10 14.998v-5.996L16 12l-6 2.998z"/>
-                  </svg>
-                  .ps5
+                  <div className="w-10 h-10 rounded-full bg-[#FF0050]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    🎵
+                  </div>
+                  <span className="text-sm font-medium">.ps5</span>
                 </a>
                 
                 <a 
                   href="https://www.tiktok.com/@_pc7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-red-500/20 to-pink-500/20 hover:from-red-500/30 hover:to-pink-500/30 border border-pink-400/20"
+                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#FF0050]/10 to-[#FF0050]/5 hover:from-[#FF0050]/20 hover:to-[#FF0050]/10 border border-[#FF0050]/20 hover:border-[#FF0050]/40 transition-all duration-300"
                 >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19.321 5.562a.631.631 0 0 0-.44-.44A19.29 19.29 0 0 0 12 4.667a19.29 19.29 0 0 0-6.881.456.631.631 0 0 0-.44.44A19.29 19.29 0 0 0 4.223 12c0 2.172.359 4.342.456 6.438a.631.631 0 0 0 .44.44c2.155.24 4.369.456 6.881.456s4.726-.216 6.881-.456a.631.631 0 0 0 .44-.44A19.29 19.29 0 0 0 19.777 12a19.29 19.29 0 0 0-.456-6.438zM10 14.998v-5.996L16 12l-6 2.998z"/>
-                  </svg>
-                  _pc7
+                  <div className="w-10 h-10 rounded-full bg-[#FF0050]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    🎬
+                  </div>
+                  <span className="text-sm font-medium">_pc7</span>
                 </a>
                 
                 <a 
                   href="https://snapchat.com/add/cipws"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-yellow-400/20 to-orange-500/20 hover:from-yellow-400/30 hover:to-orange-500/30 border border-yellow-400/20"
+                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#FFFC00]/10 to-[#FFFC00]/5 hover:from-[#FFFC00]/20 hover:to-[#FFFC00]/10 border border-[#FFFC00]/20 hover:border-[#FFFC00]/40 transition-all duration-300"
                 >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c3.059 0 5.842 1.154 7.961 3.039 2.119 1.885 3.541 4.389 4.039 7.039v.961c0 6.627-5.373 12-12 12s-12-5.373-12-12V11.078c.498-2.65 1.92-5.154 4.039-7.039C6.158 1.154 8.941 0 12 0zm0 3.273c-2.301 0-4.389.884-5.961 2.324-1.572 1.44-2.578 3.36-2.895 5.542-.033.228-.033.456 0 .684.317 2.182 1.323 4.102 2.895 5.542C7.611 18.805 9.699 19.689 12 19.689s4.389-.884 5.961-2.324c1.572-1.44 2.578-3.36 2.895-5.542.033-.228.033-.456 0-.684-.317-2.182-1.323-4.102-2.895-5.542C16.389 4.157 14.301 3.273 12 3.273z"/>
-                  </svg>
-                  cipws
+                  <div className="w-10 h-10 rounded-full bg-[#FFFC00]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    👻
+                  </div>
+                  <span className="text-sm font-medium">cipws</span>
                 </a>
               </div>
             </div>
