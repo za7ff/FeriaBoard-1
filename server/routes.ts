@@ -89,24 +89,48 @@ const security = new SecurityManager();
 
 // Visitor tracking
 class VisitorTracker {
-  private visitors = new Set<string>();
-  private totalVisits = 0;
+  private allTimeVisitors = new Set<string>();
+  private currentVisitors = new Map<string, number>(); // IP -> last seen timestamp
+  private readonly SESSION_TIMEOUT = 5 * 60 * 1000; // 5 minutes timeout
   
-  trackVisit(ip: string): { totalVisitors: number; totalVisits: number } {
-    const isNewVisitor = !this.visitors.has(ip);
-    this.visitors.add(ip);
-    this.totalVisits++;
+  trackVisit(ip: string): { currentVisitors: number; totalVisitors: number } {
+    const now = Date.now();
+    
+    // Add to all-time visitors
+    this.allTimeVisitors.add(ip);
+    
+    // Update current visitor timestamp
+    this.currentVisitors.set(ip, now);
+    
+    // Clean up expired visitors
+    this.cleanupExpiredVisitors();
     
     return {
-      totalVisitors: this.visitors.size,
-      totalVisits: this.totalVisits
+      currentVisitors: this.currentVisitors.size,
+      totalVisitors: this.allTimeVisitors.size
     };
   }
   
-  getStats(): { totalVisitors: number; totalVisits: number } {
+  private cleanupExpiredVisitors(): void {
+    const now = Date.now();
+    const entriesToDelete: string[] = [];
+    
+    this.currentVisitors.forEach((lastSeen, ip) => {
+      if (now - lastSeen > this.SESSION_TIMEOUT) {
+        entriesToDelete.push(ip);
+      }
+    });
+    
+    entriesToDelete.forEach(ip => {
+      this.currentVisitors.delete(ip);
+    });
+  }
+  
+  getStats(): { currentVisitors: number; totalVisitors: number } {
+    this.cleanupExpiredVisitors();
     return {
-      totalVisitors: this.visitors.size,
-      totalVisits: this.totalVisits
+      currentVisitors: this.currentVisitors.size,
+      totalVisitors: this.allTimeVisitors.size
     };
   }
 }

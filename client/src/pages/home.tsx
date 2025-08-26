@@ -21,9 +21,9 @@ export default function Home() {
   const [typewriterStarted, setTypewriterStarted] = useState(false);
 
   // Fetch visitor stats
-  const { data: visitorStats } = useQuery<{ totalVisitors: number; totalVisits: number }>({
+  const { data: visitorStats } = useQuery<{ currentVisitors: number; totalVisitors: number }>({
     queryKey: ['/api/visitors'],
-    refetchInterval: 30000, // Refresh every 30 seconds
+    refetchInterval: 10000, // Refresh every 10 seconds for real-time data
   });
 
   // Enhanced scroll animation setup
@@ -206,21 +206,21 @@ export default function Home() {
             <div className="mt-16 grid grid-cols-2 gap-6 max-w-md mx-auto scroll-reveal">
               <div className="baguzel-card text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Eye className="w-5 h-5 text-orange-500 mr-2" />
-                  <span className="text-sm text-gray-400">Unique Visitors</span>
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse mr-2"></div>
+                  <span className="text-sm text-gray-400">Online Now</span>
                 </div>
-                <div className="text-2xl font-bold text-white">
-                  {visitorStats?.totalVisitors?.toLocaleString() || 0}
+                <div className="text-2xl font-bold text-green-400">
+                  {visitorStats?.currentVisitors?.toLocaleString() || 0}
                 </div>
               </div>
               
               <div className="baguzel-card text-center">
                 <div className="flex items-center justify-center mb-2">
-                  <Eye className="w-5 h-5 text-blue-500 mr-2" />
-                  <span className="text-sm text-gray-400">Total Views</span>
+                  <Eye className="w-5 h-5 text-orange-500 mr-2" />
+                  <span className="text-sm text-gray-400">Total Visitors</span>
                 </div>
                 <div className="text-2xl font-bold text-white">
-                  {visitorStats?.totalVisits?.toLocaleString() || 0}
+                  {visitorStats?.totalVisitors?.toLocaleString() || 0}
                 </div>
               </div>
             </div>
