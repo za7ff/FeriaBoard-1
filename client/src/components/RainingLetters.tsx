@@ -90,38 +90,66 @@ interface ScrambledTitleProps {
 
 const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
   
   const phrases = [
     'Welcome',
-    'and', 
     'to',
-    'ant',
     'website',
-    'ant',
     'FERIA'
   ]
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (currentIndex < phrases.length - 1) {
-        setCurrentIndex(currentIndex + 1)
-      } else if (currentIndex === phrases.length - 1) {
-        if (onComplete) {
-          onComplete()
+      setIsAnimating(true)
+      
+      setTimeout(() => {
+        if (currentIndex < phrases.length - 1) {
+          setCurrentIndex(currentIndex + 1)
+          setIsAnimating(false)
+        } else if (currentIndex === phrases.length - 1) {
+          setTimeout(() => {
+            if (onComplete) {
+              onComplete()
+            }
+          }, 1000)
         }
-      }
-    }, 1500)
+      }, 300)
+    }, 2000)
 
     return () => clearTimeout(timer)
   }, [currentIndex])
 
   return (
-    <h1 
-      className="text-white text-4xl md:text-6xl font-bold tracking-wider text-center"
-      style={{ fontFamily: 'monospace' }}
-    >
-      {phrases[currentIndex]}
-    </h1>
+    <div className="relative h-32 flex items-center justify-center">
+      <div className="relative">
+        <h1 
+          key={currentIndex}
+          className="text-white text-5xl md:text-7xl font-bold tracking-wider text-center"
+          style={{ 
+            fontFamily: 'monospace',
+            animation: 'textReveal 2s ease-out',
+            textShadow: `
+              0 0 20px rgba(0, 255, 0, 0.8),
+              0 0 40px rgba(0, 255, 0, 0.6),
+              0 0 60px rgba(0, 255, 0, 0.4),
+              0 0 80px rgba(0, 255, 0, 0.2)
+            `
+          }}
+        >
+          <span className="inline-block animate-pulse-text">
+            {phrases[currentIndex]}
+          </span>
+        </h1>
+        
+        {/* Glowing particles around text */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="particle-glow particle-glow-1"></div>
+          <div className="particle-glow particle-glow-2"></div>
+          <div className="particle-glow particle-glow-3"></div>
+        </div>
+      </div>
+    </div>
   )
 }
 

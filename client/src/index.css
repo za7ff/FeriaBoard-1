@@ -1148,3 +1148,84 @@
   }
 }
 
+/* Text Transition Animations */
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) rotateY(90deg);
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotateY(45deg);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes pulse-text {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-text {
+  animation: pulse-text 2s ease-in-out infinite;
+}
+
+/* Glowing Particles */
+.particle-glow {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(0, 255, 0, 1) 0%, rgba(0, 255, 0, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle-glow-1 {
+  top: 20%;
+  left: 10%;
+  animation: particleFloat 3s ease-in-out infinite;
+}
+
+.particle-glow-2 {
+  top: 50%;
+  right: 10%;
+  animation: particleFloat 3s ease-in-out infinite 1s;
+}
+
+.particle-glow-3 {
+  bottom: 20%;
+  left: 50%;
+  animation: particleFloat 3s ease-in-out infinite 2s;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(-20px) translateX(10px) scale(1.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-40px) translateX(-10px) scale(1);
+  }
+  75% {
+    opacity: 0.5;
+    transform: translateY(-20px) translateX(5px) scale(0.8);
+  }
+}
+
