@@ -90,7 +90,6 @@ interface ScrambledTitleProps {
 
 const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   const [currentText, setCurrentText] = useState('')
-  const [phraseIndex, setPhraseIndex] = useState(0)
   
   const phrases = [
     'Welcome',
@@ -103,29 +102,19 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   ]
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout
-    
-    const showNextPhrase = () => {
-      if (phraseIndex < phrases.length) {
-        setCurrentText(phrases[phraseIndex])
-        setPhraseIndex(prev => prev + 1)
-        
-        if (phraseIndex === phrases.length - 1) {
-          // Last phrase, trigger completion
-          timeoutId = setTimeout(() => {
-            onComplete?.()
-          }, 2000)
-        } else {
-          // Next phrase after delay
-          timeoutId = setTimeout(showNextPhrase, 1500)
-        }
+    const runSequence = async () => {
+      for (let i = 0; i < phrases.length; i++) {
+        setCurrentText(phrases[i])
+        await new Promise(resolve => setTimeout(resolve, 1500))
       }
+      // Auto redirect after all phrases
+      setTimeout(() => {
+        onComplete?.()
+      }, 2000)
     }
-
-    timeoutId = setTimeout(showNextPhrase, 500)
     
-    return () => clearTimeout(timeoutId)
-  }, [phraseIndex, onComplete])
+    runSequence()
+  }, [onComplete])
 
   return (
     <h1 
