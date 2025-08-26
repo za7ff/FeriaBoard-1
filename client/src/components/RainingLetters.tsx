@@ -89,12 +89,11 @@ interface ScrambledTitleProps {
 }
 
 const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
-  const [currentText, setCurrentText] = useState('Welcome')
-  const [phraseIndex, setPhraseIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
   
   const phrases = [
     'Welcome',
-    'and',
+    'and', 
     'to',
     'ant',
     'website',
@@ -103,32 +102,26 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   ]
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setPhraseIndex(prev => {
-        const nextIndex = prev + 1
-        if (nextIndex < phrases.length) {
-          setCurrentText(phrases[nextIndex])
-          return nextIndex
-        } else {
-          // Sequence complete
-          clearInterval(timer)
-          setTimeout(() => {
-            onComplete?.()
-          }, 2000)
-          return prev
-        }
-      })
-    }, 1500)
-
-    return () => clearInterval(timer)
-  }, [onComplete])
+    if (currentIndex < phrases.length - 1) {
+      const timer = setTimeout(() => {
+        setCurrentIndex(prev => prev + 1)
+      }, 1500)
+      return () => clearTimeout(timer)
+    } else if (currentIndex === phrases.length - 1) {
+      // Last phrase, trigger completion after delay
+      const timer = setTimeout(() => {
+        onComplete?.()
+      }, 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [currentIndex, onComplete])
 
   return (
     <h1 
       className="text-white text-4xl md:text-6xl font-bold tracking-wider text-center"
       style={{ fontFamily: 'monospace' }}
     >
-      {currentText}
+      {phrases[currentIndex]}
     </h1>
   )
 }
