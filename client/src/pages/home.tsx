@@ -362,8 +362,9 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FFFC00]/20 to-[#FFFC00]/10 hover:from-[#FFFC00]/30 hover:to-[#FFFC00]/20 border border-[#FFFC00]/30 transition-all duration-300"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M11.9 0c3.13 0 5.66 2.53 5.66 5.66v3.72c1.26.47 2.16 1.69 2.16 3.12v6c0 1.84-1.5 3.34-3.34 3.34h-8.96c-1.84 0-3.34-1.5-3.34-3.34v-6c0-1.43.9-2.65 2.16-3.12v-3.72c0-3.13 2.53-5.66 5.66-5.66zm0 1.5c-2.29 0-4.16 1.87-4.16 4.16v3.5h8.32v-3.5c0-2.29-1.87-4.16-4.16-4.16zm3.75 9.16h-7.5c-.69 0-1.25.56-1.25 1.25v5.59c0 .69.56 1.25 1.25 1.25h7.5c.69 0 1.25-.56 1.25-1.25v-5.59c0-.69-.56-1.25-1.25-1.25zm-3.75 2.25c.41 0 .75.34.75.75v1.59c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-1.59c0-.41.34-.75.75-.75z"/>
+                  <svg className="w-5 h-5" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 1.2c2.76 0 4.8.6 4.8 2.4V7.2c0 3.36-1.56 6.6-4.8 6.6S7.2 10.56 7.2 7.2V3.6c0-1.8 2.04-2.4 4.8-2.4z"/>
+                    <path d="M6 18.8s.48-2.4 2.88-2.4 2.88 2.4 2.88 2.4S12.24 16.4 15.12 16.4s2.88 2.4 2.88 2.4v2.4H6v-2.4z"/>
                   </svg>
                   cipws
                 </a>
