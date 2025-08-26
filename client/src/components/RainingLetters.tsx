@@ -102,27 +102,31 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   ]
 
   useEffect(() => {
-    if (currentIndex < phrases.length - 1) {
-      const timer = setTimeout(() => {
+    console.log('Current index:', currentIndex, 'Text:', phrases[currentIndex])
+    
+    const timer = setTimeout(() => {
+      if (currentIndex < phrases.length - 1) {
+        console.log('Moving to next phrase')
         setCurrentIndex(prev => prev + 1)
-      }, 1500)
-      return () => clearTimeout(timer)
-    } else if (currentIndex === phrases.length - 1) {
-      // Last phrase, trigger completion after delay
-      const timer = setTimeout(() => {
+      } else {
+        console.log('Sequence complete, calling onComplete')
         onComplete?.()
-      }, 2000)
-      return () => clearTimeout(timer)
-    }
+      }
+    }, 1500)
+
+    return () => clearTimeout(timer)
   }, [currentIndex, onComplete])
 
   return (
-    <h1 
-      className="text-white text-4xl md:text-6xl font-bold tracking-wider text-center"
-      style={{ fontFamily: 'monospace' }}
-    >
-      {phrases[currentIndex]}
-    </h1>
+    <div className="text-center">
+      <h1 
+        className="text-white text-4xl md:text-6xl font-bold tracking-wider"
+        style={{ fontFamily: 'monospace' }}
+      >
+        {phrases[currentIndex]}
+      </h1>
+      <p className="text-green-400 text-sm mt-4">Index: {currentIndex}</p>
+    </div>
   )
 }
 
