@@ -89,7 +89,8 @@ interface ScrambledTitleProps {
 }
 
 const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
-  const [currentText, setCurrentText] = useState('')
+  const [currentText, setCurrentText] = useState('Welcome')
+  const [phraseIndex, setPhraseIndex] = useState(0)
   
   const phrases = [
     'Welcome',
@@ -102,26 +103,24 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   ]
 
   useEffect(() => {
-    let currentIndex = 0
-    
-    const showNextPhrase = () => {
-      if (currentIndex < phrases.length) {
-        setCurrentText(phrases[currentIndex])
-        currentIndex++
-        
-        if (currentIndex < phrases.length) {
-          setTimeout(showNextPhrase, 1500)
+    const timer = setInterval(() => {
+      setPhraseIndex(prev => {
+        const nextIndex = prev + 1
+        if (nextIndex < phrases.length) {
+          setCurrentText(phrases[nextIndex])
+          return nextIndex
         } else {
-          // All phrases shown, trigger completion
+          // Sequence complete
+          clearInterval(timer)
           setTimeout(() => {
             onComplete?.()
           }, 2000)
+          return prev
         }
-      }
-    }
-    
-    // Start the sequence
-    setTimeout(showNextPhrase, 500)
+      })
+    }, 1500)
+
+    return () => clearInterval(timer)
   }, [onComplete])
 
   return (
