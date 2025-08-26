@@ -89,67 +89,55 @@ interface ScrambledTitleProps {
 }
 
 const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isAnimating, setIsAnimating] = useState(false)
-  
-  const phrases = [
-    'Welcome',
-    'to',
-    'website',
-    'FERIA'
-  ]
+  const elementRef = useRef<HTMLHeadingElement>(null)
+  const scramblerRef = useRef<TextScramble | null>(null)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsAnimating(true)
-      
-      setTimeout(() => {
-        if (currentIndex < phrases.length - 1) {
-          setCurrentIndex(currentIndex + 1)
-          setIsAnimating(false)
-        } else if (currentIndex === phrases.length - 1) {
-          setTimeout(() => {
-            if (onComplete) {
-              onComplete()
-            }
-          }, 1000)
-        }
-      }, 300)
-    }, 2000)
+    if (elementRef.current && !scramblerRef.current) {
+      scramblerRef.current = new TextScramble(elementRef.current)
+      setMounted(true)
+    }
+  }, [])
 
-    return () => clearTimeout(timer)
-  }, [currentIndex])
+  useEffect(() => {
+    if (mounted && scramblerRef.current) {
+      const phrases = [
+        'Welcome',
+        'to',
+        'FERIA\'s',
+        'Website'
+      ]
+      
+      let counter = 0
+      const next = () => {
+        if (scramblerRef.current) {
+          scramblerRef.current.setText(phrases[counter]).then(() => {
+            if (counter === phrases.length - 1) {
+              setTimeout(() => {
+                onComplete?.()
+              }, 2000)
+              counter = 0
+            } else {
+              counter++
+            }
+            setTimeout(next, 2000)
+          })
+        }
+      }
+
+      next()
+    }
+  }, [mounted, onComplete])
 
   return (
-    <div className="relative h-32 flex items-center justify-center">
-      <div className="relative">
-        <h1 
-          key={currentIndex}
-          className="text-white text-5xl md:text-7xl font-bold tracking-wider text-center"
-          style={{ 
-            fontFamily: 'monospace',
-            animation: 'textReveal 2s ease-out',
-            textShadow: `
-              0 0 20px rgba(0, 255, 0, 0.8),
-              0 0 40px rgba(0, 255, 0, 0.6),
-              0 0 60px rgba(0, 255, 0, 0.4),
-              0 0 80px rgba(0, 255, 0, 0.2)
-            `
-          }}
-        >
-          <span className="inline-block animate-pulse-text">
-            {phrases[currentIndex]}
-          </span>
-        </h1>
-        
-        {/* Glowing particles around text */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="particle-glow particle-glow-1"></div>
-          <div className="particle-glow particle-glow-2"></div>
-          <div className="particle-glow particle-glow-3"></div>
-        </div>
-      </div>
-    </div>
+    <h1 
+      ref={elementRef}
+      className="text-white text-6xl font-bold tracking-wider text-center"
+      style={{ fontFamily: 'monospace' }}
+    >
+      
+    </h1>
   )
 }
 
@@ -243,17 +231,17 @@ const RainingLetters: React.FC<RainingLettersProps> = ({ onEnter }) => {
           key={index}
           className={`absolute text-xs transition-colors duration-100 ${
             activeIndices.has(index)
-              ? "text-[#00ff00] text-base scale-125 z-10 font-bold animate-pulse"
-              : "text-slate-600 font-light"
+              ? "text-white text-base scale-125 z-10 font-bold"
+              : "text-gray-600 font-light"
           }`}
           style={{
             left: `${char.x}%`,
             top: `${char.y}%`,
             transform: `translate(-50%, -50%) ${activeIndices.has(index) ? 'scale(1.25)' : 'scale(1)'}`,
             textShadow: activeIndices.has(index) 
-              ? '0 0 8px rgba(0,255,0,0.8), 0 0 12px rgba(0,255,0,0.4)' 
+              ? '0 0 8px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.4)' 
               : 'none',
-            opacity: activeIndices.has(index) ? 1 : 0.4,
+            opacity: activeIndices.has(index) ? 1 : 0.3,
             transition: 'color 0.1s, transform 0.1s, text-shadow 0.1s',
             willChange: 'transform, top',
             fontSize: '1.8rem'
