@@ -265,10 +265,7 @@ export default function Home() {
                 A 20-year-old passionate developer from Al-Qassim, Buraydah. 
                 I love creating modern web applications and exploring new technologies.
               </p>
-              <p className="text-gray-300 mb-6">
-                Currently focused on full-stack development with React, Node.js, 
-                and modern web technologies. Always eager to learn and take on new challenges.
-              </p>
+              <p className="text-gray-300 mb-6">I am a university student majoring in mobile application development. I also have a good background in web development, with intermediate-level experience in both frontend and backend programming. I’m passionate about creating clean, efficient, and user-friendly applications. I enjoy learning new technologies and constantly improving my skills to stay up to date with the latest trends in the tech world.</p>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 scroll-reveal">
                   <span className="w-2 h-2 bg-white rounded-full"></span>
