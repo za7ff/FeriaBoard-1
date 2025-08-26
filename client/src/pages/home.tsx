@@ -319,53 +319,53 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4 scroll-reveal">
+              <div className="grid grid-cols-2 gap-3 scroll-reveal">
                 <a 
                   href="https://discord.com/users/700928520716681237"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#5865F2]/10 to-[#5865F2]/5 hover:from-[#5865F2]/20 hover:to-[#5865F2]/10 border border-[#5865F2]/20 hover:border-[#5865F2]/40 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#5865F2]/20 to-[#5865F2]/10 hover:from-[#5865F2]/30 hover:to-[#5865F2]/20 border border-[#5865F2]/30 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#5865F2]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    💬
-                  </div>
-                  <span className="text-sm font-medium">Discord</span>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 127.14 96.36">
+                    <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/>
+                  </svg>
+                  Discord
                 </a>
                 
                 <a 
                   href="https://www.tiktok.com/@.ps5"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#FF0050]/10 to-[#FF0050]/5 hover:from-[#FF0050]/20 hover:to-[#FF0050]/10 border border-[#FF0050]/20 hover:border-[#FF0050]/40 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FF0050]/20 to-[#FF0050]/10 hover:from-[#FF0050]/30 hover:to-[#FF0050]/20 border border-[#FF0050]/30 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#FF0050]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    🎵
-                  </div>
-                  <span className="text-sm font-medium">.ps5</span>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.527.02C13.858 0 15.188.01 16.52 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
+                  .ps5
                 </a>
                 
                 <a 
                   href="https://www.tiktok.com/@_pc7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#FF0050]/10 to-[#FF0050]/5 hover:from-[#FF0050]/20 hover:to-[#FF0050]/10 border border-[#FF0050]/20 hover:border-[#FF0050]/40 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FF0050]/20 to-[#FF0050]/10 hover:from-[#FF0050]/30 hover:to-[#FF0050]/20 border border-[#FF0050]/30 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#FF0050]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    🎬
-                  </div>
-                  <span className="text-sm font-medium">_pc7</span>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.527.02C13.858 0 15.188.01 16.52 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                  </svg>
+                  _pc7
                 </a>
                 
                 <a 
                   href="https://snapchat.com/add/cipws"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative baguzel-btn flex flex-col items-center justify-center gap-3 p-6 bg-gradient-to-br from-[#FFFC00]/10 to-[#FFFC00]/5 hover:from-[#FFFC00]/20 hover:to-[#FFFC00]/10 border border-[#FFFC00]/20 hover:border-[#FFFC00]/40 transition-all duration-300"
+                  className="baguzel-btn flex items-center justify-center gap-2 p-4 bg-gradient-to-r from-[#FFFC00]/20 to-[#FFFC00]/10 hover:from-[#FFFC00]/30 hover:to-[#FFFC00]/20 border border-[#FFFC00]/30 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#FFFC00]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    👻
-                  </div>
-                  <span className="text-sm font-medium">cipws</span>
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M11.9 0c3.13 0 5.66 2.53 5.66 5.66v3.72c1.26.47 2.16 1.69 2.16 3.12v6c0 1.84-1.5 3.34-3.34 3.34h-8.96c-1.84 0-3.34-1.5-3.34-3.34v-6c0-1.43.9-2.65 2.16-3.12v-3.72c0-3.13 2.53-5.66 5.66-5.66zm0 1.5c-2.29 0-4.16 1.87-4.16 4.16v3.5h8.32v-3.5c0-2.29-1.87-4.16-4.16-4.16zm3.75 9.16h-7.5c-.69 0-1.25.56-1.25 1.25v5.59c0 .69.56 1.25 1.25 1.25h7.5c.69 0 1.25-.56 1.25-1.25v-5.59c0-.69-.56-1.25-1.25-1.25zm-3.75 2.25c.41 0 .75.34.75.75v1.59c0 .41-.34.75-.75.75s-.75-.34-.75-.75v-1.59c0-.41.34-.75.75-.75z"/>
+                  </svg>
+                  cipws
                 </a>
               </div>
             </div>
