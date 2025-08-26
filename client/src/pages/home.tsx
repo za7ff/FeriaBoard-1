@@ -269,8 +269,7 @@ export default function Home() {
               <div className="space-y-2">
                 <div className="flex items-center gap-2 scroll-reveal">
                   <span className="w-2 h-2 bg-white rounded-full"></span>
-                  <span className="text-gray-300">Mobile application developer
-</span>
+                  <span className="text-gray-300">Mobile application development</span>
                 </div>
                 <div className="flex items-center gap-2 scroll-reveal">
                   <span className="w-2 h-2 bg-white rounded-full"></span>
