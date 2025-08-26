@@ -87,6 +87,32 @@ class SecurityManager {
 
 const security = new SecurityManager();
 
+// Visitor tracking
+class VisitorTracker {
+  private visitors = new Set<string>();
+  private totalVisits = 0;
+  
+  trackVisit(ip: string): { totalVisitors: number; totalVisits: number } {
+    const isNewVisitor = !this.visitors.has(ip);
+    this.visitors.add(ip);
+    this.totalVisits++;
+    
+    return {
+      totalVisitors: this.visitors.size,
+      totalVisits: this.totalVisits
+    };
+  }
+  
+  getStats(): { totalVisitors: number; totalVisits: number } {
+    return {
+      totalVisitors: this.visitors.size,
+      totalVisits: this.totalVisits
+    };
+  }
+}
+
+const visitorTracker = new VisitorTracker();
+
 // Discord notification function
 async function sendDiscordNotification(comment: string) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
@@ -125,6 +151,18 @@ async function sendDiscordNotification(comment: string) {
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Track all visits
+  app.use((req, res, next) => {
+    const clientIP = security.getClientIP(req);
+    visitorTracker.trackVisit(clientIP);
+    next();
+  });
+
+  // Get visitor stats
+  app.get("/api/visitors", (req, res) => {
+    const stats = visitorTracker.getStats();
+    res.json(stats);
+  });
   // Configure persistent sessions with enhanced settings
   const MemoryStoreConstructor = MemoryStore(session);
   const sessionStore = new MemoryStoreConstructor({

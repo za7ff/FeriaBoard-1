@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { insertCommentSchema, type InsertComment } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
-import { Home as HomeIcon, User, MessageSquare } from "lucide-react";
+import { Home as HomeIcon, User, MessageSquare, Eye } from "lucide-react";
 import HeroGeometric from "@/components/HeroGeometric";
 
 export default function Home() {
@@ -19,6 +19,12 @@ export default function Home() {
   const [showTypewriter, setShowTypewriter] = useState(false);
   const [typewriterText, setTypewriterText] = useState("");
   const [typewriterStarted, setTypewriterStarted] = useState(false);
+
+  // Fetch visitor stats
+  const { data: visitorStats } = useQuery<{ totalVisitors: number; totalVisits: number }>({
+    queryKey: ['/api/visitors'],
+    refetchInterval: 30000, // Refresh every 30 seconds
+  });
 
   // Enhanced scroll animation setup
   useEffect(() => {
@@ -194,6 +200,31 @@ export default function Home() {
             
 
           </div>
+
+          {/* Visitor Stats */}
+          {visitorStats && (
+            <div className="mt-16 grid grid-cols-2 gap-6 max-w-md mx-auto scroll-reveal">
+              <div className="baguzel-card text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <Eye className="w-5 h-5 text-orange-500 mr-2" />
+                  <span className="text-sm text-gray-400">Unique Visitors</span>
+                </div>
+                <div className="text-2xl font-bold text-white">
+                  {visitorStats?.totalVisitors?.toLocaleString() || 0}
+                </div>
+              </div>
+              
+              <div className="baguzel-card text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <Eye className="w-5 h-5 text-blue-500 mr-2" />
+                  <span className="text-sm text-gray-400">Total Views</span>
+                </div>
+                <div className="text-2xl font-bold text-white">
+                  {visitorStats?.totalVisits?.toLocaleString() || 0}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
       {/* Comment Modal */}
