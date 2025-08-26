@@ -315,18 +315,45 @@ export default function Home() {
                 </div>
                 <div className="text-left">
                   <h4 className="text-white font-medium">Meshall</h4>
-                  <p className="text-gray-400 text-sm">Contact me on Discord</p>
+                  <p className="text-gray-400 text-sm">Follow me on social media</p>
                 </div>
               </div>
               
-              <div className="pt-4 scroll-reveal">
+              <div className="space-y-3 scroll-reveal">
                 <a 
                   href="https://discord.com/users/700928520716681237"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="baguzel-btn w-full flex items-center justify-center gap-2"
                 >
-                  Contact on Discord
+                  Discord
+                </a>
+                
+                <a 
+                  href="https://www.tiktok.com/@.ps5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="baguzel-btn w-full flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500/20 to-blue-500/20 hover:from-pink-500/30 hover:to-blue-500/30"
+                >
+                  TikTok - .ps5
+                </a>
+                
+                <a 
+                  href="https://www.tiktok.com/@_pc7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="baguzel-btn w-full flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500/20 to-blue-500/20 hover:from-pink-500/30 hover:to-blue-500/30"
+                >
+                  TikTok - _pc7
+                </a>
+                
+                <a 
+                  href="https://snapchat.com/add/cipws"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="baguzel-btn w-full flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 hover:from-yellow-400/30 hover:to-yellow-600/30"
+                >
+                  Snapchat - cipws
                 </a>
               </div>
             </div>
