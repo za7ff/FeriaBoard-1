@@ -138,7 +138,7 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
       className="text-white text-4xl md:text-6xl font-bold tracking-wider text-center"
       style={{ fontFamily: 'monospace' }}
     >
-      WELCOME
+      
     </h1>
   )
 }
