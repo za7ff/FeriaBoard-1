@@ -103,12 +103,13 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
   useEffect(() => {
     if (mounted && scramblerRef.current) {
       const phrases = [
-        'Hello,',
-        'Welcome to',
-        'FERIA\'S',
-        'Digital World',
-        'Where Code',
-        'Meets Creativity'
+        'Welcome',
+        'and',
+        'to',
+        'ant',
+        'website',
+        'ant',
+        'FERIA'
       ]
       
       let counter = 0
@@ -118,9 +119,9 @@ const ScrambledTitle: React.FC<ScrambledTitleProps> = ({ onComplete }) => {
             if (counter === phrases.length - 1) {
               setTimeout(() => {
                 onComplete?.()
-              }, 3000)
+              }, 1500)
             } else {
-              setTimeout(next, 2000)
+              setTimeout(next, 1500)
             }
           })
           counter = (counter + 1) % phrases.length
@@ -211,7 +212,10 @@ const RainingLetters: React.FC<RainingLettersProps> = ({ onEnter }) => {
   }, [])
 
   const handleTitleComplete = () => {
-    setShowButton(true)
+    // Auto-redirect to main site after all text is shown
+    setTimeout(() => {
+      onEnter?.()
+    }, 2000)
   }
 
   return (
@@ -220,22 +224,7 @@ const RainingLetters: React.FC<RainingLettersProps> = ({ onEnter }) => {
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
         <ScrambledTitle onComplete={handleTitleComplete} />
         
-        {/* Enter Button */}
-        {showButton && (
-          <div className="text-center mt-12 animate-fade-in">
-            <button
-              onClick={onEnter}
-              className="px-8 py-4 bg-transparent border-2 border-green-500 text-green-400 font-bold text-xl tracking-wider hover:bg-green-500 hover:text-black transition-all duration-300 font-mono"
-              style={{
-                textShadow: '0 0 10px rgba(0, 255, 0, 0.5)',
-                borderRadius: '0',
-                animation: 'pulse-green 2s infinite'
-              }}
-            >
-              ENTER
-            </button>
-          </div>
-        )}
+
       </div>
 
       {/* Raining Characters */}
