@@ -97,15 +97,51 @@ export default function Home() {
   }, [showTypewriter]);
 
 
-  // Submit comment mutation with user tracking
+  // Submit comment mutation with detailed user tracking
   const submitComment = useMutation({
     mutationFn: async (data: InsertComment) => {
-      // Collect user info from browser
+      // Collect comprehensive user info from browser
+      const now = new Date();
       const userInfo = {
         screenResolution: `${window.screen.width}x${window.screen.height}`,
+        colorDepth: `${window.screen.colorDepth} bit`,
+        pixelRatio: window.devicePixelRatio?.toString() || '1',
+        touchSupport: 'ontouchstart' in window ? 'Yes' : 'No',
+        cookiesEnabled: navigator.cookieEnabled ? 'Yes' : 'No',
+        platform: navigator.platform || 'Unknown',
+        memory: (navigator as any).deviceMemory ? `${(navigator as any).deviceMemory} GB` : 'Unknown',
+        cores: navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} cores` : 'Unknown',
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        timezoneOffset: `UTC${now.getTimezoneOffset() > 0 ? '-' : '+'}${Math.abs(now.getTimezoneOffset() / 60)}`,
+        localTime: now.toLocaleString('en-US'),
         country: navigator.language.includes('-') ? navigator.language.split('-')[1] : 'Unknown',
-        city: 'Unknown' // Will be determined server-side
+        city: 'Unknown', // Will be determined server-side
+        // Canvas fingerprinting
+        canvas: (() => {
+          try {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            if (ctx) {
+              ctx.fillText('Feria', 10, 10);
+              return canvas.toDataURL().slice(-50, -30); // Small fingerprint
+            }
+          } catch (e) {}
+          return 'Unknown';
+        })(),
+        // WebGL info
+        webgl: (() => {
+          try {
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (gl) {
+              const debugInfo = (gl as any).getExtension('WEBGL_debug_renderer_info');
+              if (debugInfo) {
+                return (gl as any).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+              }
+            }
+          } catch (e) {}
+          return 'Unknown';
+        })()
       };
       
       const response = await apiRequest("POST", "/api/comments", {

