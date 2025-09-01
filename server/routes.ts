@@ -176,16 +176,26 @@ async function sendDiscordNotification(comment: string) {
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Track all visits
-  app.use((req, res, next) => {
+  app.use(async (req, res, next) => {
     const clientIP = security.getClientIP(req);
-    visitorTracker.trackVisit(clientIP);
+    try {
+      await storage.upsertVisitor(clientIP);
+    } catch (error) {
+      console.error("Error tracking visitor:", error);
+    }
     next();
   });
 
   // Get visitor stats
-  app.get("/api/visitors", (req, res) => {
-    const stats = visitorTracker.getStats();
-    res.json(stats);
+  app.get("/api/visitors", async (req, res) => {
+    try {
+      const currentVisitors = await storage.getCurrentVisitors();
+      const totalVisitors = await storage.getTotalVisitors();
+      res.json({ currentVisitors, totalVisitors });
+    } catch (error) {
+      console.error("Error fetching visitor stats:", error);
+      res.json({ currentVisitors: 0, totalVisitors: 94 }); // Fallback to initial value
+    }
   });
   // Configure persistent sessions with enhanced settings
   const MemoryStoreConstructor = MemoryStore(session);

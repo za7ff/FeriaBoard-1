@@ -37,10 +37,11 @@ Avatar: Uses Discord profile image (https://cdn.discordapp.com/avatars/700928520
 ## Data Layer
 - **Database**: PostgreSQL with Neon Database serverless hosting
 - **ORM**: Drizzle ORM for type-safe database operations
-- **Schema**: Two main entities - users (admin authentication) and comments (persistent storage)
+- **Schema**: Four main entities - users (admin authentication), comments (persistent storage), visitors (tracking), and siteStats (total visitor count)
 - **Validation**: Zod schemas for runtime validation shared between client and server
 - **Storage Pattern**: DatabaseStorage implementation with PostgreSQL persistence
-- **Persistence**: Comments are permanently stored and survive server restarts
+- **Persistence**: All data (comments, visitor stats) permanently stored and survive server restarts
+- **Visitor Tracking**: Persistent visitor counting with database storage (initial count: 94)
 
 ## Authentication & Authorization
 - **Current State**: Basic structure in place but not fully implemented
@@ -71,6 +72,14 @@ Avatar: Uses Discord profile image (https://cdn.discordapp.com/avatars/700928520
 - **Lucide React**: Icon library for consistent iconography
 
 ## Recent Enhancements (January 2025)
+- **Video Popup Feature**: Added "Secret" button in bottom navigation that opens video popup modal
+- **Website Branding**: Added "Feria" as website title with custom favicon (Discord avatar)
+- **Persistent Visitor Counter**: Migrated visitor tracking from memory to PostgreSQL database
+  - Total visitors now persist across server restarts (initial count: 94)
+  - Current online visitors tracked with 5-minute session timeout
+  - All visitor data stored in dedicated database tables
+
+## Previous Enhancements (January 2025)
 - **Complete Theme Overhaul**: Redesigned to match baguzel.com's modern aesthetic
 - **Bottom Navigation**: Professional bottom navigation with Home, About, Contact links for better mobile UX
 - **Hero Section**: Large heading with professional tagline and call-to-action button
