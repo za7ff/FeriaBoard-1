@@ -155,78 +155,123 @@ async function sendDiscordNotification(comment: string, userInfo: any) {
       },
       body: JSON.stringify({
         embeds: [{
-          title: "New Comment on Feria Website 💬",
-          description: comment,
-          color: 0x5865F2,
+          title: "💬 New Comment on Feria Website",
+          description: `**Comment:**\n${comment}`,
+          color: 0xFF6B35,
           timestamp: new Date().toISOString(),
           fields: [
-            // Critical Info - First Row
             {
-              name: "🌐 IP & Security",
-              value: `IP: ${userInfo.ip || "Unknown"}\n${userInfo.vpnDetected}\nSession: ${userInfo.sessionId?.slice(0, 8) || "Unknown"}`,
+              name: "🌐 IP Address",
+              value: userInfo.ip || "Unknown",
               inline: true
             },
             {
-              name: "📍 Location",
-              value: `${userInfo.country} (${userInfo.countryCode})\n${userInfo.city}, ${userInfo.region}\nZIP: ${userInfo.zip || "Unknown"}`,
+              name: "🖥️ Browser",
+              value: userInfo.browser || "Unknown",
               inline: true
             },
             {
-              name: "📡 Network",
-              value: `ISP: ${userInfo.isp || "Unknown"}\n${userInfo.mobile}\nOrg: ${userInfo.org || "Unknown"}`,
-              inline: true
-            },
-            // Device Info - Second Row
-            {
-              name: "💻 System",
-              value: `OS: ${userInfo.os}\nBrowser: ${userInfo.browser}\n${userInfo.deviceType}: ${userInfo.device}`,
+              name: "💻 Operating System",
+              value: userInfo.os || "Unknown",
               inline: true
             },
             {
-              name: "🖥️ Hardware",
-              value: `Platform: ${userInfo.platform}\nCPU: ${userInfo.cores}\nRAM: ${userInfo.memory}`,
+              name: "📱 Device Type",
+              value: `${userInfo.device}`,
               inline: true
             },
             {
-              name: "📏 Display",
-              value: `${userInfo.screenResolution}\nDepth: ${userInfo.colorDepth}\nTouch: ${userInfo.touchSupport}`,
-              inline: true
-            },
-            // Time & History - Third Row
-            {
-              name: "🕐 Time",
-              value: `Local: ${userInfo.localTime}\n${userInfo.timezone}\n${userInfo.timezoneOffset}`,
+              name: "🌍 Country",
+              value: `${userInfo.country} (${userInfo.countryCode})`,
               inline: true
             },
             {
-              name: "📊 History",
-              value: `Comments: ${userInfo.previousComments} (30d)\nTotal Visits: ${userInfo.totalSiteVisits}\nLang: ${userInfo.language}`,
+              name: "🏙️ City",
+              value: `${userInfo.city}, ${userInfo.region}`,
               inline: true
             },
             {
-              name: "🔒 Privacy",
-              value: `Cookies: ${userInfo.cookiesEnabled}\n${userInfo.doNotTrack}\nPixel: ${userInfo.pixelRatio}`,
+              name: "🌐 ISP Provider",
+              value: userInfo.isp || "Unknown",
               inline: true
             },
-            // Location Details - Fourth Row
             {
-              name: "🗺️ GPS",
+              name: "📍 GPS Location",
               value: userInfo.coordinates || "Unknown",
               inline: true
             },
             {
-              name: "🎨 Fingerprint",
-              value: `Canvas: ${userInfo.canvas?.slice(0, 10) || "Unknown"}\nWebGL: ${(userInfo.webgl || "Unknown").slice(0, 30)}`,
+              name: "📮 ZIP Code",
+              value: userInfo.zip || "Unknown",
               inline: true
             },
             {
-              name: "🔗 Source",
+              name: "🕐 Local Time",
+              value: userInfo.localTime || "Unknown",
+              inline: true
+            },
+            {
+              name: "⏰ Timezone",
+              value: `${userInfo.timezone}`,
+              inline: true
+            },
+            {
+              name: "📏 Screen Resolution",
+              value: userInfo.screenResolution || "Unknown",
+              inline: true
+            },
+            {
+              name: "🗣️ Language",
+              value: userInfo.language || "Unknown",
+              inline: true
+            },
+            {
+              name: "🔗 Referrer",
               value: userInfo.referrer || "Direct Visit",
+              inline: true
+            },
+            {
+              name: "🛡️ VPN/Proxy",
+              value: userInfo.vpnDetected || "Unknown",
+              inline: true
+            },
+            {
+              name: "📡 Network Type",
+              value: userInfo.mobile || "Unknown",
+              inline: true
+            },
+            {
+              name: "🍪 Cookies",
+              value: userInfo.cookiesEnabled || "Unknown",
+              inline: true
+            },
+            {
+              name: "👆 Touch Support",
+              value: userInfo.touchSupport || "Unknown",
+              inline: true
+            },
+            {
+              name: "💬 Previous Comments",
+              value: `${userInfo.previousComments} in last 30 days`,
+              inline: true
+            },
+            {
+              name: "👥 Total Site Visits",
+              value: userInfo.totalSiteVisits?.toString() || "Unknown",
+              inline: true
+            },
+            {
+              name: "🆔 Session ID",
+              value: userInfo.sessionId?.slice(0, 12) + "..." || "Unknown",
               inline: true
             }
           ],
           footer: {
-            text: `Feria Website • ${new Date().toLocaleString('ar-SA')} • Full tracking enabled`
+            text: `Feria Website Tracker • ${new Date().toLocaleString('en-US')}`
+          },
+          author: {
+            name: "Comment Tracker System",
+            icon_url: "https://cdn.discordapp.com/avatars/700928520716681237/adc96beeec6bdc6824d9584607682124.webp"
           }
         }]
       }),
