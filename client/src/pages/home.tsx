@@ -8,12 +8,13 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { Home as HomeIcon, User, MessageSquare, Eye } from "lucide-react";
 import HeroGeometric from "@/components/HeroGeometric";
-import { VideoPopup } from "@/components/VideoPopup";
+import videoFile from "@assets/F83479B6-9F45-4FF7-9499-FA683AA9A46B_1756696203406.mp4";
 
 export default function Home() {
   const [comment, setComment] = useState("");
 
   const [showComments, setShowComments] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const { toast } = useToast();
   const [, setLocation] = useLocation();
   const [typingComplete, setTypingComplete] = useState(false);
@@ -139,7 +140,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#030303] relative">
       <HeroGeometric />
-      <VideoPopup />
       {/* Navigation Header */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 p-6 relative bg-black/80 backdrop-blur-sm border-t border-gray-800">
         <div className="max-w-7xl mx-auto flex items-center justify-center">
@@ -176,6 +176,13 @@ export default function Home() {
             >
               Contact
             </a>
+            <button
+              className="nav-item"
+              data-testid="button-secret"
+              onClick={() => setShowVideo(true)}
+            >
+              Secret
+            </button>
           </div>
         </div>
       </nav>
@@ -391,6 +398,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Video Popup Modal */}
+      {showVideo && (
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl w-full">
+            <button
+              onClick={() => setShowVideo(false)}
+              className="absolute -top-12 right-0 text-white/60 hover:text-white transition-colors"
+              data-testid="button-close-video"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
+              <video
+                controls
+                autoPlay
+                className="w-full h-full"
+                data-testid="video-player"
+              >
+                <source src={videoFile} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
