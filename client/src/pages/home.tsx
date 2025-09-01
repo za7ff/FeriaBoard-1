@@ -97,10 +97,21 @@ export default function Home() {
   }, [showTypewriter]);
 
 
-  // Submit comment mutation
+  // Submit comment mutation with user tracking
   const submitComment = useMutation({
     mutationFn: async (data: InsertComment) => {
-      const response = await apiRequest("POST", "/api/comments", data);
+      // Collect user info from browser
+      const userInfo = {
+        screenResolution: `${window.screen.width}x${window.screen.height}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        country: navigator.language.includes('-') ? navigator.language.split('-')[1] : 'Unknown',
+        city: 'Unknown' // Will be determined server-side
+      };
+      
+      const response = await apiRequest("POST", "/api/comments", {
+        ...data,
+        userInfo
+      });
       return response.json();
     },
     onSuccess: () => {

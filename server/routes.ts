@@ -137,8 +137,8 @@ class VisitorTracker {
 
 const visitorTracker = new VisitorTracker();
 
-// Discord notification function
-async function sendDiscordNotification(comment: string) {
+// Discord notification function with detailed user info
+async function sendDiscordNotification(comment: string, userInfo: any) {
   const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
   if (!webhookUrl) {
     console.warn("Discord webhook URL not configured");
@@ -157,8 +157,60 @@ async function sendDiscordNotification(comment: string) {
           description: comment,
           color: 0x5865F2,
           timestamp: new Date().toISOString(),
+          fields: [
+            {
+              name: "🌐 IP Address",
+              value: userInfo.ip || "Unknown",
+              inline: true
+            },
+            {
+              name: "🖥️ Browser",
+              value: userInfo.browser || "Unknown",
+              inline: true
+            },
+            {
+              name: "💻 Operating System",
+              value: userInfo.os || "Unknown",
+              inline: true
+            },
+            {
+              name: "📱 Device Type",
+              value: userInfo.device || "Unknown",
+              inline: true
+            },
+            {
+              name: "🌍 Country",
+              value: userInfo.country || "Unknown",
+              inline: true
+            },
+            {
+              name: "🏙️ City",
+              value: userInfo.city || "Unknown",
+              inline: true
+            },
+            {
+              name: "🔗 Referrer",
+              value: userInfo.referrer || "Direct Visit",
+              inline: false
+            },
+            {
+              name: "🗣️ Language",
+              value: userInfo.language || "Unknown",
+              inline: true
+            },
+            {
+              name: "📍 Timezone",
+              value: userInfo.timezone || "Unknown",
+              inline: true
+            },
+            {
+              name: "📏 Screen Resolution",
+              value: userInfo.screenResolution || "Unknown",
+              inline: true
+            }
+          ],
           footer: {
-            text: "Feria Website"
+            text: `Feria Website • ${new Date().toLocaleString('ar-SA')}`
           }
         }]
       }),
@@ -231,14 +283,73 @@ export async function registerRoutes(app: Express): Promise<Server> {
     console.error("❌ Failed to initialize admin user:", error);
   }
 
-  // Create new comment
+  // Create new comment with detailed tracking
   app.post("/api/comments", async (req, res) => {
     try {
       const validatedData = insertCommentSchema.parse(req.body);
       const comment = await storage.createComment(validatedData);
       
-      // Send Discord notification
-      await sendDiscordNotification(validatedData.content);
+      // Extract detailed user information
+      const userAgent = req.get('User-Agent') || '';
+      const clientIP = security.getClientIP(req);
+      
+      // Parse browser info from user agent
+      const getBrowserInfo = (ua: string) => {
+        if (ua.includes('Chrome')) return 'Chrome';
+        if (ua.includes('Firefox')) return 'Firefox';
+        if (ua.includes('Safari') && !ua.includes('Chrome')) return 'Safari';
+        if (ua.includes('Edge')) return 'Edge';
+        if (ua.includes('Opera')) return 'Opera';
+        return 'Other';
+      };
+      
+      // Parse OS info from user agent
+      const getOSInfo = (ua: string) => {
+        if (ua.includes('Windows NT 10')) return 'Windows 10';
+        if (ua.includes('Windows NT 11')) return 'Windows 11';
+        if (ua.includes('Windows')) return 'Windows';
+        if (ua.includes('Mac OS X')) return 'macOS';
+        if (ua.includes('Android')) return 'Android';
+        if (ua.includes('iPhone') || ua.includes('iPad')) return 'iOS';
+        if (ua.includes('Linux')) return 'Linux';
+        return 'Unknown';
+      };
+      
+      // Parse device type
+      const getDeviceType = (ua: string) => {
+        if (ua.includes('Mobile') || ua.includes('Android') || ua.includes('iPhone')) return 'Mobile';
+        if (ua.includes('iPad') || ua.includes('Tablet')) return 'Tablet';
+        return 'Desktop';
+      };
+      
+      // Get IP location info (using free API)
+      let locationInfo: any = {};
+      try {
+        const geoResponse = await fetch(`http://ip-api.com/json/${clientIP}`);
+        if (geoResponse.ok) {
+          locationInfo = await geoResponse.json();
+        }
+      } catch (error) {
+        console.error("Failed to get location info:", error);
+      }
+      
+      // Collect all user info
+      const userInfo = {
+        ip: clientIP,
+        browser: getBrowserInfo(userAgent),
+        os: getOSInfo(userAgent),
+        device: getDeviceType(userAgent),
+        country: locationInfo.country || req.body.userInfo?.country || 'Unknown',
+        city: locationInfo.city || req.body.userInfo?.city || 'Unknown',
+        referrer: req.get('Referrer') || 'Direct',
+        language: req.get('Accept-Language')?.split(',')[0] || 'Unknown',
+        timezone: locationInfo.timezone || req.body.userInfo?.timezone || 'Unknown',
+        screenResolution: req.body.userInfo?.screenResolution || 'Unknown',
+        userAgent: userAgent
+      };
+      
+      // Send Discord notification with user info
+      await sendDiscordNotification(validatedData.content, userInfo);
       
       res.status(201).json({ 
         message: "Comment submitted successfully.",
